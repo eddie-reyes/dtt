@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import styles from "../App.module.css";
 import Login from "../components/Login/Login.jsx";
 
 export default function LoginPage () {
   return (
-    <div className="page">
+    <div className={styles.page}>
       <Login />
     </div>
   );

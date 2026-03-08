@@ -78,7 +78,7 @@ export default function Calculator() {
         <button onClick={() => handleNumber("3")}>3</button>
         <button onClick={calculate}>=</button>
 
-        <button className="zero" onClick={() => handleNumber("0")}>0</button>
+        <button className={styles.zero} onClick={() => handleNumber("0")}>0</button>
         <button onClick={() => handleNumber(".")}>.</button>
       </div>
     </div>
