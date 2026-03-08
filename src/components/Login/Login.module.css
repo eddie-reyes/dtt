@@ -1,0 +1,107 @@
+.body {
+    grid: 1fr 1fr 1fr / 1fr 1fr 1fr; 
+    background: #00548fFF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.body:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00548fFF;
+    z-index: -1; /* Ensure the overlay is behind the content */
+}
+
+.title {
+    grid-area: 1 / 1 / 2 / 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 3em;
+}
+
+.logo {
+    grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.login {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    align-content: stretch;
+    justify-items: start;
+    justify-content: stretch;
+
+    align-self: center;
+    justify-self: center;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.usernametext {
+     align-self: center;
+     justify-self: center;
+     grid-column: 1;
+     grid-row: 1;
+}
+
+.usernameinput {
+     align-self: center;
+     justify-self: center;
+     grid-column: 2;
+     grid-row: 1;
+}
+
+.passwordtext {
+     align-self: center;
+     justify-self: center;
+     grid-column: 1;
+     grid-row: 2;
+}
+
+.passwordinput {
+     align-self: center;
+     justify-self: center;
+     grid-column: 2;
+     grid-row: 2;
+}
+
+.visittext {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.copyright {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.text {
+    color: black;
+}
+
+.backButton {
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: var(--light-teal);
+  color: var(--dark-teal);
+  font-weight: 600;
+}
