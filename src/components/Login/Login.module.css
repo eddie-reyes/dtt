@@ -104,4 +104,16 @@
   background: var(--light-teal);
   color: var(--dark-teal);
   font-weight: 600;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.backButton:hover {
+  background: var(--green);
+  color: white;
+}
+
+.back {
+    grid-column: 1;
+    grid-row: 1;
 }

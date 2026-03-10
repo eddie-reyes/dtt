@@ -4,12 +4,12 @@ import styles from "./Login.module.css";
 export default function login() {
     return (
     <>
-        <div className={styles.backButton}>
-        <Link to="/" className={styles.back}>
+    <div className={styles.body}>
+            <div className={styles.back}>
+        <Link to="/" className={styles.backButton}>
         ← Back
         </Link>
     </div>
-    <div className={styles.body}>
         <div className={styles.title}>
             <h1>Diagnostic Training Tool</h1>
         </div>
