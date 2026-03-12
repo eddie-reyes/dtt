@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "../App.module.css";
 
 export default function Calculator() {
 	
@@ -53,10 +54,10 @@ export default function Calculator() {
 	};
 
 	return (
-    <div className="page">
-      <div className="display">{display}</div>
+    <div className={styles.calculator}>
+      <div className={styles.display}>{display}</div>
 
-      <div className="grid">
+      <div className={styles.grid}>
         <button onClick={clear}>C</button>
         <button onClick={backspace}>⌫</button>
         <button onClick={() => handleOperator("/")}>÷</button>
@@ -77,7 +78,7 @@ export default function Calculator() {
         <button onClick={() => handleNumber("3")}>3</button>
         <button onClick={calculate}>=</button>
 
-        <button className="zero" onClick={() => handleNumber("0")}>0</button>
+        <button className={styles.zero} onClick={() => handleNumber("0")}>0</button>
         <button onClick={() => handleNumber(".")}>.</button>
       </div>
     </div>
