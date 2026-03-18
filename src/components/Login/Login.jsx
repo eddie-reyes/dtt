@@ -14,21 +14,15 @@ export default function login() {
             <h1>Diagnostic Training Tool</h1>
         </div>
 
-        <div className={styles.logo}>
+        {/* <div className={styles.logo}>
             <img src="./src/assets/logo.png" alt="" className={styles.img}/>
-        </div>
+        </div> */}
 
-        <div className={styles.login}>
-            <p className={`${styles.usernametext} ${styles.text}`}>Username:</p>
-            <input type="text" className={styles.usernameinput} name="username"/>
-
-            <p className={`${styles.passwordtext} ${styles.text}`}>Password:</p>
-            <input type="password" className={styles.passwordinput} name="password"/>
-        </div>
-
-        <div className={styles.login}>
-            <button id="loginbutton">Login</button>
-        </div>
+        <form className={styles.login}>
+            <input name="username" type="text" placeholder="Username:" className={styles.username} required />
+            <input name="password" type="password" placeholder="Password:" className={styles.password} required />
+            <button type="submit" className={styles.submit}>Login</button>
+        </form>
 
         <div className={`${styles.visittext} ${styles.text}`}>
             <p>Visit our website for more information: <a href="https://www.diagnostictrainingtool.com">www.diagnostictrainingtool.com</a></p>
