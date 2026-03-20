@@ -4,6 +4,7 @@ import Home from './pages/HomePage.jsx';
 import './App.module.css'
 import CalculatorPage from './pages/CalculatorPage.jsx'
 import LogInPage from './pages/LoginPage.jsx';
+import HistoryPage from './pages/HistoryPage.jsx';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 		<Route path="/" element={<Home />} />
 		<Route path="/calculator" element={<CalculatorPage />}/>
     <Route path="/login" element={<LogInPage />}/>
+    <Route path="/history" element={<HistoryPage />}/>
 	</Routes>
 
       // <div>
