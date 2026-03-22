@@ -1,3 +1,4 @@
+import data from "./data/patients.json";
 import { Link } from "react-router-dom";
 import styles from "./History.module.css";
 
@@ -5,7 +6,7 @@ export default function history() {
     return (
     <div className={styles.body}>
         <div className={styles.exit}>
-            <Link to="/" className={styles.backButton}>
+            <Link to="/menu" className={styles.backButton}>
                 ← Back
             </Link>
         </div>
@@ -16,8 +17,18 @@ export default function history() {
 
         <div className={styles.content}>
             <ul className={styles.list}>
-                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde cumque aliquid minus perferendis vitae fugit inventore rerum quidem quasi modi delectus eveniet aliquam in sit deleniti repellat suscipit, repellendus maxime.</li>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, assumenda.</li>
+                {data.map((patient) => (
+                    console.log(patient),
+                    console.log(typeof patient),
+                    <li key={patient.id}>
+                        <div>
+                            <p>Patient: {patient.name}: {patient.correct ? "Correct" : "Incorrect"} Diagnosis</p>
+                            <Link to={`/details/${patient.id}`} state={{ patient }}>
+                                Show Details
+                            </Link>
+                        </div>
+                    </li>
+                ))}
             </ul>
         </div>
     </div>

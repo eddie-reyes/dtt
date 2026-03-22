@@ -1,7 +1,5 @@
 .body {
     display: grid;
-    flex-direction: row;
-    flex-wrap: nowrap;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: start;
     align-content: stretch;
@@ -56,22 +54,40 @@
 }
 
 .content {
-    display: flex;
+    display: grid;
     flex-direction: column;
     flex-wrap: nowrap;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     align-items: start;
     align-content: stretch;
-    justify-content: start;
-
-    align-self: left;
-    justify-self: left;
+    justify-items: start;
+    justify-content: stretch;
+    
+    align-self: center;
+    justify-self: center;
     grid-column: 1 / 4;
     grid-row: 2;
 
-    background: #a6a6a6FF;
-    border-radius: 90px;
+    background: #125e7eFF;
+    border-radius: 20px;
 }
 
-.list {
-    list-style-type: none;
+.diagnosis {
+        align-self: center;
+        justify-self: center;
+        grid-column: 1;
+        grid-row: 1;
+
+        background: #e2fcd6;
+        border-radius: 20px;
+}
+
+.details {
+        align-self: center;
+        justify-self: center;
+        grid-column: 1;
+
+        background: #e2fcd6;
+        border-radius: 20px;
 }
