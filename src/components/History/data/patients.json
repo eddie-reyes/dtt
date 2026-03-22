@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "correct": true,
+    "timeElapsed": "00:01:12",
+    "details": "Your response was correct and well supported by the clinical information provided. You showed good awareness of the relevant signs, symptoms, and likely diagnosis."
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "correct": false,
+    "timeElapsed": "00:02:05",
+    "details": "The diagnosis was incorrect; consider alternative differentials such as endocrine causes given the lab pattern. Review of medication history would have helped."
+  },
+  {
+    "id": 3,
+    "name": "Alice Brown",
+    "correct": true,
+    "timeElapsed": "00:00:48",
+    "details": "Correct diagnosis. You efficiently identified the likely pulmonary cause and recommended appropriate initial investigations."
+  },
+  {
+    "id": 4,
+    "name": "Michael Green",
+    "correct": true,
+    "timeElapsed": "00:01:30",
+    "details": "Correct and concise. Preventive advice was appropriate for a routine check and aligned with guidelines."
+  },
+  {
+    "id": 5,
+    "name": "Sara Khan",
+    "correct": false,
+    "timeElapsed": "00:03:10",
+    "details": "Incorrect diagnosis; pain etiology needs broader consideration. Suggest reviewing medication interactions and functional assessment."
+  },
+  {
+    "id": 6,
+    "name": "David Lee",
+    "correct": true,
+    "timeElapsed": "00:00:55",
+    "details": "Correct — imaging findings were interpreted appropriately and the conservative management plan was reasonable."
+  },
+  {
+    "id": 7,
+    "name": "Priya Desai",
+    "correct": true,
+    "timeElapsed": "00:00:22",
+    "details": "Correct. Documentation of vaccination and post-vaccination advice was complete and suitable."
+  },
+  {
+    "id": 8,
+    "name": "Tomislav Novak",
+    "correct": true,
+    "timeElapsed": "00:01:48",
+    "details": "Correct and well argued — rehab progress expectations were realistic and accompanied by actionable next steps."
+  },
+  {
+    "id": 9,
+    "name": "Lina Martinez",
+    "correct": false,
+    "timeElapsed": "00:02:40",
+    "details": "Incorrect; symptomatic treatment was appropriate but the likely viral vs bacterial distinction and red flags were not clearly addressed."
+  },
+  {
+    "id": 10,
+    "name": "Omar Farouk",
+    "correct": true,
+    "timeElapsed": "00:01:05",
+    "details": "Correct. Cardiology follow-up plan and anticoagulation considerations were appropriate for the presentation."
+  }
+]
