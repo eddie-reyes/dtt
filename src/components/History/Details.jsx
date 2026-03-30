@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
 import styles from "./Details.module.css";
 import { useLocation } from "react-router-dom";
 
@@ -7,31 +8,25 @@ export default function details() {
     const { patient } = location.state || {};
 
     return (
-        <div className={styles.body}>
-            <div className={styles.exit}>
-            <Link to="/history" className={styles.backButton}>
-                ← Back
-            </Link>
-        </div>
+        <div className="d-flex justify-content-center align-items-center vh-100 bg-secondary">
+            <div className="w-75">
+                <div className="d-flex justify-content-between align-items-center mb-3">
+                    <button className="btn btn-success">
+                        <Link className="text-white" to="/history">
+                            ← Back
+                        </Link>
+                    </button>
+                    <h1>History</h1>
+                    <img src={logo} alt="logo" style={{ width: '52px' }}></img>
+                </div>
 
-        <div className={styles.title}> 
-            <h1>History</h1>
-        </div>
-
-        <div className={styles.content}>
-            <div className={styles.diagnosis}>
-                <h2>{patient.correct ? "Correct" : "Incorrect"} Diagnosis</h2>
+                <div className="p-4 border border-info rounded-4 bg-light">
+                    <h2>{patient.correct ? "Correct" : "Incorrect"} Diagnosis</h2>
+                    <h3>{patient.details}</h3>
+                    <p>Diagnosis Time: {patient.timeElapsed}</p>
+                </div>
             </div>
 
-            <div className={styles.details}>
-                <h3>{patient.details}</h3>
-            </div>
-
-            <div className={styles.details}>
-                <p>Diagnosis Time: {patient.timeElapsed}</p>
-            </div>
-        </div>
-        
         </div>
     )
 }
