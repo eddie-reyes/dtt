@@ -8,58 +8,25 @@ export default function details() {
     const { patient } = location.state || {};
 
     return (
-        <div className="grid text-center">
-            <div className="row">
-                <div className="col">
+        <div className="d-flex justify-content-center align-items-center vh-100 bg-secondary">
+            <div className="w-75">
+                <div className="d-flex justify-content-between align-items-center mb-3">
                     <button className="btn btn-success">
-                        <Link to="/menu">
+                        <Link to="/history">
                             ← Back
                         </Link>
                     </button>
-                </div>
-            
-                <div className="col">
                     <h1>History</h1>
+                    <img src={logo} alt="logo" style={{ width: '52px' }}></img>
                 </div>
-            
-                <div className="col">
-                    <img src={logo} alt="logo" className="w-25"></img>
-                </div>
-            </div>
 
-            <div className="row">
-                <div className="col">
+                <div className="p-4 border border-info rounded-4 bg-light">
                     <h2>{patient.correct ? "Correct" : "Incorrect"} Diagnosis</h2>
                     <h3>{patient.details}</h3>
                     <p>Diagnosis Time: {patient.timeElapsed}</p>
                 </div>
             </div>
+
         </div>
-        // <div className={styles.body}>
-        //     <div className={styles.exit}>
-        //     <Link to="/history" className={styles.backButton}>
-        //         ← Back
-        //     </Link>
-        // </div>
-
-        // <div className={styles.title}> 
-        //     <h1>History</h1>
-        // </div>
-
-        // <div className={styles.content}>
-        //     <div className={styles.diagnosis}>
-        //         <h2>{patient.correct ? "Correct" : "Incorrect"} Diagnosis</h2>
-        //     </div>
-
-        //     <div className={styles.details}>
-        //         <h3>{patient.details}</h3>
-        //     </div>
-
-        //     <div className={styles.details}>
-        //         <p>Diagnosis Time: {patient.timeElapsed}</p>
-        //     </div>
-        // </div>
-        
-        // </div>
     )
 }

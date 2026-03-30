@@ -6,32 +6,24 @@ import "../scss/styles.scss";
 
 export default function history() {
     return (
-        <div className="grid text-center">
-            <div className="row">
-                <div className="col">
+        <div className="d-flex justify-content-center align-items-center vh-100 bg-secondary">
+            <div className="w-75">
+                <div className="d-flex justify-content-between align-items-center mb-3">
                     <button className="btn btn-success">
                         <Link to="/menu">
                             ← Back
                         </Link>
                     </button>
-                </div>
-
-                <div className="col">
                     <h1>History</h1>
+                    <img src={logo} alt="logo" style={{ width: '52px' }}></img>
                 </div>
 
-                <div className="col">
-                    <img src={logo} alt="logo" className="w-25"></img>
-                </div>
-            </div>
-
-            <div className="row">
-                <div className="col">
+                <div className="p-4 border border-info rounded-4 bg-light">
                     <ul className="list-group">
                         {data.map((patient) => (
-                            <li key={patient.id} className="list-group-item">
-                                <p>Patient: {patient.name}: {patient.correct ? "Correct" : "Incorrect"} Diagnosis</p>
-                                <Link to={`/details/${patient.id}`} state={{ patient }}>
+                            <li key={patient.id} className="list-group-item d-flex justify-content-between align-items-center">
+                                <span>Patient: {patient.name}</span>
+                                <Link to={`/details/${patient.id}`} state={{ patient }} className="btn btn-primary">
                                     Show Details
                                 </Link>
                             </li>
@@ -39,35 +31,6 @@ export default function history() {
                     </ul>
                 </div>
             </div>
-
         </div>
-    // <div className={styles.body}>
-    //     <div className={styles.exit}>
-    //         <Link to="/menu" className={styles.backButton}>
-    //             ← Back
-    //         </Link>
-    //     </div>
-
-    //     <div className={styles.title}> 
-    //         <h1>History</h1>
-    //     </div>
-
-    //     <div className={styles.content}>
-    //         <ul className={styles.list}>
-    //             {data.map((patient) => (
-    //                 console.log(patient),
-    //                 console.log(typeof patient),
-    //                 <li key={patient.id}>
-    //                     <div>
-    //                         <p>Patient: {patient.name}: {patient.correct ? "Correct" : "Incorrect"} Diagnosis</p>
-    //                         <Link to={`/details/${patient.id}`} state={{ patient }}>
-    //                             Show Details
-    //                         </Link>
-    //                     </div>
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     </div>
-    // </div>
     )
 }
