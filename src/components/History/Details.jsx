@@ -12,7 +12,7 @@ export default function details() {
             <div className="w-75">
                 <div className="d-flex justify-content-between align-items-center mb-3">
                     <button className="btn btn-success">
-                        <Link to="/history">
+                        <Link className="text-white" to="/history">
                             ← Back
                         </Link>
                     </button>
