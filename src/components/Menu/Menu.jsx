@@ -14,7 +14,7 @@ export default function Menu() {
                 >
                     <img className="w-25" src={logo} alt="logo"></img>
                     <button className="btn btn-lg btn-primary w-25">
-                        <Link to="/sim" className={styles.link}>
+                        <Link to="/practice" className={styles.link}>
                             Start New Session
                         </Link>
                     </button>
