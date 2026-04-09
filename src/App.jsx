@@ -7,7 +7,7 @@ import LogInPage from './pages/LoginPage.jsx';
 import MenuPage from './pages/MenuPage.jsx';
 import HistoryPage from './pages/HistoryPage.jsx';
 import Details from './components/History/Details.jsx';
-import PracticeSession from './pages/PracticeSessionPage.jsx';
+import PracticeSession from './components/PracticeSession/PracticeSessionPage.jsx';
 
 
 function App() {

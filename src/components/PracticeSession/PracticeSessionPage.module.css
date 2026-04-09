@@ -1,0 +1,144 @@
+.practicePage {
+  /* this two most likely to remove */
+  display: flex;
+  gap: 20px;
+
+  padding: 10px;
+  min-height: 100vh;
+  background: #e6ecf5;
+  box-sizing: border-box;
+}
+
+/* most likely dont need */
+.leftPanel,
+.middlePanel,
+.rightPanel {
+  box-sizing: border-box;
+}
+
+.leftPanel {
+  width: 30%;
+  background: #1ea0a9;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.middlePanel {
+  /* width: 30%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.logoWrapper {
+  /* margin-top: 10px; */
+  margin-bottom: 25px;
+}
+
+.logo {
+  width: 110px;
+  height: auto;
+}
+
+.timer {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0b6a8d;
+}
+.mainButton {
+  background: #0b6a8d;
+  color: white;
+  border: none;
+  border-radius: 18px;
+  padding: 16px 22px;
+  width: 280px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.mainButton:hover {
+  background: #095774;
+  color: white;
+}
+
+.mainButtonPrimary {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 18px;
+  padding: 16px 22px;
+  width: 280px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.mainButtonPrimary:hover {
+  background: #1e4fd1;
+}
+
+.rightPanel {
+  /* width: 40%; */
+  background: #0a6a8d;
+  border-radius: 24px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+}
+
+.chatArea {
+  flex: 1;
+}
+
+.inputWrapper {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.chatInput {
+  border-radius: 16px;
+  border: none;
+  padding: 14px 16px;
+  font-size: 1rem;
+}
+
+.chatInput:focus {
+  box-shadow: 0 0 0 0.2rem rgba(11, 106, 141, 0.25);
+  border: none;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalBox {
+  position: relative;
+  background: white;
+  width: 500px;
+  max-width: 90%;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: #d62828;
+  color: white;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
