@@ -18,9 +18,11 @@
 
 .leftPanel {
   width: 30%;
-  background: #1ea0a9;
+  background: #2d86a6;
+  color: white;
   border-radius: 20px;
   padding: 20px;
+  text-align: center;
 }
 
 .middlePanel {
@@ -79,7 +81,7 @@
 
 .rightPanel {
   /* width: 40%; */
-  background: #0a6a8d;
+  background: #2d86a6;
   border-radius: 24px;
   color: white;
   display: flex;

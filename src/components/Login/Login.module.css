@@ -1,4 +1,8 @@
-.body {
+.pageBackground {
+  background: #e6ecf5;
+}
+
+/* .body {
     grid: 1fr 1fr 1fr / 1fr 1fr 1fr; 
     background: #919191;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
@@ -12,7 +16,7 @@
     width: 100%;
     height: 100%;
     background: #919191;
-    z-index: -1; /* Ensure the overlay is behind the content */
+    z-index: -1; /* Ensure the overlay is behind the content
 }
 
 .title {
@@ -118,4 +122,5 @@
 .back {
     grid-column: 1;
     grid-row: 1;
-}
+} 
+*/
