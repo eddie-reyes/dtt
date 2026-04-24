@@ -23,6 +23,24 @@
   border-radius: 20px;
   padding: 20px;
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.instructions {
+  text-align: left;
+  padding-left: 20px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.instructions li {
+  margin-bottom: 8px;
 }
 
 .middlePanel {
