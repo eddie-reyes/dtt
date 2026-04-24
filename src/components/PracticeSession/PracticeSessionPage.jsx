@@ -1,11 +1,14 @@
 import styles from "./PracticeSessionPage.module.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Timer from "../../components/Timer/Timer.jsx";
 
 export default function PracticeSession() {
   const [showPatientChart, setShowPatientChart] = useState(false);
   const [messages, setMessages] = useState([]);
   const [sessionInfo, setSessionInfo] = useState({});
+  const patient = sessionInfo.patient;
+  const [isTimerRunning, setIsTimerRunning] = useState(true);
 
   useEffect(() => {
     const initSession = async () => {
@@ -47,17 +50,22 @@ export default function PracticeSession() {
     console.log("Received response:", data);
     setMessages([...messages, message, data.Patient]);
   };
-
+// console.log("patien", patient);
   return (
     <div className={`container-fluid ${styles.practicePage}`}>
       <div className={styles.leftPanel}>
         <h2>How to start:</h2>
         {/* Placeholder for Diagnosis */}
-        <h5>1. Review the Patient Chart</h5>
-        <h5>2. Ask the patient about symptoms </h5>
-        <h5>3. Use notes to track key information</h5>{" "}
-        <h5>4. Select the most accurate diagnosis </h5>
-        <button className={`btn ${styles.mainButtonPrimary}`}>
+        <ol className={styles.instructions}>
+          <li>Review the Patient Chart</li>
+          <li>Ask the patient about symptoms</li>
+          <li>Use notes to track key information</li>
+          <li>Select the most accurate diagnosis</li>
+        </ol>
+        <button
+          className={`btn ${styles.mainButtonPrimary}`}
+          onClick={() => setIsTimerRunning((prev) => !prev)}
+        >
           Make a Diagnosis
         </button>
       </div>
@@ -76,7 +84,8 @@ export default function PracticeSession() {
 
             {/* Timer - PlaceHolder at the moment */}
             <h2 className={`text-center mb-4 ${styles.timer}`}>
-              Timer 00:00:00
+              {/* Timer 00:00:00 */}
+              <Timer isRunning={isTimerRunning} />
             </h2>
             {/* Buttons */}
             <div className="d-flex flex-column align-items-center gap-5">
@@ -109,30 +118,24 @@ export default function PracticeSession() {
             </button>
 
             <h2>Patient Chart</h2>
-            <p>
-              <strong>Name:</strong> John Doe
-            </p>
-            <p>
-              <strong>Age:</strong> 27
-            </p>
-            <p>
-              <strong>Sex:</strong> Male
-            </p>
-            <p>
-              <strong>Height:</strong> 6'7
-            </p>
-            <p>
-              <strong>Weight:</strong> 274.29 lbs
-            </p>
-            <p>
-              <strong>Blood Type:</strong> O-
-            </p>
-            <p>
-              <strong>Allergies:</strong> Nuts, Dust, Milk, Dogs
-            </p>
-            <p>
-              <strong>Medications:</strong> Albuterol, Lisinopril, Tylenol
-            </p>
+            {patient ? (
+              <div>
+                <p>
+                  <strong>Name:</strong> {patient.name}
+                </p>
+                <p>
+                  <strong>Sex:</strong> {patient.gender}
+                </p>
+                <p>
+                  <strong>Age:</strong> {patient.age}
+                </p>
+                <p>
+                  <strong>Reason for Visit:</strong> {patient.chief_complaint}
+                </p>
+              </div>
+            ) : (
+              <p>Loading data...</p>
+            )}
           </div>
         </div>
       )}
