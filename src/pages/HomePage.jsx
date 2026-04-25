@@ -9,7 +9,7 @@ export default function Home() {
       <h1 className={styles.title}>Welcome to Diagnostic Training Tool</h1>
       <h4 className="text-center text-muted mb-4">
         Practice diagnosing patients in a simulated environment. Login in to
-        bigin your session.
+        begin your session.
       </h4>
       {/* <Link to="/calculator" className={styles.openBtn}>
           Open Calculator

@@ -29,7 +29,7 @@ export default function LoginForm() {
     }
 
     return (
-        <div>
+        <div className="mx-auto" style={{ width: "100%", maxWidth: "400px" }}>
             {error && (
                 <div className="alert alert-danger" role="alert">
                     {error}
