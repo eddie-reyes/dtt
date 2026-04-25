@@ -3,6 +3,7 @@
 import { useEffect, useRef, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import LoginForm from "./LoginForm.jsx"
 import styles from "./Login.module.css";
 import "../scss/styles.scss";
 
@@ -81,6 +82,8 @@ export default function Login() {
         </span>
 
         <div className="d-flex flex-column align-items-center gap-3 mt-4">
+          {/* Username and password is 'admin' */}
+          <LoginForm></LoginForm>
           {/* Official Google Sign-In button */}
           <div ref={googleButtonRef} />
 
