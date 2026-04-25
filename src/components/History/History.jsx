@@ -6,7 +6,7 @@ import "../scss/styles.scss";
 
 export default function history() {
     return (
-        <div className="d-flex justify-content-center align-items-center vh-100 bg-secondary">
+        <div className={`d-flex justify-content-center align-items-center vh-100 ${styles.background}`}>
             <div className="w-75">
                 <div className="d-flex justify-content-between align-items-center mb-3">
                     <button className="btn btn-success">
