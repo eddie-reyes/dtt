@@ -2,6 +2,8 @@ import styles from "./PracticeSessionPage.module.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Timer from "../../components/Timer/Timer.jsx";
+import Diagnosis from "../../components/Diagnosis/Diagnosis.jsx";
+import Notes from "../../components/Notes/Notes.jsx";
 
 export default function PracticeSession() {
   const [showPatientChart, setShowPatientChart] = useState(false);
@@ -9,6 +11,10 @@ export default function PracticeSession() {
   const [sessionInfo, setSessionInfo] = useState({});
   const patient = sessionInfo.patient;
   const [isTimerRunning, setIsTimerRunning] = useState(true);
+  const [isDiagnosisOpen, setDiagnosisOpen] = useState(false);
+  const [notes, setNotes] = useState("");
+  const [showNotes, setShowNotes] = useState(false);
+  const notesKey = sessionInfo.session_id ? `notes_${sessionInfo.session_id}` : "notes";
 
   useEffect(() => {
     const initSession = async () => {
@@ -50,7 +56,18 @@ export default function PracticeSession() {
     console.log("Received response:", data);
     setMessages([...messages, message, data.Patient]);
   };
-// console.log("patien", patient);
+  // console.log("patien", patient);
+useEffect(() => {
+	if( !sessionInfo.session_id) return;
+	const saved = localStorage.getItem(notesKey);
+	if (saved) setNotes(saved);
+},[sessionInfo.session_id]);
+
+useEffect(() => {
+	if (!sessionInfo.session_id) return;
+localStorage.setItem(notesKey,notes)
+}, [notes, sessionInfo.session_id]);
+
   return (
     <div className={`container-fluid ${styles.practicePage}`}>
       <div className={styles.leftPanel}>
@@ -64,7 +81,10 @@ export default function PracticeSession() {
         </ol>
         <button
           className={`btn ${styles.mainButtonPrimary}`}
-          onClick={() => setIsTimerRunning((prev) => !prev)}
+          onClick={() => {
+            setIsTimerRunning(false);
+            setDiagnosisOpen(true);
+          }}
         >
           Make a Diagnosis
         </button>
@@ -98,7 +118,8 @@ export default function PracticeSession() {
               >
                 View Patient Chart
               </button>
-              <button className={`btn ${styles.mainButton}`}>Notes</button>
+              <button className={`btn ${styles.mainButton}`}
+				  onClick={()=> setShowNotes(true)}>Notes</button>
               {/* <button className={`btn ${styles.mainButtonPrimary}`}>
                   Make a Diagnosis
                 </button> */}
@@ -139,6 +160,20 @@ export default function PracticeSession() {
           </div>
         </div>
       )}
+
+      {isDiagnosisOpen && (
+       <Diagnosis onClose={() => {setDiagnosisOpen(false);
+			setIsTimerRunning(true);
+		 }}/>
+      )}
+
+		{showNotes && (
+			<Notes
+			notes={notes}
+			setNotes={setNotes}
+			patient={patient}
+			onClose={() => setShowNotes(false)}/>
+		)}
 
       <div className="col-md-4">
         <div className={`${styles.rightPanel} h-100 p-4`}>
