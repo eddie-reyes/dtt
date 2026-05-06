@@ -85,7 +85,8 @@ export default function LoginForm() {
             <label htmlFor="floatingPassword">Password:</label>
           </div>
           <button
-            className="btn btn-primary w-50 d-block mx-auto fs-4 fw-bold"
+            className="btn w-100 fw-semibold"
+            style={{ background: "var(--dark-teal)", color: "white", padding: "12px", borderRadius: "12px" }}
             disabled={disabled}
             type="submit"
           >
