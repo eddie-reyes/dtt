@@ -36,6 +36,7 @@ export default function LoginForm() {
 
               const data = await response.json();
               
+              // Username = Myat, password = password
               if (!response.ok) {
                 setError("Invalid Username or Password. Please try again.");
               } else {
