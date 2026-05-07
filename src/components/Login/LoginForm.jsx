@@ -38,7 +38,6 @@ export default function LoginForm() {
               
               if (!response.ok) {
                 setError("Invalid Username or Password. Please try again.");
-                setDisabled(false);
               } else {
                 localStorage.setItem("token", data.access_token);
                 const user = data.user;
@@ -48,8 +47,8 @@ export default function LoginForm() {
               console.error(error);
             }
         }
+        setDisabled(false);
         form.classList.add("was-validated");
-        
     }
 
     return (

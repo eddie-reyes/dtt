@@ -30,9 +30,9 @@ export default function history() {
     }, []);
 
     return (
-        <div className={`d-flex justify-content-center align-items-center vh-100 ${styles.background}`}>
+        <div className={`d-flex justify-content-center align-items-center vh-100 fixed-top ${styles.background}`}>
             <div className="w-75">
-                <div className="d-flex justify-content-between align-items-center mb-3">
+                <div className="d-flex justify-content-between align-items-center fixed-top p-3 mb-3">
                     <button className="btn btn-success">
                         <Link className="text-white" to="/menu">
                             ← Back
