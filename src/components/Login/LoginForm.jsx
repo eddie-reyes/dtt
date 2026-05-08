@@ -1,8 +1,9 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
     const [error, setError] = useState("");
+    const [disabled, setDisabled] = useState(false);
     const formRef = useRef(null);
     const userNameRef = useRef(null);
     const passwordRef = useRef(null);
@@ -12,59 +13,56 @@ export default function LoginForm() {
         e.preventDefault();
 
         const form = formRef.current;
-        const userName = userNameRef.current.value.trim();
-        const password = passwordRef.current.value.trim();
+      
+const userName = userNameRef.current.value.trim();
+const password = passwordRef.current.value.trim();
 
-      setError("");
-		console.log("USER:", userName);
-      console.log("PASS:", password);
+setDisabled(true);
+setError("");
 
-        if (!form.checkValidity()) {
-            e.stopPropagation();
-				form.classList.add("was-validated");
-				return;
-        } 
+if (!form.checkValidity()) {
+  e.stopPropagation();
+  form.classList.add("was-validated");
+  setDisabled(false);
+  return;
+}
 
-		//   else {
-      //       if (userName == 'Myat' && password == 'password') {
-      //           navigate("/menu");
-      //       } else {
-      //           setError("Invalid Username or Password. Please try again.");
-      //       }
-      //   }
-		try {
-			const response = await fetch(
-				"https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/auth/login",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						username: userName,
-						password: password,
-					}),
-				}
-			);
+try {
+  const response = await fetch(
+    "https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/auth/login",
+    {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: userName,
+        password: password,
+      }),
+    }
+  );
 
-			const data = await response.json();
-			console.log("LOGIN data:", data)
+  const data = await response.json();
+  console.log("LOGIN data:", data);
 
-			if (!response.ok) {
-				setError(data.detail || "Invalid Username or Password.");
-				return;
-			}
+  if (!response.ok) {
+    setError(data.detail || "Invalid Username or Password. Please try again.");
+    return;
+  }
 
-			localStorage.setItem("token", data.access_token);
-			localStorage.setItem("user", JSON.stringify(data.user));
-			navigate("/menu");
+  localStorage.setItem("token", data.access_token);
+  localStorage.setItem("user", JSON.stringify(data.user));
 
-		} catch (err) {
-			console.log("LOGIN error:", err);
-			setError("Server error. Please try again.");
-		}
-
-		form.classList.add("was-validated");
+  const user = data.user;
+  navigate("/menu", { state: { user } });
+} catch (err) {
+  console.log("LOGIN error:", err);
+  setError("Server error. Please try again.");
+} finally {
+  setDisabled(false);
+  form.classList.add("was-validated");
+}
     }
 
     return (
@@ -100,7 +98,9 @@ export default function LoginForm() {
             <label htmlFor="floatingPassword">Password:</label>
           </div>
           <button
-            className="btn btn-primary w-50 d-block mx-auto fs-4 fw-bold"
+            className="btn w-100 fw-semibold"
+            style={{ background: "var(--dark-teal)", color: "white", padding: "12px", borderRadius: "12px" }}
+            disabled={disabled}
             type="submit"
           >
             Login
