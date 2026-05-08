@@ -42,7 +42,7 @@ export default function history() {
                     <img src={logo} alt="logo" style={{ width: '52px' }}></img>
                 </div>
 
-                <div className="p-4 border border-info rounded-4 bg-light">
+                <div className={`p-4 border border-info rounded-4 bg-light ${styles.listContainer}`}>
                     <ul className="list-group">
                         {sessions.map((session) => (
                             <li key={session.session_id} className="list-group-item d-flex justify-content-between align-items-center">
