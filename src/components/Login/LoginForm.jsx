@@ -36,9 +36,9 @@ export default function LoginForm() {
 
               const data = await response.json();
               
+              // Username = Myat, password = password
               if (!response.ok) {
                 setError("Invalid Username or Password. Please try again.");
-                setDisabled(false);
               } else {
                 localStorage.setItem("token", data.access_token);
                 const user = data.user;
@@ -48,8 +48,8 @@ export default function LoginForm() {
               console.error(error);
             }
         }
+        setDisabled(false);
         form.classList.add("was-validated");
-        
     }
 
     return (
