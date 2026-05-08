@@ -85,14 +85,17 @@ export default function Login() {
           {/* Username and password is 'admin' */}
           <LoginForm></LoginForm>
           {/* Official Google Sign-In button */}
-          <div ref={googleButtonRef} />
+
+			 {/* !!!!!! */}
+          {/* <div ref={googleButtonRef} /> */}
+			 {/* !!!!!!!! */}
 
           {/* Temporary nav buttons */}
-          <button className="btn btn-primary w-50">
+          {/* <button className="btn btn-primary w-50">
             <Link className="text-white" to="/menu">
               Open the Menu
             </Link>
-          </button>
+          </button> */}
           <button className="btn btn-primary w-50">
             <Link className="text-white" to="/">
               ← Back to the Main Page

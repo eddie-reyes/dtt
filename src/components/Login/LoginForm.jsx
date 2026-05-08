@@ -8,24 +8,63 @@ export default function LoginForm() {
     const passwordRef = useRef(null);
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const form = formRef.current;
-        const userName = userNameRef.current.value;
-        const password = passwordRef.current.value;
-        setError("");
+        const userName = userNameRef.current.value.trim();
+        const password = passwordRef.current.value.trim();
+
+      setError("");
+		console.log("USER:", userName);
+      console.log("PASS:", password);
 
         if (!form.checkValidity()) {
             e.stopPropagation();
-        } else {
-            if (userName == 'admin' && password == 'admin') {
-                navigate("/menu");
-            } else {
-                setError("Invalid Username or Password. Please try again.");
-            }
-        }
-        form.classList.add("was-validated");
+				form.classList.add("was-validated");
+				return;
+        } 
+
+		//   else {
+      //       if (userName == 'Myat' && password == 'password') {
+      //           navigate("/menu");
+      //       } else {
+      //           setError("Invalid Username or Password. Please try again.");
+      //       }
+      //   }
+		try {
+			const response = await fetch(
+				"https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/auth/login",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						username: userName,
+						password: password,
+					}),
+				}
+			);
+
+			const data = await response.json();
+			console.log("LOGIN data:", data)
+
+			if (!response.ok) {
+				setError(data.detail || "Invalid Username or Password.");
+				return;
+			}
+
+			localStorage.setItem("token", data.access_token);
+			localStorage.setItem("user", JSON.stringify(data.user));
+			navigate("/menu");
+
+		} catch (err) {
+			console.log("LOGIN error:", err);
+			setError("Server error. Please try again.");
+		}
+
+		form.classList.add("was-validated");
     }
 
     return (
