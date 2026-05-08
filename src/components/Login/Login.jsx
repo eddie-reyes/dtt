@@ -1,7 +1,7 @@
 // src/components/Login/Login.jsx
 
 import { useEffect, useRef, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import LoginForm from "./LoginForm.jsx";
 import styles from "./Login.module.css";
@@ -61,7 +61,9 @@ export default function Login() {
   }, [handleGoogleCredentialResponse]);
 
   return (
-    <div className={`d-flex justify-content-center align-items-center vh-100 ${styles.pageBackground}`}>
+    <div
+      className={`d-flex justify-content-center align-items-center vh-100 ${styles.pageBackground}`}
+    >
       <div className={styles.card}>
         <div className={styles.cardHeader}>
           <img src={logo} alt="logo" className={styles.logo} />
@@ -73,9 +75,9 @@ export default function Login() {
           <LoginForm></LoginForm>
           {/* Official Google Sign-In button */}
 
-			 {/* !!!!!! */}
+          {/* !!!!!! */}
           {/* <div ref={googleButtonRef} /> */}
-			 {/* !!!!!!!! */}
+          {/* !!!!!!!! */}
 
           {/* Temporary nav buttons */}
           {/* <button className="btn btn-primary w-50">
@@ -83,8 +85,16 @@ export default function Login() {
               Open the Menu
             </Link>
           </button> */}
-          <button className="btn btn-primary w-50">
-            <Link className="text-white" to="/">
+          <button
+            className="btn w-100 fw-semibold"
+            style={{
+              background: "var(--dark-teal)",
+              color: "white",
+              padding: "12px",
+              borderRadius: "12px",
+            }}
+          >
+            <Link className="text-white text-decoration-none" to="/">
               ← Back to the Main Page
             </Link>
           </button>
