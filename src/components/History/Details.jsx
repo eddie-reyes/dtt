@@ -87,18 +87,22 @@ export default function details() {
                             </div>
                         </div>
                     </div>
-                    <div className="row column-gap-3">
-                        <div className="col align-self-start border border-info rounded-4 bg-light p-4">
-                            <p>Patient: {session.patient_name}</p>
-                            <p>Diagnosis: {session.correctness ? "Correct" : session.correctness === false ? "Incorrect" : "Unknown"}</p>
-                            <p>Diagnosis Time: {session.duration_seconds ? `${new Date(session.duration_seconds * 1000).toISOString().substring(11, 19)}` : "N/A"}</p>
-                            <p>Created At: {new Date(session.created_at).toLocaleString()}</p>
+                    <div className="row g-3 align-items-stretch">
+                        <div className="col d-flex">
+                            <div className="border border-info rounded-4 bg-light p-4 flex-fill d-flex flex-column mh-25">
+                                <p>Patient: {session.patient_name}</p>
+                                <p>Diagnosis: {session.correctness ? "Correct" : session.correctness === false ? "Incorrect" : "Unknown"}</p>
+                                <p>Diagnosis Time: {session.duration_seconds ? `${new Date(session.duration_seconds * 1000).toISOString().substring(11, 19)}` : "N/A"}</p>
+                                <p>Created At: {new Date(session.created_at).toLocaleString()}</p>
+                            </div>
                         </div>
 
-                        <div className="col align-self-end border border-info rounded-4 bg-light p-4">
-                            <ul className="list-group list-group-flush">
-                                {viewTranscript ? renderTranscript() : <li className="list-group-item">{session.notes || "No notes available for this session."}</li>}
-                            </ul>
+                        <div className="col d-flex">
+                            <div className={`border border-info rounded-4 bg-light p-4 flex-fill d-flex flex-column mh-25 ${styles.list}`}>
+                                <ul className="list-group list-group-flush flex-fill">
+                                    {viewTranscript ? renderTranscript() : <li className="list-group-item">{session.notes || "No notes available for this session."}</li>}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
