@@ -68,10 +68,26 @@ export default function Login() {
           <h1 className={styles.title}>Diagnostic Training Tool</h1>
         </div>
 
-        <LoginForm />
+        <div className="d-flex flex-column align-items-center gap-3 mt-4">
+          {/* Username and password is 'admin' */}
+          <LoginForm></LoginForm>
+          {/* Official Google Sign-In button */}
 
-        <div className={styles.divider}>
-          <span>or</span>
+			 {/* !!!!!! */}
+          {/* <div ref={googleButtonRef} /> */}
+			 {/* !!!!!!!! */}
+
+          {/* Temporary nav buttons */}
+          {/* <button className="btn btn-primary w-50">
+            <Link className="text-white" to="/menu">
+              Open the Menu
+            </Link>
+          </button> */}
+          <button className="btn btn-primary w-50">
+            <Link className="text-white" to="/">
+              ← Back to the Main Page
+            </Link>
+          </button>
         </div>
 
         <div ref={googleButtonRef} className="d-flex justify-content-center" />

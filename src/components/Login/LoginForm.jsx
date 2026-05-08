@@ -13,43 +13,56 @@ export default function LoginForm() {
         e.preventDefault();
 
         const form = formRef.current;
-        const userName = userNameRef.current.value;
-        const password = passwordRef.current.value;
-        setDisabled(true);
-        setError("");
+      
+const userName = userNameRef.current.value.trim();
+const password = passwordRef.current.value.trim();
 
-        if (!form.checkValidity()) {
-            e.stopPropagation();
-        } else {
-            try {
-              const response = await fetch(
-                "https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/auth/login",
-                {
-                  method: "POST",
-                  headers: {
-                    "accept": "application/json",
-                    "Content-Type": "application/json"
-                  },
-                  body: JSON.stringify({ username: userName, password: password }),
-                }
-              );
+setDisabled(true);
+setError("");
 
-              const data = await response.json();
-              
-              // Username = Myat, password = password
-              if (!response.ok) {
-                setError("Invalid Username or Password. Please try again.");
-              } else {
-                localStorage.setItem("token", data.access_token);
-                const user = data.user;
-                navigate("/menu", { state: { user }});
-              }
-            } catch (error) {
-              console.error(error);
-            }
-        }
-        setDisabled(false);
-        form.classList.add("was-validated");
+if (!form.checkValidity()) {
+  e.stopPropagation();
+  form.classList.add("was-validated");
+  setDisabled(false);
+  return;
+}
+
+try {
+  const response = await fetch(
+    "https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/auth/login",
+    {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: userName,
+        password: password,
+      }),
+    }
+  );
+
+  const data = await response.json();
+  console.log("LOGIN data:", data);
+
+  if (!response.ok) {
+    setError(data.detail || "Invalid Username or Password. Please try again.");
+    return;
+  }
+
+  localStorage.setItem("token", data.access_token);
+  localStorage.setItem("user", JSON.stringify(data.user));
+
+  const user = data.user;
+  navigate("/menu", { state: { user } });
+} catch (err) {
+  console.log("LOGIN error:", err);
+  setError("Server error. Please try again.");
+} finally {
+  setDisabled(false);
+  form.classList.add("was-validated");
+}
     }
 
     return (
