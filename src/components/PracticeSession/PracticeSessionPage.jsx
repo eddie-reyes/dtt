@@ -1,6 +1,6 @@
 import styles from "./PracticeSessionPage.module.css";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Timer from "../../components/Timer/Timer.jsx";
 import Diagnosis from "../../components/Diagnosis/Diagnosis.jsx";
 import Notes from "../../components/Notes/Notes.jsx";
@@ -8,35 +8,46 @@ import Notes from "../../components/Notes/Notes.jsx";
 export default function PracticeSession() {
   const [showPatientChart, setShowPatientChart] = useState(false);
   const [messages, setMessages] = useState([]);
+  const messagesListRef = useRef(null);
   const [sessionInfo, setSessionInfo] = useState({});
   const patient = sessionInfo.patient;
   const [isTimerRunning, setIsTimerRunning] = useState(true);
+  const [seconds, setSeconds] = useState(0);
   const [isDiagnosisOpen, setDiagnosisOpen] = useState(false);
-  const [notes, setNotes] = useState("");
   const [showNotes, setShowNotes] = useState(false);
-  const notesKey = sessionInfo.session_id ? `notes_${sessionInfo.session_id}` : "notes";
+  const [notes, setNotes] = useState({
+    symptoms: "",
+    duration: "",
+    medications: "",
+    observations: "",
+    questions: "",
+  });
+
+  const notesKey = sessionInfo.session_id
+    ? `notes_${sessionInfo.session_id}`
+    : "notes";
 
   useEffect(() => {
     const initSession = async () => {
-		const token = localStorage.getItem("token");
-		console.log("token:", token);
+      const token = localStorage.getItem("token");
+      console.log("token:", token);
       const response = await fetch(
         "https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/sessions/",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-				Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ username: "admin", patient_id: "1" }),
         },
       );
 
       const data = await response.json();
-      console.log("data:",data);
-		if (!response.ok) {
-			console.log("Session error: ", data);
-		}
+      console.log("data:", data);
+      if (!response.ok) {
+        console.log("Session error: ", data);
+      }
       setSessionInfo(data);
     };
 
@@ -45,16 +56,16 @@ export default function PracticeSession() {
   }, []);
 
   const onSubmitMessage = async (message) => {
-	if (!sessionInfo.session_id) return;
+    if (!sessionInfo.session_id) return;
     setMessages([...messages, message]);
-	const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
     const response = await fetch(
       `https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/sessions/${sessionInfo.session_id}/message`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-			 Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ message: message }),
       },
@@ -64,19 +75,28 @@ export default function PracticeSession() {
     console.log("Received response:", data);
     setMessages([...messages, message, data.Patient]);
   };
-  // console.log("patien", patient);
-//   console.log("data:",data);
-useEffect(() => {
-	if( !sessionInfo.session_id) return;
-	const saved = localStorage.getItem(notesKey);
-	if (saved) setNotes(saved);
-},[sessionInfo.session_id]);
 
-useEffect(() => {
-	if (!sessionInfo.session_id) return;
-localStorage.setItem(notesKey,notes)
-}, [notes, sessionInfo.session_id]);
+  //   Notes - LocalStorage
+  useEffect(() => {
+    if (!sessionInfo.session_id) return;
+    const saved = localStorage.getItem(notesKey);
+    if (saved) {
+      setNotes(JSON.parse(saved));
+    }
+  }, [sessionInfo.session_id]);
 
+  useEffect(() => {
+    if (!sessionInfo.session_id) return;
+    localStorage.setItem(notesKey, JSON.stringify(notes));
+  }, [notes, sessionInfo.session_id]);
+
+  //Messages auto-scroll
+  useEffect(() => {
+	const list = messagesListRef.current;
+	if (!list) return;
+
+	list.scrollTop = list.scrollHeight;
+  }, [messages]);
 
   return (
     <div className={`container-fluid ${styles.practicePage}`}>
@@ -84,10 +104,30 @@ localStorage.setItem(notesKey,notes)
         <h2>How to start:</h2>
         {/* Placeholder for Diagnosis */}
         <ol className={styles.instructions}>
-          <li>Review the Patient Chart</li>
-          <li>Ask the patient about symptoms</li>
-          <li>Use notes to track key information</li>
-          <li>Select the most accurate diagnosis</li>
+          <li>
+            <strong>Review the Patient Chart</strong>
+            <p>Check age, gender, and reason for visit.</p>
+          </li>
+
+          <li>
+            <strong>Interview the Patient</strong>
+            <p>Ask about symptoms, duration, pain level, and other details.</p>
+          </li>
+
+          <li>
+            <strong>Take Notes</strong>
+            <p>Write down important symptoms and possible patterns.</p>
+          </li>
+
+          <li>
+            <strong>Analyze the Information</strong>
+            <p>Compare symptoms and eliminate unlikely diagnoses.</p>
+          </li>
+
+          <li>
+            <strong>Submit Diagnosis</strong>
+            <p>Select the most accurate diagnosis before time runs out.</p>
+          </li>
         </ol>
         <button
           className={`btn ${styles.mainButtonPrimary}`}
@@ -115,7 +155,13 @@ localStorage.setItem(notesKey,notes)
             {/* Timer - PlaceHolder at the moment */}
             <div className={`text-center mb-4 ${styles.timer}`}>
               {/* Timer 00:00:00 */}
-              <Timer isRunning={isTimerRunning} />
+              {!isDiagnosisOpen && (
+                <Timer
+                  isRunning={isTimerRunning}
+                  seconds={seconds}
+                  setSeconds={setSeconds}
+                />
+              )}
             </div>
             {/* Buttons */}
             <div className="d-flex flex-column align-items-center gap-5">
@@ -128,8 +174,12 @@ localStorage.setItem(notesKey,notes)
               >
                 View Patient Chart
               </button>
-              <button className={`btn ${styles.mainButton}`}
-				  onClick={()=> setShowNotes(true)}>Notes</button>
+              <button
+                className={`btn ${styles.mainButton}`}
+                onClick={() => setShowNotes(true)}
+              >
+                Notes
+              </button>
               {/* <button className={`btn ${styles.mainButtonPrimary}`}>
                   Make a Diagnosis
                 </button> */}
@@ -172,22 +222,29 @@ localStorage.setItem(notesKey,notes)
       )}
 
       {isDiagnosisOpen && (
-       <Diagnosis onClose={() => {setDiagnosisOpen(false);
-			setIsTimerRunning(true);
-		 }}/>
+        <Diagnosis
+          correctDiagnosis={patient?.chief_complaint}
+          seconds={seconds}
+          onClose={() => {
+            setDiagnosisOpen(false);
+            setIsTimerRunning(true);
+          }}
+        />
       )}
 
-		{showNotes && (
-			<Notes
-			notes={notes}
-			setNotes={setNotes}
-			patient={patient}
-			onClose={() => setShowNotes(false)}/>
-		)}
+      {showNotes && (
+        <Notes
+          notes={notes}
+          setNotes={setNotes}
+          patient={patient}
+          onClose={() => setShowNotes(false)}
+        />
+      )}
 
       <div className="col-md-4">
         <div className={`${styles.rightPanel} h-100 p-4`}>
-          <ul className="list-group list-group-flush">
+          <ul className="list-group list-group-flush"
+			 ref={messagesListRef}>
             {messages.map((message, index) =>
               index % 2 === 0 ? (
                 <li key={index} className="list-group-item m-3 w-50 rounded">
@@ -212,24 +269,24 @@ localStorage.setItem(notesKey,notes)
               type="text"
               className="form-control"
               placeholder="Message"
-				  onKeyDown ={(e) =>{
-					if (e.key === "Enter" && e.target.value.trim()) {
-						const input = e.target;
-						onSubmitMessage(input.value);
-						input.value = "";
-					}
-				  }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && e.target.value.trim()) {
+                  const input = e.target;
+                  onSubmitMessage(input.value);
+                  input.value = "";
+                }
+              }}
             ></input>
             <div className="input-group-append">
               <button
                 className="input-group-text"
                 id="basic-addon2"
-                onClick={() =>{
-						const input = document.querySelector(".form-control");
-						if (!input.value.trim()) return;
+                onClick={() => {
+                  const input = document.querySelector(".form-control");
+                  if (!input.value.trim()) return;
                   onSubmitMessage(input.value);
-						input.value = "";
-					 }}
+                  input.value = "";
+                }}
               >
                 Send
               </button>

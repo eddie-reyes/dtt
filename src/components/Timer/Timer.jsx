@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export default function Timer({isRunning}) {
-  const [seconds, setSeconds] = useState(0);
+export default function Timer({isRunning, seconds, setSeconds}) {
+//   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
 	if (!isRunning) return;
