@@ -225,6 +225,7 @@ export default function PracticeSession() {
         <Diagnosis
           correctDiagnosis={patient?.chief_complaint}
           seconds={seconds}
+          sessionID={sessionInfo.session_id}
           onClose={() => {
             setDiagnosisOpen(false);
             setIsTimerRunning(true);

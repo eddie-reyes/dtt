@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const diagnoses = ["Flu", "Covid", "Angina", "Pneumonia", "Healthy"];
 
-export default function Diagnosis({ onClose, correctDiagnosis, seconds }) {
+export default function Diagnosis({ onClose, correctDiagnosis, seconds, sessionID }) {
 	const navigate = useNavigate();
   const [mode, setMode] = useState(null);
   // console.log("correct diagnosis: ", correctDiagnosis)
@@ -17,12 +17,32 @@ export default function Diagnosis({ onClose, correctDiagnosis, seconds }) {
     ? [...new Set([...diagnoses, correctDiagnosis])]
     : diagnoses;
 
-  const handleDiagnosisSubmit = () => {
-    if (selectedDiagnosis === fakeCorrectDiagnosis) {
-      setResult("correct");
-    } else {
-      setResult("incorrect");
-    }
+  const handleDiagnosisSubmit = async () => {
+    const isCorrect = selectedDiagnosis === fakeCorrectDiagnosis;
+    setResult(isCorrect ? "correct" : "incorrect");
+    await updateSession(isCorrect);
+  };
+
+  const updateSession = async (isCorrect) => {
+    const notes = localStorage.getItem(`notes_${sessionID}`) || "";
+    const correctness = isCorrect;
+    const duration_seconds = seconds;
+
+    const response = await fetch(
+      `https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/sessions/${sessionID}/`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify({
+          notes,
+          correctness,
+          duration_seconds,
+        }),
+      }
+    );
   };
 
   const formatTime = (totalSecons) => {
