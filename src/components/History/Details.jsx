@@ -9,6 +9,19 @@ export default function details() {
     const [viewTranscript, setViewTranscript] = useState(false);
     const { session } = location.state || {};
     const [transcript, setTranscript] = useState([]);
+    let notes;
+    let parsedNotes;
+
+    try {
+        parsedNotes = typeof session.notes === 'string' ? JSON.parse(session.notes) : session.notes;
+        notes =  `Symptoms: ${parsedNotes.symptoms ? parsedNotes.symptoms : "N/A"}\n
+                    History/Medications: ${parsedNotes.medications ? parsedNotes.medications : "N/A"}\n
+                    Observations: ${parsedNotes.observations ? parsedNotes.observations : "N/A"}\n
+                    Possible Diagnosis: ${parsedNotes.questions  ? parsedNotes.questions : "N/A"}\n
+                    `
+    } catch (error) {
+        notes = session.notes != null ? session.notes : "N/A";
+    }
 
     useEffect(() => {
         async function fetchTranscript() {
@@ -100,7 +113,7 @@ export default function details() {
                         <div className="col d-flex">
                             <div className={`border border-info rounded-4 bg-light p-4 flex-fill d-flex flex-column mh-25 ${styles.list}`}>
                                 <ul className="list-group list-group-flush flex-fill">
-                                    {viewTranscript ? renderTranscript() : <li className="list-group-item">{session.notes || "No notes available for this session."}</li>}
+                                    {viewTranscript ? renderTranscript() : <li className="list-group-item" style={{ whiteSpace: 'pre-line' }}>{ notes }</li>}
                                 </ul>
                             </div>
                         </div>
