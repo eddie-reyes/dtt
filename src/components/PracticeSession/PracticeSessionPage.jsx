@@ -29,7 +29,6 @@ export default function PracticeSession() {
         const initSession = async () => {
             const token = localStorage.getItem('token');
             const user = JSON.parse(localStorage.getItem('user'));
-            console.log('token:', token);
             const response = await fetch(
                 'https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/sessions/',
                 {
@@ -46,7 +45,7 @@ export default function PracticeSession() {
             );
 
             const data = await response.json();
-            console.log('data:', data);
+
             if (!response.ok) {
                 console.log('Session error: ', data);
             }
@@ -74,7 +73,6 @@ export default function PracticeSession() {
         );
 
         const data = await response.json();
-        console.log('Received response:', data);
         setMessages([...messages, message, data.Patient]);
     };
 

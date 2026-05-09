@@ -2,7 +2,18 @@ import styles from '../PracticeSession/PracticeSessionPage.module.css';
 import { use, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const diagnoses = ['Flu', 'Covid', 'Angina', 'Pneumonia', 'Healthy'];
+const diagnoses = [
+    'Appendicitis',
+    'Migraine',
+    'Asthma',
+    'Gastroenteritis',
+    'Flu',
+    'UTI',
+    'Pneumonia',
+    'Anxiety',
+    'Kidney Stones',
+    'GERD',
+];
 
 export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, session_id }) {
     const navigate = useNavigate();
@@ -18,14 +29,7 @@ export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, s
         : diagnoses;
 
     const handleDiagnosisSubmit = async () => {
-        if (selectedDiagnosis === fakeCorrectDiagnosis) {
-            setResult('correct');
-        } else {
-            setResult('incorrect');
-        }
-
         const token = localStorage.getItem('token');
-        const user = JSON.parse(localStorage.getItem('user'));
 
         const response = await fetch(
             `https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/sessions/${session_id}/submit`,
@@ -38,12 +42,19 @@ export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, s
                 body: JSON.stringify({
                     diagnosis: selectedDiagnosis,
                     notes: notes.observations,
-                    durration_seconds: seconds,
+                    duration_seconds: seconds,
                 }),
             },
         );
 
-        console.log('Diagnosis submission response:', response);
+        const data = await response.json();
+        console.log('Diagnosis submission response:', data);
+        data.correctness ? setResult('correct') : setResult('incorrect');
+
+        const updatedUser = JSON.parse(localStorage.getItem('user'));
+        updatedUser.stats = data.user_stats;
+
+        localStorage.setItem('user', JSON.stringify(updatedUser));
     };
 
     const formatTime = totalSecons => {

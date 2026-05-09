@@ -138,7 +138,10 @@ export default function Menu() {
                                             <i class="bi bi-clock-history"></i>
                                         </div>
                                         <h2 class="card-title mb-3">
-                                            {user ? user.stats.correct_ratio.toFixed(2) : 'N/A'}%
+                                            {user
+                                                ? (user.stats.correct_ratio * 100).toFixed(2)
+                                                : 'N/A'}
+                                            %
                                         </h2>
                                         <p class="card-text text-muted">Success Rate</p>
                                     </div>
