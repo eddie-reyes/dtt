@@ -16,8 +16,6 @@ const diagnoses = [
 ];
 
 export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, session_id }) {
-  console.log(`NOTES CONSIST OF :::: ${notes}`)
-  console.log(`SECONDS CONSISTS OF ::: ${seconds}`)
     const navigate = useNavigate();
     const [mode, setMode] = useState(null);
     // console.log("correct diagnosis: ", correctDiagnosis)
@@ -31,7 +29,6 @@ export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, s
         : diagnoses;
 
     const handleDiagnosisSubmit = async () => {
-        const isCorrect = selectedDiagnosis === fakeCorrectDiagnosis;
         if (selectedDiagnosis === fakeCorrectDiagnosis) {
             setResult('correct');
         } else {
@@ -75,13 +72,11 @@ export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, s
             },
             body: JSON.stringify({
               notes: notes,
-              correctness: isCorrect,
+              correctness: data.correctness,
               duration_seconds: seconds,
             }),
           },
         );
-
-        console.log(`IS ENT SOMETHINGGG :::::`, update)
     };
 
     const formatTime = totalSecons => {

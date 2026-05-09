@@ -9,13 +9,20 @@ export default function details() {
     const [viewTranscript, setViewTranscript] = useState(false);
     const { session } = location.state || {};
     const [transcript, setTranscript] = useState([]);
+    let notes;
+    let parsedNotes;
 
-    const parsedNotes = JSON.parse(session.notes);
-    const notes = `Symptoms: ${parsedNotes.symptoms}\n
-                    History/Medications: ${parsedNotes.medications}\n
-                    Observations: ${parsedNotes.observations}\n
-                    Possible Diagnosis: ${parsedNotes.questions}\n
-    `
+    try {
+        parsedNotes = typeof session.notes === 'string' ? JSON.parse(session.notes) : session.notes;
+        notes =  `Symptoms: ${parsedNotes.symptoms ? parsedNotes.symptoms : "N/A"}\n
+                    History/Medications: ${parsedNotes.medications ? parsedNotes.medications : "N/A"}\n
+                    Observations: ${parsedNotes.observations ? parsedNotes.observations : "N/A"}\n
+                    Possible Diagnosis: ${parsedNotes.questions  ? parsedNotes.questions : "N/A"}\n
+                    `
+    } catch (error) {
+        notes = session.notes != null ? session.notes : "N/A";
+    }
+
     useEffect(() => {
         async function fetchTranscript() {
             try {
