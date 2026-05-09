@@ -104,20 +104,18 @@ export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, s
                                 X
                             </button>
                         )}
-                        <h2>Select Diagnosis</h2>
-                        <select
-                            className="form-select mt-4"
-                            value={selectedDiagnosis}
+                        <h2 className="mb-3">Make Diagnosis</h2>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Type your diagnosis here..."
                             onChange={e => setSelectedDiagnosis(e.target.value)}
-                        >
-                            <option value="">Choose option ...</option>
-
-                            {diagnosisOptions.map(d => (
-                                <option key={d} value={d}>
-                                    {d}
-                                </option>
-                            ))}
-                        </select>
+                            onKeyDown={e => {
+                                if (e.key === 'Enter' && e.target.value.trim()) {
+                                    handleDiagnosisSubmit();
+                                }
+                            }}
+                        ></input>
                         <button
                             className="btn btn-primary w-100 mt-4"
                             onClick={handleDiagnosisSubmit}
