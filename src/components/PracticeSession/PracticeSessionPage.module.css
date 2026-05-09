@@ -1,210 +1,210 @@
 .practicePage {
-  /* this two most likely to remove */
-  display: flex;
-  gap: 20px;
+    /* this two most likely to remove */
+    display: flex;
+    gap: 20px;
 
-  padding: 10px;
-  min-height: 100vh;
-  background: #e6ecf5;
-  box-sizing: border-box;
+    padding: 10px;
+    min-height: 100vh;
+    background: #e6ecf5;
+    box-sizing: border-box;
 }
 
 /* most likely dont need */
 .leftPanel,
 .middlePanel,
 .rightPanel {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .leftPanel {
-  width: 30%;
-  background: #2d86a6;
-  color: white;
-  border-radius: 20px;
-  padding: 20px;
-  text-align: center;
+    width: 30%;
+    background: #2d86a6;
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
 }
 
 .instructions {
-  text-align: left;
-  padding-left: 20px;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  font-weight: 500;
+    text-align: left;
+    padding-left: 20px;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-weight: 500;
 }
 
 .instructions li {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .middlePanel {
-  /* width: 30%; */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 20px;
+    /* width: 30%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
 }
 
 .logoWrapper {
-  /* margin-top: 10px; */
-  margin-bottom: 25px;
+    /* margin-top: 10px; */
+    margin-bottom: 25px;
 }
 
 .logo {
-  width: 110px;
-  height: auto;
+    width: 110px;
+    height: auto;
 }
 
 .timer {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #0b6a8d;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #0b6a8d;
 }
 .mainButton {
-  background: #0b6a8d;
-  color: white;
-  border: none;
-  border-radius: 18px;
-  padding: 16px 22px;
-  width: 280px;
-  font-size: 1.2rem;
-  font-weight: 600;
+    background: #0b6a8d;
+    color: white;
+    border: none;
+    border-radius: 18px;
+    padding: 16px 22px;
+    width: 280px;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .mainButton:hover {
-  background: #095774;
-  color: white;
+    background: #095774;
+    color: white;
 }
 
 .mainButtonPrimary {
-  background: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 18px;
-  padding: 16px 22px;
-  width: 280px;
-  font-size: 1.2rem;
-  font-weight: 700;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 18px;
+    padding: 16px 22px;
+    width: 280px;
+    font-size: 1.2rem;
+    font-weight: 700;
 }
 
 .mainButtonPrimary:hover {
-  background: #1e4fd1;
+    background: #1e4fd1;
 }
 
 .rightPanel {
-  /* width: 40%; */
-  background: #2d86a6;
-  border-radius: 24px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  min-height: 80vh;
+    /* width: 40%; */
+    background: #2d86a6;
+    border-radius: 24px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;
 }
 
 .chatArea {
-  flex: 1;
+    flex: 1;
 }
 
 .inputWrapper {
-  margin-top: auto;
-  padding-top: 20px;
+    margin-top: auto;
+    padding-top: 20px;
 }
 
 .chatInput {
-  border-radius: 16px;
-  border: none;
-  padding: 14px 16px;
-  font-size: 1rem;
+    border-radius: 16px;
+    border: none;
+    padding: 14px 16px;
+    font-size: 1rem;
 }
 
 .chatInput:focus {
-  box-shadow: 0 0 0 0.2rem rgba(11, 106, 141, 0.25);
-  border: none;
+    box-shadow: 0 0 0 0.2rem rgba(11, 106, 141, 0.25);
+    border: none;
 }
 
 .modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .modalBox {
-  position: relative;
-  background: white;
-  width: 500px;
-  max-width: 90%;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    position: relative;
+    background: white;
+    width: 500px;
+    max-width: 90%;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .closeButton {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  border: none;
-  background: #d62828;
-  color: white;
-  border-radius: 10px;
-  padding: 8px 12px;
-  cursor: pointer;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border: none;
+    background: #d62828;
+    color: white;
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
 }
 
 .notesTextarea {
-  width: 100%;
-  min-height: 70px;
-  padding: 14px;
-  margin: 6px 0;
-  border: 1px solid #d1d5db;
-  border-radius: 12px;
-  resize: vertical;
-  font-size: 16px;
-  line-height: 1.5;
-  outline: none;
+    width: 100%;
+    min-height: 70px;
+    padding: 14px;
+    margin: 6px 0;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    resize: vertical;
+    font-size: 16px;
+    line-height: 1.5;
+    outline: none;
 }
 
 .notesTextarea:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .notesButton {
-  width: 30%;
-  padding: 7px 10px;
-  border-radius: 12px;
-  border: 1px solid #d1d5db;
-  background: #2563eb;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  transition: 0.2s;
-  margin-top: 10px;
+    width: 30%;
+    padding: 7px 10px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    background: #2563eb;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 10px;
 }
 
 .notesButton:hover {
-  background: #f3f4f6;
+    background: #f3f4f6;
 }
 
 .modalBox {
-  max-width: 520px;
-  max-height: 80vh;
-  overflow-y: auto;
+    max-width: 520px;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .rightPanel ul {
-  max-height: calc(100vh - 180px);
-  overflow-y: auto;
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
 }
