@@ -10,6 +10,12 @@ export default function details() {
     const { session } = location.state || {};
     const [transcript, setTranscript] = useState([]);
 
+    const parsedNotes = JSON.parse(session.notes);
+    const notes = `Symptoms: ${parsedNotes.symptoms}\n
+                    History/Medications: ${parsedNotes.medications}\n
+                    Observations: ${parsedNotes.observations}\n
+                    Possible Diagnosis: ${parsedNotes.questions}\n
+    `
     useEffect(() => {
         async function fetchTranscript() {
             try {
@@ -100,7 +106,7 @@ export default function details() {
                         <div className="col d-flex">
                             <div className={`border border-info rounded-4 bg-light p-4 flex-fill d-flex flex-column mh-25 ${styles.list}`}>
                                 <ul className="list-group list-group-flush flex-fill">
-                                    {viewTranscript ? renderTranscript() : <li className="list-group-item">{session.notes || "No notes available for this session."}</li>}
+                                    {viewTranscript ? renderTranscript() : <li className="list-group-item" style={{ whiteSpace: 'pre-line' }}>{ notes }</li>}
                                 </ul>
                             </div>
                         </div>

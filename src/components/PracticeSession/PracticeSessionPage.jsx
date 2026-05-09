@@ -225,7 +225,7 @@ export default function PracticeSession() {
                         setDiagnosisOpen(false);
                         setIsTimerRunning(true);
                     }}
-                    notes={notes}
+                    notes={localStorage.getItem(`notes_${sessionInfo.session_id}`)}
                     session_id={sessionInfo.session_id}
                 />
             )}

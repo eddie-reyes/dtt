@@ -16,6 +16,8 @@ const diagnoses = [
 ];
 
 export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, session_id }) {
+  console.log(`NOTES CONSIST OF :::: ${notes}`)
+  console.log(`SECONDS CONSISTS OF ::: ${seconds}`)
     const navigate = useNavigate();
     const [mode, setMode] = useState(null);
     // console.log("correct diagnosis: ", correctDiagnosis)
@@ -29,6 +31,13 @@ export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, s
         : diagnoses;
 
     const handleDiagnosisSubmit = async () => {
+        const isCorrect = selectedDiagnosis === fakeCorrectDiagnosis;
+        if (selectedDiagnosis === fakeCorrectDiagnosis) {
+            setResult('correct');
+        } else {
+            setResult('incorrect');
+        }
+
         const token = localStorage.getItem('token');
 
         const response = await fetch(
@@ -41,7 +50,7 @@ export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, s
                 },
                 body: JSON.stringify({
                     diagnosis: selectedDiagnosis,
-                    notes: notes.observations,
+                    notes: notes,
                     duration_seconds: seconds,
                 }),
             },
@@ -55,6 +64,24 @@ export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, s
         updatedUser.stats = data.user_stats;
 
         localStorage.setItem('user', JSON.stringify(updatedUser));
+
+        const update = await fetch(
+          `https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/sessions/${session_id}`,
+          {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              notes: notes,
+              correctness: isCorrect,
+              duration_seconds: seconds,
+            }),
+          },
+        );
+
+        console.log(`IS ENT SOMETHINGGG :::::`, update)
     };
 
     const formatTime = totalSecons => {
