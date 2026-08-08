@@ -2,7 +2,7 @@
 
 A web-based training platform that lets medical students, trainees, and healthcare professionals practice clinical diagnostic reasoning through simulated patient encounters. Users interview an AI-driven virtual patient, gather symptoms and history through natural conversation, take notes, and submit a diagnosis under a timer — then review their performance history afterward.
 
-This repository contains the **frontend** (React + Vite). It talks to a separate backend API that handles authentication, session management, and AI-generated patient responses.
+This repository contains the **frontend** (React + Vite). It talks to a separate backend API that handles authentication, session management, and AI-generated patient responses. The backend **frontend** repository can be found [here](https://github.com/mgmg23/patient_simulator_backend)
 
 ## Features
 
