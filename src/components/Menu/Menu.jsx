@@ -70,24 +70,24 @@ export default function Menu() {
                 </div>
 
                 <div
-                    className=" bg-dark text-white d-flex flex-column justify-content-between align-items-center py-5"
+                    className=" bg-dark text-white d-flex flex-column justify-content-between align-items-center py-2"
                     style={{ width: '50%' }}
                 >
                     <p className="display-4 m-5">
                         Welcome Back, {user ? user.first_name : '[First Name]'}{' '}
                         {user ? user.last_name : '[Last Name]'}
                     </p>
-                    <div className="d-flex flex-column align-items-center gap-3 m-5">
+                    <div className="d-flex flex-column align-items-center gap-3 m-2">
                         <img
                             src={user ? user.profile_image_url : pfp}
-                            className="rounded-circle mb-5"
-                            style={{ width: '400px' }}
+                            className="rounded-circle mb-5 w-50"
+                            
                             alt="pfp"
                         ></img>
-                        <h1>{user ? user.hospital : '[Hospital]'}</h1>
-                        <h3>{user ? user.role : '[Role]'}</h3>
+                        <h2>{user ? user.hospital : '[Hospital]'}</h2>
+                        <h4>{user ? user.role : '[Role]'}</h4>
                     </div>
-                    <div class="container py-5 w-75">
+                    <div class="container p-5 w-100">
                         <div class="row row-cols-1 row-cols-md-4 g-4">
                             <div class="col">
                                 <div class="card h-100 text-center shadow">
