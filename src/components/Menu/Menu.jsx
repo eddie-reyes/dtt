@@ -96,7 +96,7 @@ export default function Menu() {
                                             <i class="bi bi-people"></i>
                                         </div>
                                         <h2 class="card-title mb-3">
-                                            {user ? user.stats.total_sessions_completed : 'N/A'}
+                                            {user ? "" : 'N/A'}
                                         </h2>
                                         <p class="card-text text-muted">Sessions Completed</p>
                                     </div>
@@ -110,7 +110,7 @@ export default function Menu() {
                                             <i class="bi bi-graph-up"></i>
                                         </div>
                                         <h2 class="card-title mb-3 text-success">
-                                            {user ? user.stats.correct_count : 'N/A'}
+                                            {user ? "" : 'N/A'}
                                         </h2>
                                         <p class="card-text text-muted">Correct Diagnoises</p>
                                     </div>
@@ -124,7 +124,7 @@ export default function Menu() {
                                             <i class="bi bi-star"></i>
                                         </div>
                                         <h2 class="card-title mb-3 text-danger">
-                                            {user ? user.stats.incorrect_count : 'N/A'}
+                                            {user ? "" : 'N/A'}
                                         </h2>
                                         <p class="card-text text-muted">Incorrect Diagnoises</p>
                                     </div>
@@ -132,14 +132,14 @@ export default function Menu() {
                             </div>
 
                             <div class="col">
-                                <div class="card h-100 text-center shadow">
+                                <div class="card h-100 text-center shadow"s>
                                     <div class="card-body">
                                         <div class="display-4 text-danger mb-2">
                                             <i class="bi bi-clock-history"></i>
                                         </div>
                                         <h2 class="card-title mb-3">
                                             {user
-                                                ? (user.stats.correct_ratio * 100).toFixed(2)
+                                                ? (0 * 100).toFixed(2)
                                                 : 'N/A'}
                                             %
                                         </h2>
