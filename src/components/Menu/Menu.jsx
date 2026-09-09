@@ -133,7 +133,7 @@ export default function Menu() {
                             </div>
 
                             <div class="col">
-                                <div class="card h-100 text-center shadow">
+                                <div class="card h-100 text-center shadow" s>
                                     <div class="card-body">
                                         <div class="display-4 text-danger mb-2">
                                             <i class="bi bi-clock-history"></i>
