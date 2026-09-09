@@ -62,21 +62,18 @@ export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, s
 
         localStorage.setItem('user', JSON.stringify(updatedUser));
 
-        const update = await fetch(
-          `https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/sessions/${session_id}`,
-          {
+        const update = await fetch(`/sessions/${session_id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
-              notes: notes,
-              correctness: data.correctness,
-              duration_seconds: seconds,
+                notes: notes,
+                correctness: data.correctness,
+                duration_seconds: seconds,
             }),
-          },
-        );
+        });
     };
 
     const formatTime = totalSecons => {

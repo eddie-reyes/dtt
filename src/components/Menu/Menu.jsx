@@ -81,7 +81,6 @@ export default function Menu() {
                         <img
                             src={user ? user.profile_image_url : pfp}
                             className="rounded-circle mb-5 w-50"
-                            
                             alt="pfp"
                         ></img>
                         <h2>{user ? user.hospital : '[Hospital]'}</h2>
@@ -96,7 +95,9 @@ export default function Menu() {
                                             <i class="bi bi-people"></i>
                                         </div>
                                         <h2 class="card-title mb-3">
-                                            {user ? user.stats.total_sessions_completed : 'N/A'}
+                                            {user?.stats
+                                                ? user.stats.total_sessions_completed
+                                                : 'N/A'}
                                         </h2>
                                         <p class="card-text text-muted">Sessions Completed</p>
                                     </div>
@@ -110,7 +111,7 @@ export default function Menu() {
                                             <i class="bi bi-graph-up"></i>
                                         </div>
                                         <h2 class="card-title mb-3 text-success">
-                                            {user ? user.stats.correct_count : 'N/A'}
+                                            {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
                                         <p class="card-text text-muted">Correct Diagnoises</p>
                                     </div>
@@ -124,7 +125,7 @@ export default function Menu() {
                                             <i class="bi bi-star"></i>
                                         </div>
                                         <h2 class="card-title mb-3 text-danger">
-                                            {user ? user.stats.incorrect_count : 'N/A'}
+                                            {user?.stats ? user.stats.incorrect_count : 'N/A'}
                                         </h2>
                                         <p class="card-text text-muted">Incorrect Diagnoises</p>
                                     </div>
@@ -138,7 +139,7 @@ export default function Menu() {
                                             <i class="bi bi-clock-history"></i>
                                         </div>
                                         <h2 class="card-title mb-3">
-                                            {user
+                                            {user?.stats
                                                 ? (user.stats.correct_ratio * 100).toFixed(2)
                                                 : 'N/A'}
                                             %

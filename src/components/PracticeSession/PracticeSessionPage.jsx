@@ -30,20 +30,17 @@ export default function PracticeSession() {
             const token = localStorage.getItem('token');
             const user = JSON.parse(localStorage.getItem('user'));
             console.log('token:', token);
-            const response = await fetch(
-                'https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/sessions/',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                    body: JSON.stringify({
-                        username: user.username,
-                        patient_id: user.current_patient_id,
-                    }),
+            const response = await fetch('https://dtt-9fc5c2fc9663.herokuapp.com/sessions/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
                 },
-            );
+                body: JSON.stringify({
+                    username: user.username,
+                    patient_id: user.current_patient_id,
+                }),
+            });
 
             const data = await response.json();
             console.log('data:', data);
@@ -62,7 +59,7 @@ export default function PracticeSession() {
         setMessages([...messages, message]);
         const token = localStorage.getItem('token');
         const response = await fetch(
-            `https://evening-sea-83470-b4d5b88ba33a.herokuapp.com/sessions/${sessionInfo.session_id}/message`,
+            `https://dtt-9fc5c2fc9663.herokuapp.com/sessions/${sessionInfo.session_id}/message`,
             {
                 method: 'POST',
                 headers: {
