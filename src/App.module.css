@@ -54,7 +54,8 @@
 }
 
 .loginBtn:hover {
-  background: var(--green);
+  /* background: var(--green); */ 
+  background: var(--hover-teal); 
   color: white;
 }
 
