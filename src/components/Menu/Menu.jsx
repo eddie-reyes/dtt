@@ -23,19 +23,20 @@ export default function Menu() {
         <>
             <div className="d-flex" style={{ height: '100vh', width: '100vw' }}>
                 <div
-                    className="d-flex flex-column justify-content-center align-items-center gap-5 p-3 "
+                    className="d-flex flex-row-reverse justify-content-center align-items-end gap-5 p-3 "
                     style={{ width: '50%' }}
                 >
-                    <img className="w-25" src={logo} alt="logo"></img>
+                    {/* <img className="w-25" src={logo} alt="logo"></img> */}
 
                     <Link
                         to="/practice"
                         className="btn btn-lg  w-25"
                         style={{
-                            background: 'var(--dark-teal)',
-                            color: 'white',
+                            background: 'var(--default-btn)',
+                            color: 'var(--light-text)',
                             padding: '12px',
                             borderRadius: '12px',
+                            border: '1px solid var(--grey-border)',
                         }}
                     >
                         Start New Session
@@ -44,10 +45,10 @@ export default function Menu() {
                         to="/practice"
                         className="btn btn-lg  w-25"
                         style={{
-                            background: 'var(--dark-teal)',
-                            color: 'white',
+                            background: 'var(--default-btn)',
+                            color: 'var(--light-text)',
                             padding: '12px',
-                            borderRadius: '12px',
+                            border: '1px solid var(--grey-border)',
                         }}
                     >
                         Resume Session
@@ -56,15 +57,22 @@ export default function Menu() {
                         to="/history"
                         className="btn btn-lg  w-25"
                         style={{
-                            background: 'var(--dark-teal)',
-                            color: 'white',
+                            background: 'var(--default-btn)',
+                            color: 'var(--light-text)',
                             padding: '12px',
-                            borderRadius: '12px',
+                            border: '1px solid var(--grey-border)',
                         }}
                     >
                         View History
                     </Link>
-                    <Link to="/" className="btn btn-lg btn-danger w-25">
+                    <Link to="/" 
+                           className="btn btn-lg btn-danger w-25"
+                            style={{
+                            background:'var(--special-btn)',
+                            color: 'var(--light-text)',
+                            border: '1px solid var(--light-border)',
+                        }}
+                    >
                         Back to Main
                     </Link>
                 </div>

@@ -4,8 +4,14 @@
   --dark-teal: #095d7e;
   --light-teal: #ccecee;
   --bg: #f1f9ff;
+  /* New Colors */ 
   --hover-teal: #10a2dc; 
   --radius: 16px;
+  --default-btn: linear-gradient(#FDFEFF, #DFEFFF); 
+  --special-btn: linear-gradient(#E3F7FF, #A7D9FF);
+  --light-text: #4697B6; 
+  --light-border: #AFDEF1; 
+  --grey-border: #A1B0B6; 
 
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -32,6 +38,8 @@ body,
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  font-weight: bold; 
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
