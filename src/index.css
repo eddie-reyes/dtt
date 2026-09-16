@@ -11,7 +11,8 @@
   --special-btn: linear-gradient(#E3F7FF, #A7D9FF);
   --light-text: #4697B6; 
   --light-border: #AFDEF1; 
-  --grey-border: #A1B0B6; 
+  --grey-border: #A1B0B6;
+  --seaform-grey: #BCD3DB;  
 
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
