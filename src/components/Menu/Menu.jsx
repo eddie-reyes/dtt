@@ -23,7 +23,7 @@ export default function Menu() {
         <>
             <div> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
                 <div
-                    className="d-flex flex-row-reverse justify-content-center align-items-end gap-5 p-3" 
+                    className="d-flex flex-row-reverse justify-content-center align-items-center gap-5 p-3" 
                     /* style={{ width: '50%' }} */ 
                     style={{background: 'var(--seaform-grey)',
                              height: '100px', 
@@ -63,7 +63,7 @@ export default function Menu() {
                     <Link
                         to="/history"
                         /* className="btn btn-lg  w-50" */ 
-                        className={styles.taskbarButton}
+                        className={styles.taskbarButton} 
                         /* style={{
                             background: 'var(--default-btn)',
                             color: 'var(--light-text)',
