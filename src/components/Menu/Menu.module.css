@@ -2,3 +2,17 @@
     text-decoration: none;
     color: white;
 }
+
+
+.taskbarButton{
+    background: var(--default-btn); 
+    color: var(--light-text); 
+    padding: 12px; 
+    border: 1px solid var(--grey-border); 
+    text-decoration: none;
+    border-radius: 5px; 
+    font-size: 20px; 
+    height: 70px; 
+    width: 170px; 
+    text-align: center; 
+}

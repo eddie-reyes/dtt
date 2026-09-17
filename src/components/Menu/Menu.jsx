@@ -21,59 +21,63 @@ export default function Menu() {
     }, []);
     return (
         <>
-            <div className="d-flex" style={{ height: '100vh', width: '100vw' }}>
+            <div> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
                 <div
-                    className="d-flex flex-row-reverse justify-content-center align-items-flex-end gap-5 p-3 "
+                    className="d-flex flex-row-reverse justify-content-center align-items-end gap-5 p-3" 
                     /* style={{ width: '50%' }} */ 
                     style={{background: 'var(--seaform-grey)',
-                            /* height: '50px', */ 
-
+                             height: '100px', 
+                              position: 'fixed',
+                              bottom: '0',
+                              width: '100%',
                     }}
                 >   
                     {/* <img className="w-25" src={logo} alt="logo"></img> */}
 
                     <Link
                         to="/practice"
-                        className="btn btn-lg  w-50"  
-                        style={{
+                        /* className="btn btn-lg  w-50"  */ 
+                         className={styles.taskbarButton}
+                        /* style={{
                             background: 'var(--default-btn)',
                             color: 'var(--light-text)',
                             padding: '12px',
                             border: '1px solid var(--grey-border)',
-                        }}
+                        }} */ 
                     >
                         Start New Session
                     </Link>
                     <Link
                         to="/practice"
-                        className="btn btn-lg  w-50"
-                        style={{
+                        /* className="btn btn-lg  w-50" */ 
+                         className={styles.taskbarButton}
+                        /* style={{
                             background: 'var(--default-btn)',
                             color: 'var(--light-text)',
                             padding: '12px',
                             border: '1px solid var(--grey-border)',
-                        }}
+                        }} */ 
                     >
                         Resume Session
                     </Link>
                     <Link
                         to="/history"
-                        className="btn btn-lg  w-50"
-                        style={{
+                        /* className="btn btn-lg  w-50" */ 
+                        className={styles.taskbarButton}
+                        /* style={{
                             background: 'var(--default-btn)',
                             color: 'var(--light-text)',
                             padding: '12px',
                             border: '1px solid var(--grey-border)',
-                        }}
+                        }}*/ 
                     >
                         View History
                     </Link>
                     <Link to="/" 
-                           className="btn btn-lg btn-danger w-50"
+                           /* className="btn btn-lg btn-danger w-50" */ 
+                            className={styles.taskbarButton}
                             style={{
                             background:'var(--special-btn)',
-                            color: 'var(--light-text)',
-                            border: '1px solid var(--light-border)',
                         }}
                     >
                         Log Out
