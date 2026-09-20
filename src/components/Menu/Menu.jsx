@@ -32,7 +32,7 @@ export default function Menu() {
                         {user ? user.last_name : '[Last Name]'}
         </h1>
             <div> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
-                   {/* } <div class="container p-5 w-100">
+                    <div class="container p-5 w-100">
                         <div class="row row-cols-1 row-cols-md-4 g-4">
                             <div class="col">
                                 <div class="card h-100 text-center shadow">
@@ -95,20 +95,18 @@ export default function Menu() {
                                 </div>
                             </div>
                         </div>
-                    </div> */}
+                    </div> 
                 <div
-                    className="d-flex flex-column justify-content-between align-items-center py-2"
-                    style={{ width: '50%',  
+                    className="d-flex flex-column justify-content-center align-items-center"
+                    style={{  
                         background: 'var(--default-div)',
                         border: '1px solid var(--dark-border)', 
+                        width: '30%',
+                        height: '80vh',
                     }}
                 >
                     {/* User Info */}
                     <div className="d-flex flex-column justify-content-center align-items-center gap-3 m-3"
-                    style={{
-                        width: '10px',
-                        height: '75vh',
-                    }}
                     >
                         <img
                             src={user ? user.profile_image_url : pfp}
