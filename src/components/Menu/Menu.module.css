@@ -1,3 +1,8 @@
+body{
+    background: var(--background-color); 
+    overflow: hidden; 
+}
+
 .link {
     text-decoration: none;
     color: white;

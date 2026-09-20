@@ -21,87 +21,18 @@ export default function Menu() {
     }, []);
     return (
         <>
-            <div> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
-                <div
-                    className="d-flex flex-row-reverse justify-content-center align-items-center gap-5 p-3" 
-                    /* style={{ width: '50%' }} */ 
-                    style={{background: 'var(--seaform-grey)',
-                             height: '100px', 
-                              position: 'fixed',
-                              bottom: '0',
-                              width: '100%',
-                    }}
-                >   
-                    {/* <img className="w-25" src={logo} alt="logo"></img> */}
-
-                    <Link
-                        to="/practice"
-                        /* className="btn btn-lg  w-50"  */ 
-                         className={styles.taskbarButton}
-                        /* style={{
-                            background: 'var(--default-btn)',
-                            color: 'var(--light-text)',
-                            padding: '12px',
-                            border: '1px solid var(--grey-border)',
-                        }} */ 
-                    >
-                        Start New Session
-                    </Link>
-                    <Link
-                        to="/practice"
-                        /* className="btn btn-lg  w-50" */ 
-                         className={styles.taskbarButton}
-                        /* style={{
-                            background: 'var(--default-btn)',
-                            color: 'var(--light-text)',
-                            padding: '12px',
-                            border: '1px solid var(--grey-border)',
-                        }} */ 
-                    >
-                        Resume Session
-                    </Link>
-                    <Link
-                        to="/history"
-                        /* className="btn btn-lg  w-50" */ 
-                        className={styles.taskbarButton} 
-                        /* style={{
-                            background: 'var(--default-btn)',
-                            color: 'var(--light-text)',
-                            padding: '12px',
-                            border: '1px solid var(--grey-border)',
-                        }}*/ 
-                    >
-                        View History
-                    </Link>
-                    <Link to="/" 
-                           /* className="btn btn-lg btn-danger w-50" */ 
-                            className={styles.taskbarButton}
-                            style={{
-                            background:'var(--special-btn)',
-                        }}
-                    >
-                        Log Out
-                    </Link>
-                </div>
-
-                <div
-                    className=" bg-dark text-white d-flex flex-column justify-content-between align-items-center py-2"
-                    style={{ width: '50%' }}
-                >
-                    <p className="display-4 m-5">
+        <h1 className="text-center"
+            style={{ 
+            color: 'var( --dark-text)',
+            fontWeight: 'bold',
+            marginTop: '5px',
+        }} 
+        >
                         Welcome Back, {user ? user.first_name : '[First Name]'}{' '}
                         {user ? user.last_name : '[Last Name]'}
-                    </p>
-                    <div className="d-flex flex-column align-items-center gap-3 m-2">
-                        <img
-                            src={user ? user.profile_image_url : pfp}
-                            className="rounded-circle mb-5 w-50"
-                            alt="pfp"
-                        ></img>
-                        <h2>{user ? user.hospital : '[Hospital]'}</h2>
-                        <h4>{user ? user.role : '[Role]'}</h4>
-                    </div>
-                    <div class="container p-5 w-100">
+        </h1>
+            <div> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
+                   {/* } <div class="container p-5 w-100">
                         <div class="row row-cols-1 row-cols-md-4 g-4">
                             <div class="col">
                                 <div class="card h-100 text-center shadow">
@@ -164,8 +95,93 @@ export default function Menu() {
                                 </div>
                             </div>
                         </div>
+                    </div> */}
+                <div
+                    className="d-flex flex-column justify-content-between align-items-center py-2"
+                    style={{ width: '50%',  
+                        background: 'var(--default-div)',
+                        border: '1px solid var(--dark-border)', 
+                    }}
+                >
+                    {/* User Info */}
+                    <div className="d-flex flex-column justify-content-center align-items-center gap-3 m-3"
+                    style={{
+                        width: '10px',
+                        height: '75vh',
+                    }}
+                    >
+                        <img
+                            src={user ? user.profile_image_url : pfp}
+                            className="rounded-circle mb-5 w-50"
+                            alt="pfp"
+                        ></img>
+                        <h2>{user ? user.hospital : '[Hospital]'}</h2>
+                        <h4>{user ? user.role : '[Role]'}</h4>
                     </div>
+                    {/* User Info */}
+
                 </div>
+                <footer
+                    className="d-flex flex-row-reverse justify-content-center align-items-center gap-5 p-3" 
+                    /* style={{ width: '50%' }} */ 
+                    style={{background: 'var(--seaform-grey)',
+                             height: '100px', 
+                              position: 'fixed',
+                              bottom: '0',
+                              width: '100%',
+                    }}
+                >   
+                    {/* <img className="w-25" src={logo} alt="logo"></img> */}
+
+                    <Link
+                        to="/practice"
+                        /* className="btn btn-lg  w-50"  */ 
+                         className={styles.taskbarButton}
+                        /* style={{
+                            background: 'var(--default-btn)',
+                            color: 'var(--light-text)',
+                            padding: '12px',
+                            border: '1px solid var(--grey-border)',
+                        }} */ 
+                    >
+                        Start New Session
+                    </Link>
+                    <Link
+                        to="/practice"
+                        /* className="btn btn-lg  w-50" */ 
+                         className={styles.taskbarButton}
+                        /* style={{
+                            background: 'var(--default-btn)',
+                            color: 'var(--light-text)',
+                            padding: '12px',
+                            border: '1px solid var(--grey-border)',
+                        }} */ 
+                    >
+                        Resume Session
+                    </Link>
+                    <Link
+                        to="/history"
+                        /* className="btn btn-lg  w-50" */ 
+                        className={styles.taskbarButton} 
+                        /* style={{
+                            background: 'var(--default-btn)',
+                            color: 'var(--light-text)',
+                            padding: '12px',
+                            border: '1px solid var(--grey-border)',
+                        }}*/ 
+                    >
+                        View History
+                    </Link>
+                    <Link to="/" 
+                           /* className="btn btn-lg btn-danger w-50" */ 
+                            className={styles.taskbarButton}
+                            style={{
+                            background:'var(--special-btn)',
+                        }}
+                    >
+                        Log Out
+                    </Link>
+                </footer>
             </div>
         </>
     );

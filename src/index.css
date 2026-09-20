@@ -10,9 +10,13 @@
   --default-btn: linear-gradient(#FDFEFF, #DFEFFF); 
   --special-btn: linear-gradient(#E3F7FF, #A7D9FF);
   --light-text: #4697B6; 
+  --dark-text: #095D7E; 
   --light-border: #AFDEF1; 
   --grey-border: #A1B0B6;
+  --dark-border: #095D7E; 
   --seaform-grey: #BCD3DB;  
+  --default-div: linear-gradient(#F1F9FF, #D5EDFF); 
+  --background-color: linear-gradient(to right, #D2EEF1, #F1F9FF); 
 
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
