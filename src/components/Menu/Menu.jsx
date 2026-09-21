@@ -31,11 +31,15 @@ export default function Menu() {
                         Welcome Back, {user ? user.first_name : '[First Name]'}{' '}
                         {user ? user.last_name : '[Last Name]'}
         </h1>
-            <div> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
-                    <div class="container p-5 w-100">
+            <div className="d-flex"> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
+                    <div class="container p-5 flex-grow-1">
                         <div class="row row-cols-1 row-cols-md-2 g-4"> {/* row row-cols-1 row-cols-md-4 g-4 */}
                             <div class="col">
-                                <div class="card h-100 text-center shadow">
+                                <div class="card h-100 text-center shadow"
+                                /* style={{
+                                    height: '100%',
+                                }} */
+                                > {/* "card h-100 text-center shadow" */}
                                     <div class="card-body">
                                         <div class="display-4 text-primary mb-2">
                                             <i class="bi bi-people"></i>
@@ -79,7 +83,7 @@ export default function Menu() {
                             </div>
 
                             <div class="col">
-                                <div class="card h-100 text-center shadow" s>
+                                <div class="card h-100 text-center shadow">
                                     <div class="card-body">
                                         <div class="display-4 text-danger mb-2">
                                             <i class="bi bi-clock-history"></i>
