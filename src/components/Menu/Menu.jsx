@@ -33,7 +33,7 @@ export default function Menu() {
         </h1>
             <div> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
                     <div class="container p-5 w-100">
-                        <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <div class="row row-cols-1 row-cols-md-2 g-4"> {/* row row-cols-1 row-cols-md-4 g-4 */}
                             <div class="col">
                                 <div class="card h-100 text-center shadow">
                                     <div class="card-body">
