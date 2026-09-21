@@ -37,8 +37,9 @@ export default function Menu() {
                             style={{
                                 background: 'var(--stats-background)',
                                 border: '1px solid var(--dark-border)',
-                                height: '77vh',
+                                height: '79.9vh',
                                 paddingBottom: '30px',
+                                marginTop: '-48px',
                             }}
                         > {/* row row-cols-1 row-cols-md-4 g-4 */}
                             <div class="col">
