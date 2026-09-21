@@ -33,12 +33,19 @@ export default function Menu() {
         </h1>
             <div className="d-flex"> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
                     <div class="container p-5 flex-grow-1">
-                        <div class="row row-cols-1 row-cols-md-2 g-4"> {/* row row-cols-1 row-cols-md-4 g-4 */}
+                        <div class="row row-cols-1 row-cols-md-2 g-4"
+                            style={{
+                                background: 'var(--stats-background)',
+                                border: '1px solid var(--dark-border)',
+                                height: '77vh',
+                                paddingBottom: '30px',
+                            }}
+                        > {/* row row-cols-1 row-cols-md-4 g-4 */}
                             <div class="col">
                                 <div class="card h-100 text-center shadow"
-                                /* style={{
-                                    height: '100%',
-                                }} */
+                                 style={{
+                                    minHeight: '290px',
+                                }}
                                 > {/* "card h-100 text-center shadow" */}
                                     <div class="card-body">
                                         <div class="display-4 text-primary mb-2">
@@ -69,7 +76,11 @@ export default function Menu() {
                             </div>
 
                             <div class="col">
-                                <div class="card h-100 text-center shadow">
+                                <div class="card h-100 text-center shadow"
+                                style={{
+                                    minHeight: '290px',
+                                }}
+                                >
                                     <div class="card-body">
                                         <div class="display-4 text-warning mb-2">
                                             <i class="bi bi-star"></i>
