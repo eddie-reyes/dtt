@@ -40,6 +40,8 @@ export default function Menu() {
                                 height: '79.9vh',
                                 paddingBottom: '30px',
                                 marginTop: '-48px',
+                                position: 'relative',
+                                right: '15px',
                             }}
                         > {/* row row-cols-1 row-cols-md-4 g-4 */}
                             <div class="col">
@@ -119,6 +121,8 @@ export default function Menu() {
                         border: '1px solid var(--dark-border)', 
                         width: '30%',
                         height: '80vh',
+                        position: 'relative',
+                        right: '25px',
                     }}
                 >
                     {/* User Info */}
