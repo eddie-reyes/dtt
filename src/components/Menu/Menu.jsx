@@ -25,21 +25,32 @@ export default function Menu() {
             style={{ 
             color: 'var( --dark-text)',
             fontWeight: 'bold',
-            marginTop: '5px',
+            marginTop: '16px',
         }} 
         >
                         Welcome Back, {user ? user.first_name : '[First Name]'}{' '}
                         {user ? user.last_name : '[Last Name]'}
         </h1>
+        <img src={logo}
+        style={{
+            position: 'absolute',
+            top: '-7px',
+            right: '20px',
+            height: '105px',
+            opacity: '0.7',
+        }}
+        />
             <div className="d-flex"> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
                     <div class="container p-5 flex-grow-1">
                         <div class="row row-cols-1 row-cols-md-2 g-4"
                             style={{
                                 background: 'var(--stats-background)',
                                 border: '1px solid var(--dark-border)',
-                                height: '79.9vh',
-                                paddingBottom: '30px',
-                                marginTop: '-48px',
+                                /* height: '79.9vh', */ 
+                                /* height: '78vh', */ 
+                                height: '75vh', 
+                                /* paddingBottom: '30px', */ 
+                                /* marginTop: '-38px', */ 
                                 position: 'relative',
                                 right: '15px',
                             }}
@@ -120,9 +131,10 @@ export default function Menu() {
                         background: 'var(--default-div)',
                         border: '1px solid var(--dark-border)', 
                         width: '30%',
-                        height: '80vh',
+                        height: '75vh',
                         position: 'relative',
                         right: '25px',
+                        top: '25px',
                     }}
                 >
                     {/* User Info */}
