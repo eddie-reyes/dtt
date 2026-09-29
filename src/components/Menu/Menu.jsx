@@ -45,14 +45,11 @@ export default function Menu() {
                         <div class="row row-cols-1 row-cols-md-2 g-4"
                             style={{
                                 background: 'var(--stats-background)',
-                                border: '1px solid var(--dark-border)',
-                                /* height: '79.9vh', */ 
-                                /* height: '78vh', */ 
+                                border: '1px solid var(--dark-border)', 
                                 height: '75vh', 
-                                /* paddingBottom: '30px', */ 
-                                /* marginTop: '-38px', */ 
                                 position: 'relative',
                                 right: '15px',
+                                borderRadius: '5px',
                             }}
                         > {/* row row-cols-1 row-cols-md-4 g-4 */}
                             <div class="col">
@@ -135,6 +132,7 @@ export default function Menu() {
                         position: 'relative',
                         right: '25px',
                         top: '25px',
+                        borderRadius: '5px',
                     }}
                 >
                     {/* User Info */}
