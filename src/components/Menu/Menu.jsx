@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../scss/styles.scss';
 import styles from './Menu.module.css';
-import pfp from '../Menu/placeholder_pfp.jpg';
+import pfp from '../Menu/placeholder_pfp.jpg'; /* Not Working for Me */
 import logo from '../../assets/logo.png';
 
 export default function Menu() {
@@ -41,82 +41,83 @@ export default function Menu() {
         }}
         />
             <div className="d-flex"> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
-                    <div class="container p-5 flex-grow-1">
-                        <div class="row row-cols-1 row-cols-md-2 g-4"
+                    <div className="container p-5 flex-grow-1">
+                        <div className="row row-cols-1 row-cols-md-2 g-4"
                             style={{
                                 background: 'var(--stats-background)',
                                 border: '1px solid var(--dark-border)', 
                                 height: '75vh', 
                                 position: 'relative',
-                                right: '15px',
+                                right: '15px', 
                                 borderRadius: '5px',
+                                paddingBottom: '35px',
                             }}
                         > {/* row row-cols-1 row-cols-md-4 g-4 */}
-                            <div class="col">
-                                <div class="card h-100 text-center shadow"
+                            <div className="col">
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
                                  style={{
-                                    minHeight: '290px',
+                                    minHeight: '280px',
                                 }}
                                 > {/* "card h-100 text-center shadow" */}
-                                    <div class="card-body">
-                                        <div class="display-4 text-primary mb-2">
-                                            <i class="bi bi-people"></i>
+                                    <div className="card-body">
+                                        <div className="display-4 text-primary mb-2">
+                                            <i className="bi bi-people"></i>
                                         </div>
-                                        <h2 class="card-title mb-3">
+                                        <h2 className="card-title mb-3">
                                             {user?.stats
                                                 ? user.stats.total_sessions_completed
                                                 : 'N/A'}
                                         </h2>
-                                        <p class="card-text text-muted">Sessions Completed</p>
+                                        <p className="card-text text-muted">Sessions Completed</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col">
-                                <div class="card h-100 text-center shadow">
-                                    <div class="card-body">
-                                        <div class="display-4 text-success mb-2">
-                                            <i class="bi bi-graph-up"></i>
+                            <div className="col">
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}>
+                                    <div className="card-body">
+                                        <div className="display-4 text-success mb-2">
+                                            <i className="bi bi-graph-up"></i>
                                         </div>
-                                        <h2 class="card-title mb-3 text-success">
+                                        <h2 className="card-title mb-3 text-success">
                                             {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
-                                        <p class="card-text text-muted">Correct Diagnoises</p>
+                                        <p className="card-text text-muted">Correct Diagnoises</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col">
-                                <div class="card h-100 text-center shadow"
+                            <div className="col">
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
                                 style={{
-                                    minHeight: '290px',
+                                    minHeight: '280px',
                                 }}
                                 >
-                                    <div class="card-body">
-                                        <div class="display-4 text-warning mb-2">
-                                            <i class="bi bi-star"></i>
+                                    <div className="card-body">
+                                        <div className="display-4 text-warning mb-2">
+                                            <i className="bi bi-star"></i>
                                         </div>
-                                        <h2 class="card-title mb-3 text-danger">
+                                        <h2 className="card-title mb-3 text-danger">
                                             {user?.stats ? user.stats.incorrect_count : 'N/A'}
                                         </h2>
-                                        <p class="card-text text-muted">Incorrect Diagnoises</p>
+                                        <p className="card-text text-muted">Incorrect Diagnoises</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col">
-                                <div class="card h-100 text-center shadow">
-                                    <div class="card-body">
-                                        <div class="display-4 text-danger mb-2">
-                                            <i class="bi bi-clock-history"></i>
+                            <div className="col">
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}>
+                                    <div className="card-body">
+                                        <div className="display-4 text-danger mb-2">
+                                            <i className="bi bi-clock-history"></i>
                                         </div>
-                                        <h2 class="card-title mb-3">
+                                        <h2 className="card-title mb-3">
                                             {user?.stats
                                                 ? (user.stats.correct_ratio * 100).toFixed(2)
                                                 : 'N/A'}
                                             %
                                         </h2>
-                                        <p class="card-text text-muted">Success Rate</p>
+                                        <p className="card-text text-muted">Success Rate</p>
                                     </div>
                                 </div>
                             </div>

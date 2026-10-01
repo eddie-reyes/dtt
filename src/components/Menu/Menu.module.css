@@ -23,3 +23,8 @@ body{
     justify-content: center;
     align-items: center; 
 }
+
+.statsCard{
+     background: var(--default-div);
+    border: 1px solid var(--dark-border);
+}
