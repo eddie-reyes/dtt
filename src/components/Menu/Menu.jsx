@@ -6,6 +6,7 @@ import pfp from '../Menu/placeholder_pfp.jpg'; /* Not Working for Me */
 import logo from '../../assets/logo.png';
 
  import {
+/* For Bar Graph */
  BarChart,
   Bar,
   XAxis,
@@ -13,9 +14,20 @@ import logo from '../../assets/logo.png';
   CartesianGrid,
   Tooltip,
   Legend, 
+  /* TooltipContentProps,
+  TooltipIndex,
+  useRechartsTheme, 
+For Pie Cart */
+  Pie, 
+  PieChart, 
+  /* PieSectorShapeProps, 
+  TooltipIndex, */ 
+  Sector
 } from 'recharts'; 
 
+// import { generateMockData } from '@recharts/devtools';
 
+/* Only for Bar Graph */
 const data = [
   {
     name: 'Page A',
@@ -229,7 +241,7 @@ export default function Menu() {
                                         <h2 className="card-title mb-3 text-danger">
                                             {user?.stats ? user.stats.incorrect_count : '...N/A'}
                                         </h2>
-                                        <p className="card-text text-muted">Incorrect Diagnoises</p>
+                                        { /* <p className="card-text text-muted">Incorrect Diagnoises</p> */} 
                                         <CustomContentOfTooltip/> 
                                     </div>
                                 </div>
