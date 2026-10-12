@@ -12,8 +12,9 @@ import {
   Title,
   Tooltip,
   Legend,
+  ArcElement,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Pie } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 
 ChartJS.register(
@@ -22,10 +23,11 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend, 
+  ArcElement
 );
 
-export const options = {
+export const optionsBar = {
   indexAxis: 'y',
   elements: {
     bar: {
@@ -35,7 +37,8 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'right',
+      display: false,
+      /*position: 'right',*/
     },
     title: {
       display: true,
@@ -44,25 +47,46 @@ export const options = {
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+export const optionsPie = {
+    legend: {
+        position: 'right',
+    }
+}
 
- export const data = {
-  labels,
+const labelsBar = ['Empathy', 'Professionalism', 'Overall'];
+const labelsPie = ['Incorrect', 'Correct'];
+
+ export const dataBar = {
+  labels: labelsBar,
   datasets: [
     {
       label: 'Dataset 1',
-      data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.number.int({ min: -1000, max: 1000 })),
+      /* data: labelsBar.map(() => faker.number.int({ min: 0, max: 10 })), */ 
+      data: [25, 50, 30],
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
     },
   ],
-};  
+}; 
+
+export const dataPie = {
+  labels: labelsPie,
+  datasets: [
+    {
+      label: '# of Votes',
+      data: [12, 19],
+      backgroundColor: [
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+      ],
+      borderColor: [
+        'rgba(54, 162, 235, 1)',
+        'rgba(153, 102, 255, 1)',
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
 
 export default function Menu() {
     const [user, setUser] = useState(null);
@@ -157,10 +181,10 @@ export default function Menu() {
                                             <i className="bi bi-star"></i>
                                         </div>
                                        {/* <h2 className="card-title mb-3 text-danger">
-                                            {user?.stats ? user.stats.incorrect_count : 'N/A...'} 
+                                            {user?.stats ? user.stats.incorrect_count : 'N/A'} 
                                         </h2> */}
                                         { /* <p className="card-text text-muted">Incorrect Diagnoises</p> */}
-                                          <Bar options={options} data={data} />
+                                          <Bar options={optionsBar} data={dataBar} />
                                     </div>
                                 </div>
                             </div>
@@ -171,13 +195,18 @@ export default function Menu() {
                                         <div className="display-4 text-danger mb-2">
                                             <i className="bi bi-clock-history"></i>
                                         </div>
-                                        <h2 className="card-title mb-3">
+                                       {/* <h2 className="card-title mb-3">
                                             {user?.stats
                                                 ? (user.stats.correct_ratio * 100).toFixed(2)
-                                                : 'N/A'}
+                                                : 'N/A...'}
                                             %
                                         </h2>
-                                        <p className="card-text text-muted">Success Rate</p>
+                                        <p className="card-text text-muted">Success Rate</p> */}
+                                        <div style={{
+                                            height: '100px'
+                                        }}>
+                                        <Pie data={dataPie} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
