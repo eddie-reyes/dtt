@@ -34,7 +34,7 @@ export const optionsBar = {
       borderWidth: 2,
     },
   },
-  responsive: true,
+  /* responsive: true, */ 
   plugins: {
     legend: {
       display: false,
@@ -42,16 +42,22 @@ export const optionsBar = {
     },
     title: {
       display: true,
-      text: 'Chart.js Horizontal Bar Chart',
+      text: 'Patient Treatment',
     },
   },
 };
 
 export const optionsPie = {
+    plugins: {
     legend: {
         position: 'right',
-    }
-}
+    },
+    title: {
+      display: true,
+      text: 'Success Rate',
+    },
+}, 
+}; 
 
 const labelsBar = ['Empathy', 'Professionalism', 'Overall'];
 const labelsPie = ['Incorrect', 'Correct'];
@@ -203,9 +209,11 @@ export default function Menu() {
                                         </h2>
                                         <p className="card-text text-muted">Success Rate</p> */}
                                         <div style={{
-                                            height: '100px'
+                                            height: '250px',
+                                            display: 'flex',
+                                            justifyContent: 'center',
                                         }}>
-                                        <Pie data={dataPie} />
+                                        <Pie data={dataPie} options={optionsPie}/>
                                         </div>
                                     </div>
                                 </div>
