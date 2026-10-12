@@ -98,7 +98,7 @@ export default function Menu() {
                                             <i className="bi bi-star"></i>
                                         </div>
                                         <h2 className="card-title mb-3 text-danger">
-                                            {user?.stats ? user.stats.incorrect_count : 'N/A'}
+                                            {user?.stats ? user.stats.incorrect_count : 'N/A...'}
                                         </h2>
                                         <p className="card-text text-muted">Incorrect Diagnoises</p>
                                     </div>
