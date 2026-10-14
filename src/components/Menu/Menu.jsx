@@ -15,7 +15,6 @@ import {
   ArcElement,
 } from 'chart.js';
 import { Bar, Pie } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
 
 ChartJS.register(
   CategoryScale,
@@ -43,11 +42,19 @@ export const optionsBar = {
     title: {
       display: true,
       text: 'Patient Treatment',
+      color: '#4697B6', 
+    font: {
+        size: 23, 
+        weight: 'bold', 
+        family: "'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'",
+      }
     },
   },
 };
 
 export const optionsPie = {
+    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
     legend: {
         position: 'right',
@@ -55,6 +62,13 @@ export const optionsPie = {
     title: {
       display: true,
       text: 'Success Rate',
+      align: 'center',
+      color: '#4697B6', /* Can't use CSS variables here */
+      font: {
+        size: 23, 
+        weight: 'bold', 
+        family: "'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'",
+      }
     },
 }, 
 }; 
@@ -135,7 +149,7 @@ export default function Menu() {
                             style={{
                                 background: 'var(--stats-background)',
                                 border: '1px solid var(--dark-border)', 
-                                height: '75vh', 
+                                height: '75vh', /* Migher cause problem */ 
                                 position: 'relative',
                                 right: '15px', 
                                 borderRadius: '5px',
@@ -212,6 +226,7 @@ export default function Menu() {
                                             height: '250px',
                                             display: 'flex',
                                             justifyContent: 'center',
+                                            alignItems: 'center',
                                         }}>
                                         <Pie data={dataPie} options={optionsPie}/>
                                         </div>
