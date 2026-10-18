@@ -145,24 +145,10 @@ export default function Menu() {
         />
             <div className="d-flex"> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
                     <div className="container p-5 flex-grow-1">
-                        <div className="row row-cols-1 row-cols-md-2 g-4"
-                            style={{
-                                background: 'var(--stats-background)',
-                                border: '1px solid var(--dark-border)', 
-                                height: '75vh', /* Migher cause problem */ 
-                                position: 'relative',
-                                right: '15px', 
-                                borderRadius: '5px',
-                                paddingBottom: '35px',
-                                overflowY: 'auto',
-                            }}
-                        > {/* row row-cols-1 row-cols-md-4 g-4 */}
+                        <div className={`row row-cols-1 row-cols-md-2 g-4 ${styles.statsContainer}`}> 
+                            {/* row row-cols-1 row-cols-md-4 g-4 */}
                             <div className="col">
-                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
-                                 style={{
-                                    minHeight: '280px',
-                                }}
-                                > {/* "card h-100 text-center shadow" */}
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}> {/* "card h-100 text-center shadow" */}
                                     <div className="card-body">
                                         <div className="display-4 text-primary mb-2">
                                             <i className="bi bi-people"></i>
@@ -178,11 +164,7 @@ export default function Menu() {
                             </div>
 
                             <div className="col">
-                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
-                                style={{
-                                    minHeight: '280px',
-                                }}
-                                >
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}>
                                     <div className="card-body">
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
@@ -196,11 +178,7 @@ export default function Menu() {
                             </div>
 
                             <div className="col">
-                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
-                                style={{
-                                    minHeight: '280px',
-                                }}
-                                >
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}>
                                     <div className="card-body">
                                         <div className="display-4 text-warning mb-2">
                                             <i className="bi bi-star"></i>
@@ -215,11 +193,7 @@ export default function Menu() {
                             </div>
 
                             <div className="col">
-                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
-                                style={{
-                                    minHeight: '280px',
-                                }}
-                                >
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}>
                                     <div className="card-body">
                                         <div className="display-4 text-danger mb-2">
                                             <i className="bi bi-clock-history"></i>
@@ -244,11 +218,7 @@ export default function Menu() {
                             </div>
 
                             <div className="col">
-                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
-                                    style={{
-                                        minHeight: '280px',
-                                    }}
-                                >
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}>
                                     <div className="card-body">
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
@@ -262,11 +232,7 @@ export default function Menu() {
                             </div>
 
                             <div className="col">
-                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
-                                    style={{
-                                    minHeight: '280px',
-                                    }}
-                                >
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}>
                                     <div className="card-body">
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
@@ -280,11 +246,7 @@ export default function Menu() {
                             </div>  
 
                                 <div className="col">
-                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
-                                    style={{
-                                        minHeight: '280px',
-                                    }}
-                                    >
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}>
                                     <div className="card-body">
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
@@ -298,11 +260,7 @@ export default function Menu() {
                             </div>
 
                                 <div className="col">
-                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
-                                    style={{
-                                        minHeight: '280px',
-                                    }}
-                                >
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}>
                                     <div className="card-body">
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>

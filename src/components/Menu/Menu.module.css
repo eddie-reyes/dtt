@@ -25,7 +25,22 @@ body{
     font-weight: bold;
 }
 
+.statsContainer{
+    background: var(--stats-background);
+    border: 1px solid var(--dark-border); 
+    height: 75vh; /* Migher cause problem */ 
+    position: relative;
+    right: 15px; 
+    border-radius: 5px;
+    padding-bottom: 35px;
+    overflow-y: auto;
+    scrollbar-color: var(--grey-border) transparent; 
+    /* scrollbar-width: initial; */ 
+}
+
 .statsCard{
      background: var(--default-div);
     border: 1px solid var(--dark-border);
+    min-height: 280px; 
 }
+
