@@ -154,6 +154,7 @@ export default function Menu() {
                                 right: '15px', 
                                 borderRadius: '5px',
                                 paddingBottom: '35px',
+                                overflowY: 'auto',
                             }}
                         > {/* row row-cols-1 row-cols-md-4 g-4 */}
                             <div className="col">
@@ -177,7 +178,11 @@ export default function Menu() {
                             </div>
 
                             <div className="col">
-                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}>
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
+                                style={{
+                                    minHeight: '280px',
+                                }}
+                                >
                                     <div className="card-body">
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
@@ -210,7 +215,11 @@ export default function Menu() {
                             </div>
 
                             <div className="col">
-                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}>
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
+                                style={{
+                                    minHeight: '280px',
+                                }}
+                                >
                                     <div className="card-body">
                                         <div className="display-4 text-danger mb-2">
                                             <i className="bi bi-clock-history"></i>
@@ -233,6 +242,79 @@ export default function Menu() {
                                     </div>
                                 </div>
                             </div>
+
+                            <div className="col">
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
+                                    style={{
+                                        minHeight: '280px',
+                                    }}
+                                >
+                                    <div className="card-body">
+                                        <div className="display-4 text-success mb-2">
+                                            <i className="bi bi-graph-up"></i>
+                                        </div>
+                                        <h2 className="card-title mb-3 text-success">
+                                            {user?.stats ? user.stats.correct_count : 'N/A'}
+                                        </h2>
+                                        <p className="card-text text-muted">Correct Diagnoises</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col">
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
+                                    style={{
+                                    minHeight: '280px',
+                                    }}
+                                >
+                                    <div className="card-body">
+                                        <div className="display-4 text-success mb-2">
+                                            <i className="bi bi-graph-up"></i>
+                                        </div>
+                                        <h2 className="card-title mb-3 text-success">
+                                            {user?.stats ? user.stats.correct_count : 'N/A'}
+                                        </h2>
+                                        <p className="card-text text-muted">Correct Diagnoises</p>
+                                    </div>
+                                </div>
+                            </div>  
+
+                                <div className="col">
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
+                                    style={{
+                                        minHeight: '280px',
+                                    }}
+                                    >
+                                    <div className="card-body">
+                                        <div className="display-4 text-success mb-2">
+                                            <i className="bi bi-graph-up"></i>
+                                        </div>
+                                        <h2 className="card-title mb-3 text-success">
+                                            {user?.stats ? user.stats.correct_count : 'N/A'}
+                                        </h2>
+                                        <p className="card-text text-muted">Correct Diagnoises</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div className="col">
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}
+                                    style={{
+                                        minHeight: '280px',
+                                    }}
+                                >
+                                    <div className="card-body">
+                                        <div className="display-4 text-success mb-2">
+                                            <i className="bi bi-graph-up"></i>
+                                        </div>
+                                        <h2 className="card-title mb-3 text-success">
+                                            {user?.stats ? user.stats.correct_count : 'N/A'}
+                                        </h2>
+                                        <p className="card-text text-muted">Correct Diagnoises</p>
+                                    </div>
+                                </div>
+                            </div>  
+                            {/* Add more here  */}
                         </div>
                     </div> 
                 <div
