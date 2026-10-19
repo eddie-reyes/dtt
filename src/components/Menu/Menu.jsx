@@ -31,7 +31,7 @@ ChartJS.register(
   LineElement
 );
 
-export const optionsBar = {
+export const optionsBarh = {
   indexAxis: 'y',
   elements: {
     bar: {
@@ -104,11 +104,11 @@ plugins: {
    
 };
 
-const labelsBar = ['Empathy', 'Professionalism', 'Overall'];
+const labelsBarh = ['Empathy', 'Professionalism', 'Overall'];
 const labelsPie = ['Incorrect', 'Correct'];
 
- export const dataBar = {
-  labels: labelsBar,
+ export const dataBarh = {
+  labels: labelsBarh,
   datasets: [
     {
       /* data: labelsBar.map(() => faker.number.int({ min: 0, max: 10 })), */ 
@@ -227,7 +227,7 @@ export default function Menu() {
                                             {user?.stats ? user.stats.incorrect_count : 'N/A'} 
                                         </h2> */}
                                         { /* <p className="card-text text-muted">Incorrect Diagnoises</p> */}
-                                          <Bar options={optionsBar} data={dataBar} />
+                                          <Bar options={optionsBarh} data={dataBarh} />
                                     </div>
                                 </div>
                             </div>
