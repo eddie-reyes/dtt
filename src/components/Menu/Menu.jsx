@@ -17,6 +17,7 @@ import {
   LineElement,
 } from 'chart.js';
 import { Bar, Pie, Scatter } from 'react-chartjs-2';
+import { _angleBetween } from 'chart.js/helpers';
 
 ChartJS.register(
   CategoryScale,
@@ -79,10 +80,28 @@ export const optionsPie = {
 
 export const optionsScatter = {
   scales: {
-    y: {
+    y: [{
       beginAtZero: true,
-    },
+      scaleLabel: {display: true, labelString: 'Diagnosis'}
+    }],
   },
+plugins: {
+    title: {
+      display: true,
+      text: 'Diagnosis vs Communication',
+      align: 'center',
+      color: '#4697B6', /* Can't use CSS variables here */
+      font: {
+        size: 23, 
+        weight: 'bold', 
+        family: "'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'",
+      }
+    },
+    legend: {
+        display: false
+    },
+}, 
+   
 };
 
 const labelsBar = ['Empathy', 'Professionalism', 'Overall'];
@@ -92,7 +111,6 @@ const labelsPie = ['Incorrect', 'Correct'];
   labels: labelsBar,
   datasets: [
     {
-      label: labelsBar,
       /* data: labelsBar.map(() => faker.number.int({ min: 0, max: 10 })), */ 
       data: [25, 50, 30],
       borderColor: 'rgb(53, 162, 235)',
@@ -123,7 +141,7 @@ export const dataPie = {
 export const dataScatter = {
   datasets: [
     {
-      label: 'A dataset',
+      /* label: 'A dataset', */ 
       data: [[100, 200], [300, 400], [500, 600], [700, 800]],
       backgroundColor: 'rgba(54, 162, 235, 1)',
     },
