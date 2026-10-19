@@ -13,8 +13,10 @@ import {
   Tooltip,
   Legend,
   ArcElement,
+  PointElement,
+  LineElement,
 } from 'chart.js';
-import { Bar, Pie } from 'react-chartjs-2';
+import { Bar, Pie, Scatter } from 'react-chartjs-2';
 
 ChartJS.register(
   CategoryScale,
@@ -23,7 +25,9 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend, 
-  ArcElement
+  ArcElement,
+  PointElement,
+  LineElement
 );
 
 export const optionsBar = {
@@ -73,6 +77,14 @@ export const optionsPie = {
 }, 
 }; 
 
+export const optionsScatter = {
+  scales: {
+    y: {
+      beginAtZero: true,
+    },
+  },
+};
+
 const labelsBar = ['Empathy', 'Professionalism', 'Overall'];
 const labelsPie = ['Incorrect', 'Correct'];
 
@@ -80,7 +92,7 @@ const labelsPie = ['Incorrect', 'Correct'];
   labels: labelsBar,
   datasets: [
     {
-      label: 'Dataset 1',
+      label: labelsBar,
       /* data: labelsBar.map(() => faker.number.int({ min: 0, max: 10 })), */ 
       data: [25, 50, 30],
       borderColor: 'rgb(53, 162, 235)',
@@ -104,6 +116,16 @@ export const dataPie = {
         'rgba(153, 102, 255, 1)',
       ],
       borderWidth: 1,
+    },
+  ],
+};
+
+export const dataScatter = {
+  datasets: [
+    {
+      label: 'A dataset',
+      data: [[100, 200], [300, 400], [500, 600], [700, 800]],
+      backgroundColor: 'rgba(54, 162, 235, 1)',
     },
   ],
 };
@@ -223,10 +245,11 @@ export default function Menu() {
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
                                         </div>
-                                        <h2 className="card-title mb-3 text-success">
+                                       {/* <h2 className="card-title mb-3 text-success">
                                             {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
-                                        <p className="card-text text-muted">Correct Diagnoises</p>
+                                        <p className="card-text text-muted">Correct Diagnoises</p> */}
+                                        <Scatter options={optionsScatter} data={dataScatter}/>
                                     </div>
                                 </div>
                             </div>
