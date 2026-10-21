@@ -57,6 +57,25 @@ export const optionsBarh = {
   },
 };
 
+export const optionsBarv = {
+  responsive: true,
+  plugins: {
+    legend: {
+      display: false,
+    },
+    title: {
+      display: true,
+      text: 'Average Time to Diagnose:',
+      color: '#4697B6',
+    font: {
+        size: 23, 
+        weight: 'bold', 
+        family: "'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'",
+      }
+    },
+  },
+};
+
 export const optionsPie = {
     responsive: true,
     maintainAspectRatio: false,
@@ -106,6 +125,7 @@ plugins: {
 
 const labelsBarh = ['Empathy', 'Professionalism', 'Overall'];
 const labelsPie = ['Incorrect', 'Correct'];
+const labelsBarv = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; 
 
  export const dataBarh = {
   labels: labelsBarh,
@@ -118,6 +138,19 @@ const labelsPie = ['Incorrect', 'Correct'];
     },
   ],
 }; 
+
+ export const dataBarv = {
+  labels: labelsBarv,
+  datasets: [
+    {
+      /* label: 'Dataset 1', */ 
+      data: ['1', '2', '3', '4', '5', '6', '7'],
+      /* borderColor: 'rgb(53, 162, 235)', */ 
+      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    },
+  ],
+}; 
+
 
 export const dataPie = {
   labels: labelsPie,
@@ -278,10 +311,11 @@ export default function Menu() {
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
                                         </div>
-                                        <h2 className="card-title mb-3 text-success">
+                                        {/*<h2 className="card-title mb-3 text-success">
                                             {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
-                                        <p className="card-text text-muted">Correct Diagnoises</p>
+                                        <p className="card-text text-muted">Correct Diagnoises</p> */}
+                                        <Bar options={optionsBarv} data={dataBarv}/> 
                                     </div>
                                 </div>
                             </div>  
