@@ -43,7 +43,7 @@ const baseOptions = {
       }
 }; 
 
-export const optionsBarh = { 
+export const optionsBarh = (title) =>  ({ 
   indexAxis: 'y',
   elements: {
     bar: {
@@ -58,12 +58,12 @@ export const optionsBarh = {
     },
     title: {
     ...baseOptions,
-    text: 'Patient Treatment',
+    text: title,
     },
   },
-};
+});
 
-export const optionsBarv = {
+export const optionsBarv = (title) => ({
   responsive: true,
   plugins: {
     legend: {
@@ -71,10 +71,10 @@ export const optionsBarv = {
     },
     title: {
     ...baseOptions,
-    text: 'Average Time to Diagnose:',
+    text: title,
     },
   },
-};
+});
 
 export const optionsPie = {
     responsive: true,
@@ -246,7 +246,7 @@ export default function Menu() {
                                             {user?.stats ? user.stats.incorrect_count : 'N/A'} 
                                         </h2> */}
                                         { /* <p className="card-text text-muted">Incorrect Diagnoises</p> */}
-                                          <Bar options={optionsBarh} data={dataBarh} />
+                                          <Bar options={optionsBarh('Patient Treatment')} data={dataBarh} />
                                     </div>
                                 </div>
                             </div>
@@ -301,7 +301,7 @@ export default function Menu() {
                                             {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
                                         <p className="card-text text-muted">Correct Diagnoises</p> */}
-                                        <Bar options={optionsBarv} data={dataBarv}/> 
+                                        <Bar options={optionsBarv('Average Time to Diagnose')} data={dataBarv}/> 
                                     </div>
                                 </div>
                             </div>  
@@ -316,7 +316,7 @@ export default function Menu() {
                                             {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
                                         <p className="card-text text-muted">Correct Diagnoises</p> */}
-                                        <Bar options={optionsBarh} data={dataBarh}/> 
+                                        <Bar options={optionsBarh('# of Correct Diagnoses')} data={dataBarh}/> 
                                     </div>
                                 </div>
                             </div>
@@ -331,7 +331,7 @@ export default function Menu() {
                                             {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
                                         <p className="card-text text-muted">Correct Diagnoises</p>*/}
-                                        <Bar options={optionsBarv} data={dataBarv}/> 
+                                        <Bar options={optionsBarv('Avg Amount of Questions Asked')} data={dataBarv}/> 
                                     </div>
                                 </div>
                             </div>  
