@@ -31,7 +31,19 @@ ChartJS.register(
   LineElement
 );
 
-export const optionsBarh = {
+// Make a base Options Spread Operator and Add All of this
+// Basic Info to All Graphs 
+const baseOptions = {
+      display: true,
+      color: '#4697B6', 
+    font: {
+        size: 23, 
+        weight: 'bold', 
+        family: "'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'",
+      }
+}; 
+
+export const optionsBarh = { 
   indexAxis: 'y',
   elements: {
     bar: {
@@ -45,14 +57,8 @@ export const optionsBarh = {
       /*position: 'right',*/
     },
     title: {
-      display: true,
-      text: 'Patient Treatment',
-      color: '#4697B6', 
-    font: {
-        size: 23, 
-        weight: 'bold', 
-        family: "'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'",
-      }
+    ...baseOptions,
+    text: 'Patient Treatment',
     },
   },
 };
@@ -64,14 +70,8 @@ export const optionsBarv = {
       display: false,
     },
     title: {
-      display: true,
-      text: 'Average Time to Diagnose:',
-      color: '#4697B6',
-    font: {
-        size: 23, 
-        weight: 'bold', 
-        family: "'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'",
-      }
+    ...baseOptions,
+    text: 'Average Time to Diagnose:',
     },
   },
 };
@@ -84,15 +84,8 @@ export const optionsPie = {
         position: 'right',
     },
     title: {
-      display: true,
+      ...baseOptions,
       text: 'Success Rate',
-      align: 'center',
-      color: '#4697B6', /* Can't use CSS variables here */
-      font: {
-        size: 23, 
-        weight: 'bold', 
-        family: "'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'",
-      }
     },
 }, 
 }; 
@@ -106,15 +99,9 @@ export const optionsScatter = {
   },
 plugins: {
     title: {
-      display: true,
+      ...baseOptions,
       text: 'Diagnosis vs Communication',
       align: 'center',
-      color: '#4697B6', /* Can't use CSS variables here */
-      font: {
-        size: 23, 
-        weight: 'bold', 
-        family: "'Inter', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'",
-      }
     },
     legend: {
         display: false
@@ -156,7 +143,6 @@ export const dataPie = {
   labels: labelsPie,
   datasets: [
     {
-      label: '# of Votes',
       data: [12, 19],
       backgroundColor: [
         'rgba(54, 162, 235, 0.2)',
