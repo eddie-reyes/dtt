@@ -110,37 +110,35 @@ plugins: {
    
 };
 
-const labelsBarh = ['Empathy', 'Professionalism', 'Overall'];
-const labelsPie = ['Incorrect', 'Correct'];
 const labelsBarv = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; 
 
- export const dataBarh = {
-  labels: labelsBarh,
+ export const dataBarh = (labels, data) => ({
+  labels: labels,
   datasets: [
     {
       /* data: labelsBar.map(() => faker.number.int({ min: 0, max: 10 })), */ 
-      data: [25, 50, 30],
+      data: data,
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
     },
   ],
-}; 
+}); 
 
- export const dataBarv = {
-  labels: labelsBarv,
+ export const dataBarv = (labels, data) => ({
+  labels: labels,
   datasets: [
     {
       /* label: 'Dataset 1', */ 
-      data: ['1', '2', '3', '4', '5', '6', '7'],
+      data: data,
       /* borderColor: 'rgb(53, 162, 235)', */ 
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
     },
   ],
-}; 
+}); 
 
 
 export const dataPie = {
-  labels: labelsPie,
+  labels: ['Incorrect', 'Correct'],
   datasets: [
     {
       data: [12, 19],
@@ -246,7 +244,7 @@ export default function Menu() {
                                             {user?.stats ? user.stats.incorrect_count : 'N/A'} 
                                         </h2> */}
                                         { /* <p className="card-text text-muted">Incorrect Diagnoises</p> */}
-                                          <Bar options={optionsBarh('Patient Treatment')} data={dataBarh} />
+                                          <Bar options={optionsBarh('Patient Treatment')} data={dataBarh(['Empathy', 'Professionalism', 'Overall'], [25, 50, 30])} />
                                     </div>
                                 </div>
                             </div>
@@ -301,7 +299,7 @@ export default function Menu() {
                                             {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
                                         <p className="card-text text-muted">Correct Diagnoises</p> */}
-                                        <Bar options={optionsBarv('Average Time to Diagnose')} data={dataBarv}/> 
+                                        <Bar options={optionsBarv('Average Time to Diagnose')} data={dataBarv(labelsBarv, ['1', '2', '3', '4', '5', '6', '7'])}/> 
                                     </div>
                                 </div>
                             </div>  
@@ -316,7 +314,7 @@ export default function Menu() {
                                             {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
                                         <p className="card-text text-muted">Correct Diagnoises</p> */}
-                                        <Bar options={optionsBarh('# of Correct Diagnoses')} data={dataBarh}/> 
+                                        <Bar options={optionsBarh('# of Correct Diagnoses')} data={dataBarh(['GERD', 'Anxiety', 'Flu', 'Migraine'], [25, 50, 30, 40])}/> 
                                     </div>
                                 </div>
                             </div>
@@ -331,7 +329,7 @@ export default function Menu() {
                                             {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
                                         <p className="card-text text-muted">Correct Diagnoises</p>*/}
-                                        <Bar options={optionsBarv('Avg Amount of Questions Asked')} data={dataBarv}/> 
+                                        <Bar options={optionsBarv('Avg Amount of Questions Asked')} data={dataBarv(labelsBarv, ['1', '2', '3', '4', '5', '6', '7'])}/> 
                                     </div>
                                 </div>
                             </div>  
