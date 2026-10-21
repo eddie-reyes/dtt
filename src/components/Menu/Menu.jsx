@@ -326,10 +326,11 @@ export default function Menu() {
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
                                         </div>
-                                        <h2 className="card-title mb-3 text-success">
+                                        {/* <h2 className="card-title mb-3 text-success">
                                             {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
-                                        <p className="card-text text-muted">Correct Diagnoises</p>
+                                        <p className="card-text text-muted">Correct Diagnoises</p> */}
+                                        <Bar options={optionsBarh} data={dataBarh}/> 
                                     </div>
                                 </div>
                             </div>
@@ -340,10 +341,11 @@ export default function Menu() {
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
                                         </div>
-                                        <h2 className="card-title mb-3 text-success">
+                                        {/* <h2 className="card-title mb-3 text-success">
                                             {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
-                                        <p className="card-text text-muted">Correct Diagnoises</p>
+                                        <p className="card-text text-muted">Correct Diagnoises</p>*/}
+                                        <Bar options={optionsBarv} data={dataBarv}/> 
                                     </div>
                                 </div>
                             </div>  
