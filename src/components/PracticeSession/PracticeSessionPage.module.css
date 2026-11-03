@@ -7,20 +7,27 @@
     min-height: 100vh;
     background: #e6ecf5;
     box-sizing: border-box;
+    color: var(--dark-text); 
 }
 
 /* most likely dont need */
-.leftPanel,
+#leftPanel,
 .middlePanel,
-.rightPanel {
+#rightPanel {
     box-sizing: border-box;
 }
 
-.leftPanel {
+.Panel{
+    background: var(--default-div); 
+    border-radius: 24px;
+}
+
+#leftPanel {
     width: 30%;
-    background: #2d86a6;
-    color: white;
-    border-radius: 20px;
+    /* background: #2d86a6; */ 
+    /* background: var(--default-div); */ 
+    /* color: white; */ 
+    /* border-radius: 20px; */ 
     padding: 20px;
     text-align: center;
 
@@ -97,11 +104,11 @@
     background: #1e4fd1;
 }
 
-.rightPanel {
+#rightPanel {
     /* width: 40%; */
-    background: #2d86a6;
+    /* background: #2d86a6; */ 
     border-radius: 24px;
-    color: white;
+    /* color: white; */ 
     display: flex;
     flex-direction: column;
     min-height: 80vh;

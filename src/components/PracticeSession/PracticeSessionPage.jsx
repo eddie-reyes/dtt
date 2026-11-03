@@ -99,7 +99,7 @@ export default function PracticeSession() {
 
     return (
         <div className={`container-fluid ${styles.practicePage}`}>
-            <div className={styles.leftPanel}>
+            <div className={styles.Panel} id={styles.leftPanel}> {/* className={styles.leftPanel} */}
                 <h2>How to start:</h2>
                 {/* Placeholder for Diagnosis */}
                 <ol className={styles.instructions}>
@@ -239,7 +239,7 @@ export default function PracticeSession() {
             )}
 
             <div className="col-md-4">
-                <div className={`${styles.rightPanel} h-100 p-4`}>
+                <div className={`${styles.Panel} h-100 p-4`} id={styles.rightPanel}>
                     <ul className="list-group list-group-flush" ref={messagesListRef}>
                         {messages.map((message, index) =>
                             index % 2 === 0 ? (
