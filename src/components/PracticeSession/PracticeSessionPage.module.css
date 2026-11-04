@@ -8,6 +8,7 @@
     background: #e6ecf5;
     box-sizing: border-box;
     color: var(--dark-text); 
+    /* position: relative; */ 
 }
 
 /* most likely dont need */
@@ -20,22 +21,32 @@
 .Panel{
     background: var(--default-div); 
     border-radius: 24px;
+    border: 1px, solid, var(--dark-text); 
 }
 
+.panelElem{
+    background: var(--panel-element-background); 
+}
+
+/* #panelFooter{
+     position: absolute; 
+    bottom: 0;  
+} */ 
+
 #leftPanel {
-    width: 30%;
+     width: 30%; 
     /* background: #2d86a6; */ 
     /* background: var(--default-div); */ 
     /* color: white; */ 
     /* border-radius: 20px; */ 
     padding: 20px;
-    text-align: center;
+    text-align: center; 
 
-    display: flex;
+     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 16px; 
 }
 
 .instructions {
@@ -90,9 +101,11 @@
 }
 
 .mainButtonPrimary {
-    background: #2563eb;
-    color: white;
-    border: none;
+    /*background: #2563eb; */ 
+    /* color: white; */ 
+    background: var(--default-btn); 
+    /* border: none; */ 
+    border: 1px, solid, var(--dark-text); 
     border-radius: 18px;
     padding: 16px 22px;
     width: 280px;
@@ -101,13 +114,16 @@
 }
 
 .mainButtonPrimary:hover {
-    background: #1e4fd1;
+    /* background: #1e4fd1; */ 
+    background: var(--special-btn); 
+    border: 1px, solid, var(--dark-text); 
+    transition: 0.3s;
 }
 
 #rightPanel {
     /* width: 40%; */
     /* background: #2d86a6; */ 
-    border-radius: 24px;
+    /* border-radius: 24px; */ 
     /* color: white; */ 
     display: flex;
     flex-direction: column;

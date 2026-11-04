@@ -100,8 +100,8 @@ export default function PracticeSession() {
     return (
         <div className={`container-fluid ${styles.practicePage}`}>
             <div className={styles.Panel} id={styles.leftPanel}> {/* className={styles.leftPanel} */}
-                <h2>How to start:</h2>
-                {/* Placeholder for Diagnosis */}
+                 {/* Placeholder for Diagnosis */}
+                {/* <h2>How to start:</h2>
                 <ol className={styles.instructions}>
                     <li>
                         <strong>Review the Patient Chart</strong>
@@ -127,7 +127,14 @@ export default function PracticeSession() {
                         <strong>Submit Diagnosis</strong>
                         <p>Select the most accurate diagnosis before time runs out.</p>
                     </li>
-                </ol>
+                </ol> */}
+                <div>
+                    <h2>Disease</h2>
+                    <br/>
+                    <input type="text" placeholder="Search..."/>
+                    <button>Search</button> {/* Add Icon Later */}
+                </div>
+                <div id={styles.panelFooter} className={styles.panelElem}>
                 <button
                     className={`btn ${styles.mainButtonPrimary}`}
                     onClick={() => {
@@ -137,6 +144,7 @@ export default function PracticeSession() {
                 >
                     Make a Diagnosis
                 </button>
+                </div>
             </div>
 
             <div className="col-md-4">

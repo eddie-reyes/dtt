@@ -18,6 +18,7 @@
   --default-div: linear-gradient(#F1F9FF, #D5EDFF); 
   --stats-background:linear-gradient(#B2DFFF, #CDEAFF);
   --background-color: linear-gradient(to right, #D2EEF1, #F1F9FF); 
+  --panel-element-background: linear-gradient(to right, #AEDDFF, #CEEAFF); 
 
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
