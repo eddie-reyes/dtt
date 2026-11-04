@@ -12,22 +12,26 @@
 }
 
 /* most likely dont need */
-/* #leftPanel,
+ #leftPanel,
 .middlePanel,
 #rightPanel {
     box-sizing: border-box;
-} */ 
+} 
 
  .Panel{
     background: var(--default-div); 
     border-radius: 24px;
-    border: 1px, solid, var(--dark-text);
+    border: 1px solid var(--dark-text);
     overflow: hidden;
 } 
 
 .panelElem{
     background: var(--panel-element-background);
     padding: 20px;  
+}
+
+.panelHeader{
+    border-bottom: 1px solid var(--dark-text);
 }
 
 #panelFooter{
@@ -143,6 +147,9 @@
     /* background: #2d86a6; */ 
     /* border-radius: 24px; */ 
     /* color: white; */ 
+    background: #2d86a6; 
+    border-radius: 24px; 
+    color: white; 
     display: flex;
     flex-direction: column;
     min-height: 80vh;

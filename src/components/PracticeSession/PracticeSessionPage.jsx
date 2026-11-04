@@ -249,7 +249,7 @@ export default function PracticeSession() {
             )}
 
             <div className="col-md-4">
-                <div className={`${styles.Panel} h-100 p-4`} id={styles.rightPanel}>
+                <div className={`h-100 p-4`} id={styles.rightPanel}> {/* ${styles.Panel} */}
                     <ul className="list-group list-group-flush" ref={messagesListRef}>
                         {messages.map((message, index) =>
                             index % 2 === 0 ? (
