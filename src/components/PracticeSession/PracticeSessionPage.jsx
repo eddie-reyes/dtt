@@ -128,7 +128,7 @@ export default function PracticeSession() {
                         <p>Select the most accurate diagnosis before time runs out.</p>
                     </li>
                 </ol> */}
-                <div>
+                <div className={`${styles.panelElem} ${styles.panelHeader}`}>
                     <h2>Disease</h2>
                     <br/>
                     <input type="text" placeholder="Search..."/>

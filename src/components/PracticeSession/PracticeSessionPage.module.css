@@ -18,20 +18,25 @@
     box-sizing: border-box;
 }
 
-.Panel{
+ .Panel{
     background: var(--default-div); 
     border-radius: 24px;
-    border: 1px, solid, var(--dark-text); 
-}
+    border: 1px, solid, var(--dark-text);
+    overflow: hidden;
+} 
 
 .panelElem{
     background: var(--panel-element-background); 
 }
 
-/* #panelFooter{
+#panelFooter{
      position: absolute; 
-    bottom: 0;  
-} */ 
+    bottom: 20px;  
+} 
+
+ .panelHeader{
+    padding-top: 20px; 
+} 
 
 #leftPanel {
      width: 30%; 
@@ -39,14 +44,14 @@
     /* background: var(--default-div); */ 
     /* color: white; */ 
     /* border-radius: 20px; */ 
-    padding: 20px;
+    /* padding: 20px; */ 
     text-align: center; 
 
-     display: flex;
+ /*    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px; 
+    gap: 16px; */ 
 }
 
 .instructions {
