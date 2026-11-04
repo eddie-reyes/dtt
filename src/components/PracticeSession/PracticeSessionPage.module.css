@@ -12,11 +12,11 @@
 }
 
 /* most likely dont need */
-#leftPanel,
+/* #leftPanel,
 .middlePanel,
 #rightPanel {
     box-sizing: border-box;
-}
+} */ 
 
  .Panel{
     background: var(--default-div); 
@@ -26,17 +26,31 @@
 } 
 
 .panelElem{
-    background: var(--panel-element-background); 
+    background: var(--panel-element-background);
+    padding: 20px;  
 }
 
 #panelFooter{
-     position: absolute; 
-    bottom: 20px;  
+    position: sticky;
+    top: 770px; 
+    padding: 20px; 
+    border-top: 1px solid var(--dark-text); 
 } 
 
- .panelHeader{
-    padding-top: 20px; 
-} 
+#searchContainer{
+    position: relative; 
+    top: -20px; 
+}
+
+#searchContainer input{
+    margin-right: 20px; 
+}
+
+.Panel button{
+    background: var(--default-btn);
+    border: 1px solid var(--dark-text); 
+    border-radius: 10px;
+}
 
 #leftPanel {
      width: 30%; 
@@ -108,17 +122,16 @@
 .mainButtonPrimary {
     /*background: #2563eb; */ 
     /* color: white; */ 
-    background: var(--default-btn); 
     /* border: none; */ 
-    border: 1px, solid, var(--dark-text); 
-    border-radius: 18px;
+    /* border-radius: 18px; */ 
     padding: 16px 22px;
     width: 280px;
     font-size: 1.2rem;
     font-weight: 700;
+    margin-left: 30px; 
 }
 
-.mainButtonPrimary:hover {
+.Panel button:hover {
     /* background: #1e4fd1; */ 
     background: var(--special-btn); 
     border: 1px, solid, var(--dark-text); 

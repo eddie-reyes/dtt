@@ -131,8 +131,10 @@ export default function PracticeSession() {
                 <div className={`${styles.panelElem} ${styles.panelHeader}`}>
                     <h2>Disease</h2>
                     <br/>
-                    <input type="text" placeholder="Search..."/>
-                    <button>Search</button> {/* Add Icon Later */}
+                    <div id={styles.searchContainer}>
+                        <input type="text" placeholder="Search..."/>
+                        <button>Search</button> {/* Add Icon Later */}
+                    </div>
                 </div>
                 <div id={styles.panelFooter} className={styles.panelElem}>
                 <button
