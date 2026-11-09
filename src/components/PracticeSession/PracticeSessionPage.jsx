@@ -23,6 +23,15 @@ export default function PracticeSession() {
         questions: '',
     });
 
+
+const updateNoteField = (field, value) => {
+	setNotes((prev) => ({
+		...prev,
+		[field]: value,
+	}))
+}
+
+
     const notesKey = sessionInfo.session_id ? `notes_${sessionInfo.session_id}` : 'notes';
 
     useEffect(() => {
@@ -156,6 +165,17 @@ export default function PracticeSession() {
                         <div className={`text-center ${styles.logoWrapper}`}>
                             <img src="src/assets/logo.png" alt="logo" className={styles.logo} />
                         </div>
+                        {/* Timer - PlaceHolder at the moment */}
+                        <div className={`text-center mb-4 ${styles.timer}`}>
+                            {/* Timer 00:00:00 */}
+                            {!isDiagnosisOpen && (
+                                <Timer
+                                    isRunning={isTimerRunning}
+                                    seconds={seconds}
+                                    setSeconds={setSeconds}
+                                />
+                            )}
+                        </div>
                         {/* Notes */}
                         <div className="d-flex flex-column align-items-center"> {/* gap-5 */}
                                     {/*<h2 style={{ marginBottom: "8px" }}>Notes</h2>
@@ -163,7 +183,7 @@ export default function PracticeSession() {
                                       Track important symptoms and observations
                                     </p> */} 
                                     {patient && (
-                                      <div className="mb-3 p-3 border rounded bg-light">
+                                      <div className={styles.notesTextarea} id={styles.patientInfo}> {/* mb-3 p-3 border rounded bg-light */}
                                         <div className="fw-semibold">{patient.name}</div>
                             
                                         <div className="text-muted small">
@@ -218,6 +238,10 @@ export default function PracticeSession() {
                                           placeholder="Possible diagnosis..."
                                         />
                                       </div>
+                                      <br/> <br/> <br/> 
+                                      <Link to="/menu" className={`btn ${styles.mainButtonPrimary}`} id={styles.backtoMenu}>
+                                        Back to Menu
+                                    </Link>
                                     </div>
                             {/*<Link to="/menu" className={`btn ${styles.mainButton}`}>
                                 Back to Menu
@@ -239,19 +263,6 @@ export default function PracticeSession() {
                 </button> */}
                 
                         </div>
-                        <br/>
-                        {/* Timer - PlaceHolder at the moment */}
-                        <div className={`text-center mb-4 ${styles.timer}`}>
-                            {/* Timer 00:00:00 */}
-                            {!isDiagnosisOpen && (
-                                <Timer
-                                    isRunning={isTimerRunning}
-                                    seconds={seconds}
-                                    setSeconds={setSeconds}
-                                />
-                            )}
-                        </div>
-                        
                     </div>
                 </div>
             </div>
@@ -283,7 +294,7 @@ export default function PracticeSession() {
                                 </p>
                             </div>
                         ) : (
-                            <p>Loading data...</p>
+                                <p>Loading data...</p>
                         )}
                     </div>
                 </div>

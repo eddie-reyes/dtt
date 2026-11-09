@@ -46,7 +46,7 @@
     top: -20px; 
 }
 
-.Panel button{
+.Panel button, #backtoMenu{
     background: var(--default-btn);
     border: 1px solid var(--dark-text); 
     border-radius: 10px;
@@ -131,7 +131,7 @@
     margin-left: 30px; 
 }
 
-.Panel button:hover {
+.Panel button:hover, #backtoMenu:hover {
     /* background: #1e4fd1; */ 
     background: var(--special-btn); 
     border: 1px, solid, var(--dark-text); 
@@ -206,6 +206,10 @@
     border-radius: 10px;
     padding: 8px 12px;
     cursor: pointer;
+}
+
+#patientInfo{
+    background: var(--default-btn); 
 }
 
 .notesTextarea {
