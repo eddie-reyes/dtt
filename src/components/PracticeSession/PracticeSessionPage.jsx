@@ -156,7 +156,7 @@ export default function PracticeSession() {
                         <div className={`text-center ${styles.logoWrapper}`}>
                             <img src="src/assets/logo.png" alt="logo" className={styles.logo} />
                         </div>
-                        {/* Buttons */}
+                        {/* Notes */}
                         <div className="d-flex flex-column align-items-center"> {/* gap-5 */}
                                     {/*<h2 style={{ marginBottom: "8px" }}>Notes</h2>
                                     <p style={{ fontSize: "14px", color: "#6b7280" }}>
@@ -175,7 +175,7 @@ export default function PracticeSession() {
                                         </div>
                                       </div>
                                     )}
-                                    <div className="d-flex flex-column gap-2 mt-3">
+                                    <div className="d-flex flex-column"> {/* gap-2 mt-3*/}
                                       <div>
                                         <label className="fw-semibold small">Symptoms</label>
                                         <textarea
