@@ -156,21 +156,70 @@ export default function PracticeSession() {
                         <div className={`text-center ${styles.logoWrapper}`}>
                             <img src="src/assets/logo.png" alt="logo" className={styles.logo} />
                         </div>
-
-                        {/* Timer - PlaceHolder at the moment */}
-                        <div className={`text-center mb-4 ${styles.timer}`}>
-                            {/* Timer 00:00:00 */}
-                            {!isDiagnosisOpen && (
-                                <Timer
-                                    isRunning={isTimerRunning}
-                                    seconds={seconds}
-                                    setSeconds={setSeconds}
-                                />
-                            )}
-                        </div>
                         {/* Buttons */}
-                        <div className="d-flex flex-column align-items-center gap-5">
-                            <Link to="/menu" className={`btn ${styles.mainButton}`}>
+                        <div className="d-flex flex-column align-items-center"> {/* gap-5 */}
+                                    {/*<h2 style={{ marginBottom: "8px" }}>Notes</h2>
+                                    <p style={{ fontSize: "14px", color: "#6b7280" }}>
+                                      Track important symptoms and observations
+                                    </p> */} 
+                                    {patient && (
+                                      <div className="mb-3 p-3 border rounded bg-light">
+                                        <div className="fw-semibold">{patient.name}</div>
+                            
+                                        <div className="text-muted small">
+                                          {patient.age} years old • {patient.gender}
+                                        </div>
+                            
+                                        <div className="mt-2">
+                                          <strong>Chief Complaint:</strong> {patient.chief_complaint}
+                                        </div>
+                                      </div>
+                                    )}
+                                    <div className="d-flex flex-column gap-2 mt-3">
+                                      <div>
+                                        <label className="fw-semibold small">Symptoms</label>
+                                        <textarea
+                                          className={styles.notesTextarea}
+                                          value={notes.symptoms}
+                                          onChange={(e) => updateNoteField("symptoms", e.target.value)}
+                                          placeholder="Symptoms..."
+                                          rows={2}
+                                        />
+                                      </div>
+                            
+                                      <div>
+                                        <label className="fw-semibold small">History / Medications</label>
+                                        <textarea
+                                          className={styles.notesTextarea}
+                                          value={notes.medications}
+                                          onChange={(e) => updateNoteField("medications", e.target.value)}
+                                          placeholder="History..."
+                                          rows={2}
+                                        />
+                                      </div>
+                            
+                                      <div>
+                                        <label className="fw-semibold small">Observations</label>
+                                        <textarea
+                                          className={styles.notesTextarea}
+                                          value={notes.observations}
+                                          onChange={(e) => updateNoteField("observations", e.target.value)}
+                                          placeholder="Observations..."
+                                          rows={2}
+                                        />
+                                      </div>
+                            
+                                      <div>
+                                        <label className="fw-semibold small">Possible Diagnosis</label>
+                                        <input
+                                          className="form-control"
+                                          value={notes.questions}
+                                          onChange={(e) => updateNoteField("questions", e.target.value)}
+                                          placeholder="Possible diagnosis..."
+                                        />
+                                      </div>
+                                    </div>
+                            {/*<Link to="/menu" className={`btn ${styles.mainButton}`}>
                                 Back to Menu
                             </Link>
                             <button
@@ -188,7 +237,21 @@ export default function PracticeSession() {
                             {/* <button className={`btn ${styles.mainButtonPrimary}`}>
                   Make a Diagnosis
                 </button> */}
+                
                         </div>
+                        <br/>
+                        {/* Timer - PlaceHolder at the moment */}
+                        <div className={`text-center mb-4 ${styles.timer}`}>
+                            {/* Timer 00:00:00 */}
+                            {!isDiagnosisOpen && (
+                                <Timer
+                                    isRunning={isTimerRunning}
+                                    seconds={seconds}
+                                    setSeconds={setSeconds}
+                                />
+                            )}
+                        </div>
+                        
                     </div>
                 </div>
             </div>
