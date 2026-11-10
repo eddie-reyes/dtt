@@ -166,7 +166,7 @@ const updateNoteField = (field, value) => {
                             <img src="src/assets/logo.png" alt="logo" className={styles.logo} />
                         </div>
                         {/* Timer - PlaceHolder at the moment */}
-                        <div className={`text-center mb-4 ${styles.timer}`}>
+                        <div className={`text-center m-1 ${styles.timer}`}> {/* mb-4 */}
                             {/* Timer 00:00:00 */}
                             {!isDiagnosisOpen && (
                                 <Timer
@@ -174,7 +174,7 @@ const updateNoteField = (field, value) => {
                                     seconds={seconds}
                                     setSeconds={setSeconds}
                                 />
-                            )}
+                            )} 
                         </div>
                         {/* Notes */}
                         <div className="d-flex flex-column align-items-center"> {/* gap-5 */}
@@ -238,7 +238,7 @@ const updateNoteField = (field, value) => {
                                           placeholder="Possible diagnosis..."
                                         />
                                       </div>
-                                      <br/> <br/> <br/> 
+                                       <br/> {/* <br/> <br/> */}
                                       <Link to="/menu" className={`btn ${styles.mainButtonPrimary}`} id={styles.backtoMenu}>
                                         Back to Menu
                                     </Link>

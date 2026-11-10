@@ -86,16 +86,18 @@
     flex-direction: column;
     justify-content: flex-start;
     padding: 20px;
+    position: relative; 
+    top: -8px; 
 }
 
 .logoWrapper {
     /* margin-top: 10px; */
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */ 
 }
 
 .logo {
     width: 110px;
-    height: auto;
+    height: auto; 
 }
 
 .timer {
@@ -210,6 +212,7 @@
 
 #patientInfo{
     background: var(--default-btn); 
+    margin: 0px; 
 }
 
 .notesTextarea {
