@@ -150,7 +150,6 @@ const updateNoteField = (field, value) => {
                     <DiseaseCard name="Disease" description="Desc of Disease"/>
                     <DiseaseCard name="Disease" description="Desc of Disease"/>
                     <DiseaseCard name="Disease" description="Desc of Disease"/>
-                    
                 </div>
                 <div id={styles.panelFooter} className={styles.panelElem}>
                 <button

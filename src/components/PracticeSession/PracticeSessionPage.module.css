@@ -46,6 +46,15 @@
     top: -20px; 
 }
 
+#searchContainer input{
+    height: 40px; 
+    width: 250px; 
+}
+
+#searchContainer button{
+    padding: 10px; 
+}
+
 .Panel button, #backtoMenu{
     background: var(--default-btn);
     border: 1px solid var(--dark-text); 
