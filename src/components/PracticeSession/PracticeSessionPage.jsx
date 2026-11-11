@@ -238,7 +238,7 @@ const updateNoteField = (field, value) => {
                                           placeholder="Possible diagnosis..."
                                         />
                                       </div>
-                                       <br/> {/* <br/> <br/> */}
+                                      {/*  <br/>  <br/> <br/> */}
                                       <Link to="/menu" className={`btn ${styles.mainButtonPrimary}`} id={styles.backtoMenu}>
                                         Back to Menu
                                     </Link>
