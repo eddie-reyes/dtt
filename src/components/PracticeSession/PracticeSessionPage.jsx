@@ -3,6 +3,7 @@ import { data, Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import Timer from '../../components/Timer/Timer.jsx';
 import Diagnosis from '../../components/Diagnosis/Diagnosis.jsx';
+import DiseaseCard from '../DiseaseCard/DiseaseCard.jsx';
 import Notes from '../../components/Notes/Notes.jsx';
 
 export default function PracticeSession() {
@@ -144,6 +145,12 @@ const updateNoteField = (field, value) => {
                         <input type="text" placeholder="Search..."/>
                         <button>Search</button> {/* Add Icon Later */}
                     </div>
+                </div>
+                <div id={styles.DiseaseCardContainer}>
+                    <DiseaseCard name="Disease" description="Desc of Disease"/>
+                    <DiseaseCard name="Disease" description="Desc of Disease"/>
+                    <DiseaseCard name="Disease" description="Desc of Disease"/>
+                    
                 </div>
                 <div id={styles.panelFooter} className={styles.panelElem}>
                 <button

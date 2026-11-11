@@ -90,10 +90,10 @@
     top: -8px; 
 }
 
-.logoWrapper {
-    /* margin-top: 10px; */
-    /* margin-bottom: 25px; */ 
-}
+/* .logoWrapper {
+    margin-top: 10px; 
+    margin-bottom: 25px; 
+} */ 
 
 .logo {
     width: 110px;
@@ -264,4 +264,31 @@
 #rightPanel ul {
     max-height: calc(100vh - 180px);
     overflow-y: auto;
+}
+
+.diseaseCard{
+    background:var(--panel-element-background); 
+    width: 400px; 
+    text-align: left;
+    border-radius: 20px; 
+    padding: 20px; 
+    border: 1px solid var(--dark-teal); 
+    height: 120px; 
+}
+
+.diseaseCard button{
+    position: relative; 
+    left: 270px; 
+    bottom: 90px; 
+    padding: 10px; 
+    width: 90px; 
+}
+
+#DiseaseCardContainer{
+    margin-top: 20px; 
+    display: flex; 
+    flex-direction: column;
+    gap: 20px; 
+    justify-content: center; 
+    align-items: center; 
 }
