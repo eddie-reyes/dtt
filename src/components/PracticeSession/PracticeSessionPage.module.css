@@ -156,6 +156,10 @@
     transition: 0.3s;
 }
 
+.Panel button.selectedDiseaseCard{
+    background: var(--special-btn); 
+}
+
 #rightPanel {
     /* width: 40%; */
    /* background: #2d86a6; 

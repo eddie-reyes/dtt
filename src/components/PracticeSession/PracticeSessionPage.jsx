@@ -37,6 +37,7 @@ const diagnoses = [
   'GERD',
 ];
 
+const [selectedDiagnosis, setSelectedDiagnosis] = useState('');
 
 const updateNoteField = (field, value) => {
 	setNotes((prev) => ({
@@ -161,7 +162,7 @@ const updateNoteField = (field, value) => {
                 </div>
                 <div id={styles.DiseaseCardContainer}>
                     {diagnoses.map((disease) => (
-                        <DiseaseCard key={disease} name={disease} description="Disease Discription"/>
+                        <DiseaseCard key={disease} name={disease} description="Disease Discription" isSelected={selectedDiagnosis === disease} onSelect={() => setSelectedDiagnosis(disease)}/>
                     ))}
                 </div>
                 <div id={styles.panelFooter} className={styles.panelElem}>
