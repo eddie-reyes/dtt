@@ -70,6 +70,8 @@
     /* padding: 20px; */ 
     text-align: center; 
 
+    min-height: 80vh; 
+    /* overflow-y: auto; */ 
  /*    display: flex;
     flex-direction: column;
     justify-content: center;
@@ -298,6 +300,9 @@
     display: flex; 
     flex-direction: column;
     gap: 20px; 
-    justify-content: center; 
+    justify-content: flex-start; 
     align-items: center; 
+    max-height: 540px;  
+   flex-shrink: 0;
+   overflow-y: auto; 
 }
