@@ -24,6 +24,19 @@ export default function PracticeSession() {
         questions: '',
     });
 
+const diagnoses = [
+  'Appendicitis',
+  'Migraine',
+  'Asthma',
+  'Gastroenteritis',
+  'Flu',
+  'UTI',
+  'Pneumonia',
+  'Anxiety',
+  'Kidney Stones',
+  'GERD',
+];
+
 
 const updateNoteField = (field, value) => {
 	setNotes((prev) => ({
@@ -147,12 +160,9 @@ const updateNoteField = (field, value) => {
                     </div>
                 </div>
                 <div id={styles.DiseaseCardContainer}>
-                    <DiseaseCard name="Disease" description="Desc of Disease"/>
-                    <DiseaseCard name="Disease" description="Desc of Disease"/>
-                    <DiseaseCard name="Disease" description="Desc of Disease"/>
-                    <DiseaseCard name="Disease" description="Desc of Disease"/>
-                    <DiseaseCard name="Disease" description="Desc of Disease"/>
-                    <DiseaseCard name="Disease" description="Desc of Disease"/>
+                    {diagnoses.map((disease) => (
+                        <DiseaseCard key={disease} name={disease} description="Disease Discription"/>
+                    ))}
                 </div>
                 <div id={styles.panelFooter} className={styles.panelElem}>
                 <button
