@@ -5,6 +5,7 @@ import Timer from '../../components/Timer/Timer.jsx';
 import Diagnosis from '../../components/Diagnosis/Diagnosis.jsx';
 import DiseaseCard from '../DiseaseCard/DiseaseCard.jsx';
 import Notes from '../../components/Notes/Notes.jsx';
+import pfp from '../Menu/placeholder_pfp.jpg'; 
 
 export default function PracticeSession() {
     const [showPatientChart, setShowPatientChart] = useState(false);
@@ -213,14 +214,19 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                                     </p> */} 
                                     {patient && (
                                       <div className={styles.notesTextarea} id={styles.patientInfo}> {/* mb-3 p-3 border rounded bg-light */}
-                                        <div className="fw-semibold">{patient.name}</div>
-                            
-                                        <div className="text-muted small">
-                                          {patient.age} years old • {patient.gender}
+                                        <div>
+                                            <img src={pfp} alt="Patient Profile" id={styles.patientPic}/>
                                         </div>
+                                        <div>
+                                            <div className="fw-semibold">{patient.name}</div>
+
+                                            <div className="text-muted small">
+                                                {patient.age} years old • {patient.gender}
+                                            </div>
                             
-                                        <div className="mt-2">
-                                          <strong>Chief Complaint:</strong> {patient.chief_complaint}
+                                            <div className="mt-2">
+                                                <strong>Chief Complaint:</strong> {patient.chief_complaint}
+                                            </div>
                                         </div>
                                       </div>
                                     )}

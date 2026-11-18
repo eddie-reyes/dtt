@@ -233,6 +233,10 @@
 #patientInfo{
     background: var(--default-btn); 
     margin: 0px; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-start; 
+    gap: 20px; 
 }
 
 .notesTextarea {
@@ -313,4 +317,9 @@
    overflow-y: auto; 
    /* position: relative; 
    top: 6px;   */ 
+}
+
+#patientPic{
+    border-radius: 50%; 
+    height: 80px; 
 }
