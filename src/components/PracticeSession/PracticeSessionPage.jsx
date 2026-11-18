@@ -50,6 +50,10 @@ function handleSearchChange(e){
     setSearchTerm(e.target.value); 
 }
 
+const filteredDiagnoses = diagnoses.filter(disease => 
+        disease.toLowerCase().includes(searchTerm.toLowerCase())
+); 
+
 
     const notesKey = sessionInfo.session_id ? `notes_${sessionInfo.session_id}` : 'notes';
 
@@ -161,14 +165,14 @@ function handleSearchChange(e){
                     <br/>
                     <div id={styles.searchContainer}>
                         <input type="text" placeholder="Search..."value={searchTerm} onChange={handleSearchChange}/>
-                        <button>Search</button> {/* Add Icon Later */}
+                        {/* <button>Search</button>  Add Icon Later */}
                         {/*<div>User Input:- {searchTerm}</div>*/} 
                     </div>
                 </div>
-                <div id={styles.DiseaseCardContainer}>
-                    {diagnoses.map((disease) => (
+                <div id={styles.DiseaseCardContainer}> 
+                    {filteredDiagnoses.map((disease) => (
                         <DiseaseCard key={disease} name={disease} description="Disease Discription" isSelected={selectedDiagnosis === disease} onSelect={() => setSelectedDiagnosis(disease)}/>
-                    ))}
+                    ))} 
                 </div>
                 <div id={styles.panelFooter} className={styles.panelElem}>
                 <button
