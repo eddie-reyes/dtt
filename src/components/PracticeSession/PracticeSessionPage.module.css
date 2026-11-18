@@ -300,13 +300,17 @@
 }
 
 #DiseaseCardContainer{
-    margin-top: 20px; 
+    /* margin-top: 20px; */ 
+    padding-top: 20px; 
     display: flex; 
     flex-direction: column;
     gap: 20px; 
     justify-content: flex-start; 
     align-items: center; 
-    max-height: 540px;  
+    /* max-height: 540px;  */
+    max-height: 590px;  
    flex-shrink: 0;
    overflow-y: auto; 
+   /* position: relative; 
+   top: 6px;   */ 
 }
