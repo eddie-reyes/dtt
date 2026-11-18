@@ -16,6 +16,8 @@ export default function PracticeSession() {
     const [seconds, setSeconds] = useState(0);
     const [isDiagnosisOpen, setDiagnosisOpen] = useState(false);
     const [showNotes, setShowNotes] = useState(false);
+    const [searchTerm, setSearchTerm] = useState(''); 
+    const [selectedDiagnosis, setSelectedDiagnosis] = useState('');
     const [notes, setNotes] = useState({
         symptoms: '',
         duration: '',
@@ -37,13 +39,15 @@ const diagnoses = [
   'GERD',
 ];
 
-const [selectedDiagnosis, setSelectedDiagnosis] = useState('');
-
 const updateNoteField = (field, value) => {
 	setNotes((prev) => ({
 		...prev,
 		[field]: value,
 	}))
+}
+
+function handleSearchChange(e){
+    setSearchTerm(e.target.value); 
 }
 
 
@@ -156,8 +160,9 @@ const updateNoteField = (field, value) => {
                     <h2>Disease</h2>
                     <br/>
                     <div id={styles.searchContainer}>
-                        <input type="text" placeholder="Search..."/>
+                        <input type="text" placeholder="Search..."value={searchTerm} onChange={handleSearchChange}/>
                         <button>Search</button> {/* Add Icon Later */}
+                        {/*<div>User Input:- {searchTerm}</div>*/} 
                     </div>
                 </div>
                 <div id={styles.DiseaseCardContainer}>
