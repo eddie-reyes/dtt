@@ -329,3 +329,12 @@
     border-radius: 50%; 
     height: 80px; 
 }
+
+#patientInfo a{
+    text-decoration: underline; 
+    cursor: pointer; 
+}
+
+#patientInfo a:hover{
+    color: var(--hover-teal); 
+}
