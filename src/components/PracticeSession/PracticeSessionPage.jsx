@@ -1,8 +1,7 @@
 import styles from './PracticeSessionPage.module.css';
-import { data, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import Timer from '../../components/Timer/Timer.jsx';
-import Diagnosis from '../../components/Diagnosis/Diagnosis.jsx';
 import DiseaseCard from '../DiseaseCard/DiseaseCard.jsx';
 import Notes from '../../components/Notes/Notes.jsx';
 import pfp from '../Menu/placeholder_pfp.jpg'; 
@@ -15,7 +14,8 @@ export default function PracticeSession() {
     const patient = sessionInfo.patient;
     const [isTimerRunning, setIsTimerRunning] = useState(true);
     const [seconds, setSeconds] = useState(0);
-    const [isDiagnosisOpen, setDiagnosisOpen] = useState(false);
+    const [diagnosisResult, setDiagnosisResult] = useState(null);
+    const [isSubmittingDiagnosis, setIsSubmittingDiagnosis] = useState(false);
     const [showNotes, setShowNotes] = useState(false);
     const [searchTerm, setSearchTerm] = useState(''); 
     const [selectedDiagnosis, setSelectedDiagnosis] = useState('');
@@ -54,6 +54,59 @@ function handleSearchChange(e){
 const filteredDiagnoses = diagnoses.filter(disease => 
         disease.toLowerCase().includes(searchTerm.toLowerCase())
 ); 
+
+    const handleMakeDiagnosis = async () => {
+        if (!selectedDiagnosis || !sessionInfo.session_id || isSubmittingDiagnosis) return;
+
+        setIsSubmittingDiagnosis(true);
+        setDiagnosisResult(null);
+        setIsTimerRunning(false);
+
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch(
+                `https://dtt-9fc5c2fc9663.herokuapp.com/sessions/${sessionInfo.session_id}/submit`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({
+                        diagnosis: selectedDiagnosis,
+                        notes: JSON.stringify(notes),
+                        duration_seconds: seconds,
+                    }),
+                },
+            );
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || data.error || 'Unable to submit your diagnosis.');
+            }
+            if (typeof data.correctness !== 'boolean') {
+                throw new Error('The server did not return a diagnosis result. Please try again.');
+            }
+
+            const storedUser = localStorage.getItem('user');
+            if (storedUser && data.user_stats) {
+                try {
+                    const updatedUser = JSON.parse(storedUser);
+                    updatedUser.stats = data.user_stats;
+                    localStorage.setItem('user', JSON.stringify(updatedUser));
+                } catch (error) {
+                    console.error('Could not update saved user stats:', error);
+                }
+            }
+
+            setDiagnosisResult({ correctness: data.correctness });
+        } catch (error) {
+            setDiagnosisResult({ error: error.message || 'Unable to submit your diagnosis.' });
+            setIsTimerRunning(true);
+        } finally {
+            setIsSubmittingDiagnosis(false);
+        }
+    };
 
 
     const notesKey = sessionInfo.session_id ? `notes_${sessionInfo.session_id}` : 'notes';
@@ -178,13 +231,34 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                 <div id={styles.panelFooter} className={styles.panelElem}>
                 <button
                     className={`btn ${styles.mainButtonPrimary}`}
-                    onClick={() => {
-                        setIsTimerRunning(false);
-                        setDiagnosisOpen(true);
-                    }}
+                    onClick={handleMakeDiagnosis}
+                    disabled={
+                        !selectedDiagnosis ||
+                        !sessionInfo.session_id ||
+                        isSubmittingDiagnosis ||
+                        diagnosisResult?.correctness !== undefined
+                    }
                 >
-                    Make a Diagnosis
+                    {isSubmittingDiagnosis ? 'Checking Diagnosis…' : 'Make a Diagnosis'}
                 </button>
+                {!selectedDiagnosis && (
+                    <p className="text-muted mt-2 mb-0">Select a disease before submitting.</p>
+                )}
+                {diagnosisResult?.correctness === true && (
+                    <p className="text-success fw-semibold mt-2 mb-0" role="status">
+                        Correct diagnosis!
+                    </p>
+                )}
+                {diagnosisResult?.correctness === false && (
+                    <p className="text-danger fw-semibold mt-2 mb-0" role="status">
+                        Incorrect diagnosis.
+                    </p>
+                )}
+                {diagnosisResult?.error && (
+                    <p className="text-danger mt-2 mb-0" role="alert">
+                        {diagnosisResult.error}
+                    </p>
+                )}
                 </div>
             </div>
 
@@ -198,7 +272,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                         {/* Timer - PlaceHolder at the moment */}
                         <div className={`text-center m-1 ${styles.timer}`}> {/* mb-4 */}
                             {/* Timer 00:00:00 */}
-                            {!isDiagnosisOpen && (
+                            {diagnosisResult?.correctness === undefined && (
                                 <Timer
                                     isRunning={isTimerRunning}
                                     seconds={seconds}
@@ -227,6 +301,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                                             <div className="mt-2">
                                                 <strong>Chief Complaint:</strong> {patient.chief_complaint}
                                             </div>
+                                                <a>View More</a>
                                         </div>
                                       </div>
                                     )}
@@ -333,19 +408,6 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                         )}
                     </div>
                 </div>
-            )}
-
-            {isDiagnosisOpen && (
-                <Diagnosis
-                    correctDiagnosis={patient?.chief_complaint}
-                    seconds={seconds}
-                    onClose={() => {
-                        setDiagnosisOpen(false);
-                        setIsTimerRunning(true);
-                    }}
-                    notes={JSON.stringify(notes)}
-                    session_id={sessionInfo.session_id}
-                />
             )}
 
             {showNotes && (
