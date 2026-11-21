@@ -12,6 +12,59 @@ export default function PracticeSession() {
     const messagesListRef = useRef(null);
     const [sessionInfo, setSessionInfo] = useState({});
     const patient = sessionInfo.patient;
+    const patientChartSections = [
+        {
+            title: 'Patient and visit',
+            source: 'Backend patient record',
+            fields: [
+                { label: 'Name', value: patient?.name ?? 'Not available' },
+                { label: 'Patient ID', value: patient?.patient_id ?? patient?.id ?? 'Not provided' },
+                { label: 'Age', value: patient?.age != null ? `${patient.age} years` : 'Not provided' },
+                { label: 'Gender', value: patient?.gender ?? 'Not provided' },
+                { label: 'Chief complaint', value: patient?.chief_complaint ?? 'Not provided' },
+            ],
+        },
+        {
+            title: 'Vital signs',
+            source: 'Sample practice placeholders',
+            fields: [
+                { label: 'Blood pressure', value: '118/76 mmHg' },
+                { label: 'Heart rate', value: '78 bpm' },
+                { label: 'Respiratory rate', value: '16 breaths/min' },
+                { label: 'Temperature', value: '36.8 °C (98.2 °F)' },
+                { label: 'Oxygen saturation', value: '98%' },
+                { label: 'Pain', value: '3/10' },
+            ],
+        },
+        {
+            title: 'Medical history',
+            source: 'Sample practice placeholders',
+            fields: [
+                { label: 'Conditions', value: 'Mild asthma; seasonal allergies' },
+                { label: 'Surgical history', value: 'No prior surgeries reported' },
+                { label: 'Hospitalizations', value: 'None reported' },
+            ],
+        },
+        {
+            title: 'Medications and allergies',
+            source: 'Sample practice placeholders',
+            fields: [
+                { label: 'Current medications', value: 'Cetirizine 10 mg as needed' },
+                { label: 'Allergies', value: 'Penicillin (rash)' },
+                { label: 'Preferred pharmacy', value: 'Not on file' },
+            ],
+        },
+        {
+            title: 'Family and social history',
+            source: 'Sample practice placeholders',
+            fields: [
+                { label: 'Family history', value: 'Parent with hypertension' },
+                { label: 'Tobacco', value: 'Does not smoke' },
+                { label: 'Alcohol', value: 'Occasional use' },
+                { label: 'Living situation', value: 'Lives with family' },
+            ],
+        },
+    ];
     const [isTimerRunning, setIsTimerRunning] = useState(true);
     const [seconds, setSeconds] = useState(0);
     const [diagnosisResult, setDiagnosisResult] = useState(null);
@@ -301,7 +354,16 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                                             <div className="mt-2">
                                                 <strong>Chief Complaint:</strong> {patient.chief_complaint}
                                             </div>
-                                                <a>View More</a>
+                                                <a
+                                                    href="#patient-chart"
+                                                    aria-haspopup="dialog"
+                                                    onClick={(event) => {
+                                                        event.preventDefault();
+                                                        setShowPatientChart(true);
+                                                    }}
+                                                >
+                                                    View More
+                                                </a>
                                         </div>
                                       </div>
                                     )}
@@ -378,34 +440,54 @@ const filteredDiagnoses = diagnoses.filter(disease =>
             </div>
 
             {showPatientChart && (
-                <div className={styles.modalOverlay}>
-                    <div className={styles.modalBox}>
+                <div
+                    className={styles.modalOverlay}
+                    onMouseDown={(event) => {
+                        if (event.target === event.currentTarget) setShowPatientChart(false);
+                    }}
+                >
+                    <div
+                        className={`${styles.modalBox} ${styles.patientChartModal}`}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="patient-chart-title"
+                    >
                         <button
                             className={styles.closeButton}
                             onClick={() => setShowPatientChart(false)}
+                            aria-label="Close patient chart"
                         >
                             X
                         </button>
 
-                        <h2 className="mb-3">Patient Chart</h2>
-                        {patient ? (
-                            <div className="mb-3 p-3 border rounded bg-light">
-                                <p>
-                                    <strong>Name:</strong> {patient.name}
-                                </p>
-                                <p>
-                                    <strong>Sex:</strong> {patient.gender}
-                                </p>
-                                <p>
-                                    <strong>Age:</strong> {patient.age}
-                                </p>
-                                <p>
-                                    <strong>Reason for Visit:</strong> {patient.chief_complaint}
-                                </p>
-                            </div>
-                        ) : (
-                                <p>Loading data...</p>
-                        )}
+                        <h2 id="patient-chart-title" className="mb-1">Patient Chart</h2>
+                        <p className={styles.patientChartIntro}>
+                            Patient details come from the session record. Other sections contain sample practice data.
+                        </p>
+                        <div className={styles.patientChartSections}>
+                            {patientChartSections.map((section) => (
+                                <section className={styles.patientChartSection} key={section.title}>
+                                    <div className={styles.patientChartSectionHeader}>
+                                        <h3>{section.title}</h3>
+                                        <span>{section.source}</span>
+                                    </div>
+                                    <dl>
+                                        {section.fields.map((field) => (
+                                            <div className={styles.patientChartField} key={field.label}>
+                                                <dt>{field.label}</dt>
+                                                <dd>{field.value}</dd>
+                                            </div>
+                                        ))}
+                                    </dl>
+                                </section>
+                            ))}
+                        </div>
+                        {/*<button
+                            className={styles.patientChartCloseButton}
+                            onClick={() => setShowPatientChart(false)}
+                        >
+                            Close Patient Chart
+                        </button>*/}
                     </div>
                 </div>
             )}

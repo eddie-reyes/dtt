@@ -283,6 +283,95 @@
     overflow-y: auto;
 }
 
+.patientChartModal {
+    width: 760px;
+    max-width: min(94vw, 760px);
+    max-height: 88vh;
+    padding: 30px;
+}
+
+.patientChartIntro {
+    margin: 0 0 20px;
+    color: #5d6878;
+}
+
+.patientChartSections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.patientChartSection {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid #d7deea;
+    border-radius: 14px;
+    background: #f8faff;
+}
+
+.patientChartSectionHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 12px;
+}
+
+.patientChartSectionHeader h3 {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.patientChartSectionHeader span {
+    color: #64748b;
+    font-size: 0.78rem;
+}
+
+.patientChartSection dl {
+    margin: 0;
+}
+
+.patientChartField {
+    display: grid;
+    grid-template-columns: minmax(95px, 0.8fr) minmax(0, 1.2fr);
+    gap: 10px;
+    padding: 7px 0;
+    border-top: 1px solid #e4e9f1;
+}
+
+.patientChartField dt {
+    color: #5d6878;
+    font-weight: 600;
+}
+
+.patientChartField dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.patientChartCloseButton {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 22px;
+    border: 1px solid var(--dark-text);
+    border-radius: 10px;
+    background: var(--default-btn);
+    font-weight: 600;
+}
+
+.patientChartCloseButton:hover {
+    background: var(--special-btn);
+}
+
+@media (max-width: 640px) {
+    .patientChartModal {
+        padding: 24px 18px;
+    }
+
+    .patientChartSections {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
 #rightPanel ul {
     max-height: calc(100vh - 180px);
     overflow-y: auto;
