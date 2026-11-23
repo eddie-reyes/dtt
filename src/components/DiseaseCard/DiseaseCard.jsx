@@ -11,7 +11,7 @@ function DiseaseCard({ name, description, isSelected, onSelect }) {
 
       <button onClick={onSelect} className={isSelected ? styles.selectedDiseaseCard: ""}>{isSelected ? "Selected" : "Select"}</button>
 
-      {/* TODO: Add Select button */}
+      {/* Add Learn More Button */}
     </div>
   );
 }

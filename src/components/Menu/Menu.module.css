@@ -35,7 +35,6 @@ body{
     padding-bottom: 35px;
     overflow-y: auto;
     scrollbar-color: var(--grey-border) transparent; 
-    /* scrollbar-width: initial; */ 
 }
 
 .statsCard{

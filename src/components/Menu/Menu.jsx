@@ -31,8 +31,6 @@ ChartJS.register(
   LineElement
 );
 
-// Make a base Options Spread Operator and Add All of this
-// Basic Info to All Graphs 
 const baseOptions = {
       display: true,
       color: '#4697B6', 
@@ -50,11 +48,9 @@ export const optionsBarh = (title) =>  ({
       borderWidth: 2,
     },
   },
-  /* responsive: true, */ 
   plugins: {
     legend: {
       display: false,
-      /*position: 'right',*/
     },
     title: {
     ...baseOptions,
@@ -116,7 +112,6 @@ const labelsBarv = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sat
   labels: labels,
   datasets: [
     {
-      /* data: labelsBar.map(() => faker.number.int({ min: 0, max: 10 })), */ 
       data: data,
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
@@ -128,9 +123,7 @@ const labelsBarv = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Sat
   labels: labels,
   datasets: [
     {
-      /* label: 'Dataset 1', */ 
       data: data,
-      /* borderColor: 'rgb(53, 162, 235)', */ 
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
     },
   ],
@@ -158,7 +151,6 @@ export const dataPie = {
 export const dataScatter = {
   datasets: [
     {
-      /* label: 'A dataset', */ 
       data: [[100, 200], [300, 400], [500, 600], [700, 800]],
       backgroundColor: 'rgba(54, 162, 235, 1)',
     },
@@ -203,9 +195,8 @@ export default function Menu() {
             <div className="d-flex"> {/* className="d-flex" style={{ height: '100vh', width: '100vw' }} */}
                     <div className="container p-5 flex-grow-1">
                         <div className={`row row-cols-1 row-cols-md-2 g-4 ${styles.statsContainer}`}> 
-                            {/* row row-cols-1 row-cols-md-4 g-4 */}
                             <div className="col">
-                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}> {/* "card h-100 text-center shadow" */}
+                                <div className={`card h-100 text-center shadow ${styles.statsCard}`}> 
                                     <div className="card-body">
                                         <div className="display-4 text-primary mb-2">
                                             <i className="bi bi-people"></i>
@@ -226,7 +217,7 @@ export default function Menu() {
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
                                         </div>
-                                        <h2 className="card-title mb-3">  {/* text-success */}
+                                        <h2 className="card-title mb-3"> 
                                             {user?.stats ? user.stats.correct_count : 'N/A'}
                                         </h2>
                                         <p className="card-text text-muted">Correct Diagnoises</p>
@@ -240,10 +231,6 @@ export default function Menu() {
                                         <div className="display-4 text-warning mb-2">
                                             <i className="bi bi-star"></i>
                                         </div>
-                                       {/* <h2 className="card-title mb-3 text-danger">
-                                            {user?.stats ? user.stats.incorrect_count : 'N/A'} 
-                                        </h2> */}
-                                        { /* <p className="card-text text-muted">Incorrect Diagnoises</p> */}
                                           <Bar options={optionsBarh('Patient Treatment')} data={dataBarh(['Empathy', 'Professionalism', 'Overall'], [25, 50, 30])} />
                                     </div>
                                 </div>
@@ -255,13 +242,6 @@ export default function Menu() {
                                         <div className="display-4 text-danger mb-2">
                                             <i className="bi bi-clock-history"></i>
                                         </div>
-                                       {/* <h2 className="card-title mb-3">
-                                            {user?.stats
-                                                ? (user.stats.correct_ratio * 100).toFixed(2)
-                                                : 'N/A...'}
-                                            %
-                                        </h2>
-                                        <p className="card-text text-muted">Success Rate</p> */}
                                         <div style={{
                                             height: '250px',
                                             display: 'flex',
@@ -280,10 +260,6 @@ export default function Menu() {
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
                                         </div>
-                                       {/* <h2 className="card-title mb-3 text-success">
-                                            {user?.stats ? user.stats.correct_count : 'N/A'}
-                                        </h2>
-                                        <p className="card-text text-muted">Correct Diagnoises</p> */}
                                         <Scatter options={optionsScatter} data={dataScatter}/>
                                     </div>
                                 </div>
@@ -295,10 +271,6 @@ export default function Menu() {
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
                                         </div>
-                                        {/*<h2 className="card-title mb-3 text-success">
-                                            {user?.stats ? user.stats.correct_count : 'N/A'}
-                                        </h2>
-                                        <p className="card-text text-muted">Correct Diagnoises</p> */}
                                         <Bar options={optionsBarv('Average Time to Diagnose')} data={dataBarv(labelsBarv, ['1', '2', '3', '4', '5', '6', '7'])}/> 
                                     </div>
                                 </div>
@@ -310,10 +282,6 @@ export default function Menu() {
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
                                         </div>
-                                        {/* <h2 className="card-title mb-3 text-success">
-                                            {user?.stats ? user.stats.correct_count : 'N/A'}
-                                        </h2>
-                                        <p className="card-text text-muted">Correct Diagnoises</p> */}
                                         <Bar options={optionsBarh('# of Correct Diagnoses')} data={dataBarh(['GERD', 'Anxiety', 'Flu', 'Migraine'], [25, 50, 30, 40])}/> 
                                     </div>
                                 </div>
@@ -325,10 +293,6 @@ export default function Menu() {
                                         <div className="display-4 text-success mb-2">
                                             <i className="bi bi-graph-up"></i>
                                         </div>
-                                        {/* <h2 className="card-title mb-3 text-success">
-                                            {user?.stats ? user.stats.correct_count : 'N/A'}
-                                        </h2>
-                                        <p className="card-text text-muted">Correct Diagnoises</p>*/}
                                         <Bar options={optionsBarv('Avg Amount of Questions Asked')} data={dataBarv(labelsBarv, ['1', '2', '3', '4', '5', '6', '7'])}/> 
                                     </div>
                                 </div>
@@ -365,7 +329,6 @@ export default function Menu() {
                 </div>
                 <footer
                     className="d-flex flex-row-reverse justify-content-center align-items-center gap-5 p-3" 
-                    /* style={{ width: '50%' }} */ 
                     style={{background: 'var(--seaform-grey)',
                              height: '100px', 
                               position: 'fixed',
@@ -373,49 +336,26 @@ export default function Menu() {
                               width: '100%',
                     }}
                 >   
-                    {/* <img className="w-25" src={logo} alt="logo"></img> */}
 
                     <Link
                         to="/practice"
-                        /* className="btn btn-lg  w-50"  */ 
                          className={styles.taskbarButton}
-                        /* style={{
-                            background: 'var(--default-btn)',
-                            color: 'var(--light-text)',
-                            padding: '12px',
-                            border: '1px solid var(--grey-border)',
-                        }} */ 
                     >
                         Start New Session
                     </Link>
                     <Link
                         to="/practice"
-                        /* className="btn btn-lg  w-50" */ 
-                         className={styles.taskbarButton}
-                        /* style={{
-                            background: 'var(--default-btn)',
-                            color: 'var(--light-text)',
-                            padding: '12px',
-                            border: '1px solid var(--grey-border)',
-                        }} */ 
+                         className={styles.taskbarButton} 
                     >
                         Resume Session
                     </Link>
                     <Link
                         to="/history"
-                        /* className="btn btn-lg  w-50" */ 
                         className={styles.taskbarButton} 
-                        /* style={{
-                            background: 'var(--default-btn)',
-                            color: 'var(--light-text)',
-                            padding: '12px',
-                            border: '1px solid var(--grey-border)',
-                        }}*/ 
                     >
                         View History
                     </Link>
                     <Link to="/" 
-                           /* className="btn btn-lg btn-danger w-50" */ 
                             className={styles.taskbarButton}
                             style={{
                             background:'var(--special-btn)',

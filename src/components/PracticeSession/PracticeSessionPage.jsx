@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import Timer from '../../components/Timer/Timer.jsx';
 import DiseaseCard from '../DiseaseCard/DiseaseCard.jsx';
-import Notes from '../../components/Notes/Notes.jsx';
+// import Notes from '../../components/Notes/Notes.jsx';
 import pfp from '../Menu/placeholder_pfp.jpg'; 
 
 export default function PracticeSession() {
@@ -238,42 +238,13 @@ const filteredDiagnoses = diagnoses.filter(disease =>
 
     return (
         <div className={`container-fluid ${styles.practicePage}`}>
-            <div className={styles.Panel} id={styles.leftPanel}> {/* className={styles.leftPanel} */}
-                 {/* Placeholder for Diagnosis */}
-                {/* <h2>How to start:</h2>
-                <ol className={styles.instructions}>
-                    <li>
-                        <strong>Review the Patient Chart</strong>
-                        <p>Check age, gender, and reason for visit.</p>
-                    </li>
-
-                    <li>
-                        <strong>Interview the Patient</strong>
-                        <p>Ask about symptoms, duration, pain level, and other details.</p>
-                    </li>
-
-                    <li>
-                        <strong>Take Notes</strong>
-                        <p>Write down important symptoms and possible patterns.</p>
-                    </li>
-
-                    <li>
-                        <strong>Analyze the Information</strong>
-                        <p>Compare symptoms and eliminate unlikely diagnoses.</p>
-                    </li>
-
-                    <li>
-                        <strong>Submit Diagnosis</strong>
-                        <p>Select the most accurate diagnosis before time runs out.</p>
-                    </li>
-                </ol> */}
+            <div className={styles.Panel} id={styles.leftPanel}>
                 <div className={`${styles.panelElem} ${styles.panelHeader}`}>
                     <h2>Disease</h2>
                     <br/>
                     <div id={styles.searchContainer}>
                         <input type="text" placeholder="Search..."value={searchTerm} onChange={handleSearchChange}/>
                         {/* <button>Search</button>  Add Icon Later */}
-                        {/*<div>User Input:- {searchTerm}</div>*/} 
                     </div>
                 </div>
                 <div id={styles.DiseaseCardContainer}> 
@@ -335,7 +306,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                         </div>
                         {/* Notes */}
                         <div className="d-flex flex-column align-items-center"> {/* gap-5 */}
-                                    {/*<h2 style={{ marginBottom: "8px" }}>Notes</h2>
+                                    {/* <h2 style={{ marginBottom: "8px" }}>Notes</h2>
                                     <p style={{ fontSize: "14px", color: "#6b7280" }}>
                                       Track important symptoms and observations
                                     </p> */} 
@@ -410,30 +381,10 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                                           placeholder="Possible diagnosis..."
                                         />
                                       </div>
-                                      {/*  <br/>  <br/> <br/> */}
                                       <Link to="/menu" className={`btn ${styles.mainButtonPrimary}`} id={styles.backtoMenu}>
                                         Back to Menu
                                     </Link>
                                     </div>
-                            {/*<Link to="/menu" className={`btn ${styles.mainButton}`}>
-                                Back to Menu
-                            </Link>
-                            <button
-                                className={`btn ${styles.mainButton}`}
-                                onClick={() => setShowPatientChart(true)}
-                            >
-                                View Patient Chart
-                            </button>
-                            <button
-                                className={`btn ${styles.mainButton}`}
-                                onClick={() => setShowNotes(true)}
-                            >
-                                Notes
-                            </button>
-                            {/* <button className={`btn ${styles.mainButtonPrimary}`}>
-                  Make a Diagnosis
-                </button> */}
-                
                         </div>
                     </div>
                 </div>
