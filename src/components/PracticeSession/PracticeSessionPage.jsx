@@ -252,7 +252,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
         <div className={`container-fluid ${styles.practicePage}`}>
             <div className={styles.Panel} id={styles.leftPanel}>
                 <div className={`${styles.panelElem} ${styles.panelHeader}`}>
-                    <h2>Disease</h2>
+                    <h2>Diseases</h2>
                     <br/>
                     <div id={styles.searchContainer}>
                         <input type="text" placeholder="Search..."value={searchTerm} onChange={handleSearchChange}/>
@@ -501,7 +501,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                             }}
                         ></input>
                         <div className="input-group-append">
-                            <button
+                            {/* <button
                                 className="input-group-text"
                                 id="basic-addon2"
                                 onClick={() => {
@@ -512,7 +512,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                                 }}
                             >
                                 Send
-                            </button>
+                            </button> */} 
                         </div>
                     </div>
                 </div>
