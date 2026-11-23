@@ -10,6 +10,7 @@ export default function PracticeSession() {
     const [showPatientChart, setShowPatientChart] = useState(false);
     const [messages, setMessages] = useState([]);
     const messagesListRef = useRef(null);
+    const messageInputRef = useRef(null);
     const [sessionInfo, setSessionInfo] = useState({});
     const patient = sessionInfo.patient;
     const patientChartSections = [
@@ -492,6 +493,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                             type="text"
                             className="form-control"
                             placeholder="Message"
+                            ref={messageInputRef}
                             onKeyDown={e => {
                                 if (e.key === 'Enter' && e.target.value.trim()) {
                                     const input = e.target;
@@ -501,18 +503,21 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                             }}
                         ></input>
                         <div className="input-group-append">
-                            {/* <button
+                            <button
                                 className="input-group-text"
                                 id="basic-addon2"
                                 onClick={() => {
-                                    const input = document.querySelector('.form-control');
-                                    if (!input.value.trim()) return;
+                                    const input = messageInputRef.current;
+                                    
+                                     if (!input || !input.value.trim()) return;
+
                                     onSubmitMessage(input.value);
-                                    input.value = '';
+                                    
+                                     input.value = '';
                                 }}
                             >
                                 Send
-                            </button> */} 
+                            </button>  
                         </div>
                     </div>
                 </div>
