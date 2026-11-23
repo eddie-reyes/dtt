@@ -153,7 +153,9 @@ export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, s
                         {result === 'incorrect' && (
                             <>
                                 {' '}
-                                <p className="text-danger mt-3 fw-semibold">Incorrect Diagnosis</p>
+                                <p className="text-danger mt-3 fw-semibold">
+                                    Incorrect Diagnosis. The patient has {correctDiagnosis || 'an unknown diagnosis'}.
+                                </p>
                                 <p className="text-muted mt-2">Time: {formatTime(seconds)}</p>
                             </>
                         )}
@@ -210,7 +212,9 @@ export default function Diagnosis({ onClose, correctDiagnosis, seconds, notes, s
                         {result === 'incorrect' && (
                             <>
                                 {' '}
-                                <p className="text-danger mt-3 fw-semibold">Incorrect Diagnosis</p>
+                                <p className="text-danger mt-3 fw-semibold">
+                                    Incorrect Diagnosis. The patient has {correctDiagnosis || 'an unknown diagnosis'}.
+                                </p>
                                 <p className="text-muted mt-2">Time: {formatTime(seconds)}</p>
                             </>
                         )}

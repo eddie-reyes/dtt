@@ -152,7 +152,19 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                 }
             }
 
-            setDiagnosisResult({ correctness: data.correctness });
+            const correctDiagnosis =
+                data.correct_diagnosis ||
+                data.correctDiagnosis ||
+                data.patient?.correct_diagnosis ||
+                data.patient?.correctDiagnosis ||
+                data.patient?.diagnosis ||
+                sessionInfo.correct_diagnosis ||
+                sessionInfo.correctDiagnosis ||
+                sessionInfo.patient?.correct_diagnosis ||
+                sessionInfo.patient?.correctDiagnosis ||
+                sessionInfo.patient?.diagnosis;
+
+            setDiagnosisResult({ correctness: data.correctness, correctDiagnosis });
         } catch (error) {
             setDiagnosisResult({ error: error.message || 'Unable to submit your diagnosis.' });
             setIsTimerRunning(true);
@@ -275,7 +287,8 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                 )}
                 {diagnosisResult?.correctness === false && (
                     <p className="text-danger fw-semibold mt-2 mb-0" role="status">
-                        Incorrect diagnosis.
+                        Incorrect Diagnosis. The patient has{' '}
+                        {diagnosisResult.correctDiagnosis || 'an unknown diagnosis'}.
                     </p>
                 )}
                 {diagnosisResult?.error && (
