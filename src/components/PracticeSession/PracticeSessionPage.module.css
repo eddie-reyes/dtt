@@ -49,6 +49,7 @@
     background: var(--default-btn);
     border: 1px solid var(--dark-text); 
     border-radius: 10px;
+    color: var(--dark-text); 
 }
 
 #leftPanel {
@@ -108,7 +109,7 @@
     /* background: #1e4fd1; */ 
     background: var(--special-btn); 
     border: 1px, solid, var(--dark-text); 
-    transition: 0.3s;
+    transition: 0.3s; 
 }
 
 .Panel button.selectedDiseaseCard{
@@ -174,11 +175,16 @@
     top: 12px;
     right: 12px;
     border: none;
-    background: #d62828;
+    background: var(--light-border);
     color: white;
     border-radius: 10px;
     padding: 8px 12px;
     cursor: pointer;
+}
+
+.closeButton:hover{
+    background: var(--light-text);
+    transition: 0.3s; 
 }
 
 #patientInfo{
@@ -369,4 +375,5 @@
 
 #patientInfo a:hover{
     color: var(--hover-teal); 
+    transition: 0.3s; 
 }

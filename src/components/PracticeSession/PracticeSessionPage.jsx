@@ -282,12 +282,12 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                     <p className="text-muted mt-2 mb-0">Select a disease before submitting.</p>
                 )}
                 {diagnosisResult?.correctness === true && (
-                    <p className="text-success fw-semibold mt-2 mb-0" role="status">
+                    <p className="fw-semibold mt-2 mb-0" role="status">
                         Correct diagnosis!
                     </p>
                 )}
                 {diagnosisResult?.correctness === false && (
-                    <p className="text-danger fw-semibold mt-2 mb-0" role="status">
+                    <p className="fw-semibold mt-2 mb-0" role="status">
                         Incorrect Diagnosis. The patient has{' '}
                         {diagnosisResult.correctDiagnosis || 'an unknown diagnosis'}.
                     </p>
