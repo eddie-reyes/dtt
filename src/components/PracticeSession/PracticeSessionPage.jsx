@@ -9,6 +9,7 @@ import pfp from '../Menu/placeholder_pfp.jpg';
 export default function PracticeSession() {
     const [showPatientChart, setShowPatientChart] = useState(false);
     const [messages, setMessages] = useState([]);
+    const [isPatientThinking, setIsPatientThinking] = useState(false);
     const messagesListRef = useRef(null);
     const messageInputRef = useRef(null);
     const [sessionInfo, setSessionInfo] = useState({});
@@ -223,24 +224,36 @@ const filteredDiagnoses = diagnoses.filter(disease =>
     }, []);
 
     const onSubmitMessage = async message => {
-        if (!sessionInfo.session_id) return;
-        setMessages([...messages, message]);
-        const token = localStorage.getItem('token');
-        const response = await fetch(
-            `https://dtt-9fc5c2fc9663.herokuapp.com/sessions/${sessionInfo.session_id}/message`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify({ message: message }),
-            },
-        );
+        if (!sessionInfo.session_id || isPatientThinking) return;
+        setMessages(previousMessages => [...previousMessages, message]);
+        setIsPatientThinking(true);
 
-        const data = await response.json();
-        console.log('Received response:', data);
-        setMessages([...messages, message, data.Patient]);
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch(
+                `https://dtt-9fc5c2fc9663.herokuapp.com/sessions/${sessionInfo.session_id}/message`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({ message: message }),
+                },
+            );
+
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.message || data.error || 'Unable to get a patient response.');
+            }
+
+            console.log('Received response:', data);
+            setMessages(previousMessages => [...previousMessages, data.Patient]);
+        } catch (error) {
+            console.error('Unable to get a patient response:', error);
+        } finally {
+            setIsPatientThinking(false);
+        }
     };
 
     //   Notes - LocalStorage
@@ -263,7 +276,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
         if (!list) return;
 
         list.scrollTop = list.scrollHeight;
-    }, [messages]);
+    }, [messages, isPatientThinking]);
 
     return (
         <>
@@ -496,6 +509,11 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                                 </li>
                             ),
                         )}
+                        {isPatientThinking && (
+                            <li className={`list-group-item m-3 w-50 rounded align-self-end ${styles.thinkingIndicator}`} role="status" aria-live="polite">
+                                <strong>{patient?.name || 'The patient'} is thinking...</strong>
+                            </li>
+                        )}
                     </ul>
                     <div className={`${styles.inputWrapper} input-group mb-3`}>
                         <input
@@ -503,6 +521,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                             className="form-control"
                             placeholder="Message"
                             ref={messageInputRef}
+                            disabled={isPatientThinking}
                             onKeyDown={e => {
                                 if (e.key === 'Enter' && e.target.value.trim()) {
                                     const input = e.target;
@@ -515,6 +534,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                             <button
                                 className="input-group-text"
                                 id="basic-addon2"
+                                disabled={isPatientThinking}
                                 onClick={() => {
                                     const input = messageInputRef.current;
                                     

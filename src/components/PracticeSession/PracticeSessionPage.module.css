@@ -147,6 +147,12 @@
     border: none;
 }
 
+.thinkingIndicator {
+    color: #52606d;
+    font-style: italic;
+    opacity: 0.85;
+}
+
 .modalOverlay {
     position: fixed;
     top: 0;
