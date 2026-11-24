@@ -302,7 +302,7 @@
     overflow-wrap: anywhere;
 }
 
-.patientChartCloseButton {
+/* .patientChartCloseButton {
     display: block;
     margin: 20px auto 0;
     padding: 10px 22px;
@@ -314,7 +314,7 @@
 
 .patientChartCloseButton:hover {
     background: var(--special-btn);
-}
+} */ 
 
 @media (max-width: 640px) {
     .patientChartModal {
