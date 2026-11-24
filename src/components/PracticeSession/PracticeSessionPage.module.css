@@ -45,7 +45,7 @@
     padding: 10px; 
 }
 
-.Panel button, #backtoMenu{
+.Panel button, .backtoMenu{
     background: var(--default-btn);
     border: 1px solid var(--dark-text); 
     border-radius: 10px;
@@ -92,7 +92,7 @@
     color: #0b6a8d;
 }
 
-#backtoMenu{
+.backtoMenu{
     position: relative; 
     top: 20px;  
 }
@@ -105,7 +105,7 @@
     margin-left: 30px; 
 }
 
-.Panel button:hover, #backtoMenu:hover {
+.Panel button:hover, .backtoMenu:hover {
     /* background: #1e4fd1; */ 
     background: var(--special-btn); 
     border: 1px, solid, var(--dark-text); 
@@ -168,6 +168,20 @@
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.resultBox{
+    position: relative;
+    background: var(--default-btn);
+    width: 400px;
+    max-width: 90%;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+#diagnosis-result-title{
+    color: var(--dark-text); 
 }
 
 .closeButton {

@@ -70,6 +70,7 @@ export default function PracticeSession() {
     const [seconds, setSeconds] = useState(0);
     const [diagnosisResult, setDiagnosisResult] = useState(null);
     const [isSubmittingDiagnosis, setIsSubmittingDiagnosis] = useState(false);
+    const resultMenuButtonRef = useRef(null);
     const [showNotes, setShowNotes] = useState(false);
     const [searchTerm, setSearchTerm] = useState(''); 
     const [selectedDiagnosis, setSelectedDiagnosis] = useState('');
@@ -112,6 +113,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
     const handleMakeDiagnosis = async () => {
         if (!selectedDiagnosis || !sessionInfo.session_id || isSubmittingDiagnosis) return;
 
+        const endingSeconds = seconds;
         setIsSubmittingDiagnosis(true);
         setDiagnosisResult(null);
         setIsTimerRunning(false);
@@ -129,7 +131,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                     body: JSON.stringify({
                         diagnosis: selectedDiagnosis,
                         notes: JSON.stringify(notes),
-                        duration_seconds: seconds,
+                        duration_seconds: endingSeconds,
                     }),
                 },
             );
@@ -165,13 +167,27 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                 sessionInfo.patient?.correctDiagnosis ||
                 sessionInfo.patient?.diagnosis;
 
-            setDiagnosisResult({ correctness: data.correctness, correctDiagnosis });
+            setDiagnosisResult({ correctness: data.correctness, correctDiagnosis, endingSeconds });
         } catch (error) {
             setDiagnosisResult({ error: error.message || 'Unable to submit your diagnosis.' });
             setIsTimerRunning(true);
         } finally {
             setIsSubmittingDiagnosis(false);
         }
+    };
+
+    const hasFinalDiagnosisResult = typeof diagnosisResult?.correctness === 'boolean';
+
+    useEffect(() => {
+        if (hasFinalDiagnosisResult) resultMenuButtonRef.current?.focus();
+    }, [hasFinalDiagnosisResult]);
+
+    const formatTime = totalSeconds => {
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const remainingSeconds = totalSeconds % 60;
+
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
     };
 
 
@@ -250,7 +266,11 @@ const filteredDiagnoses = diagnoses.filter(disease =>
     }, [messages]);
 
     return (
-        <div className={`container-fluid ${styles.practicePage}`}>
+        <>
+        <div
+            className={`container-fluid ${styles.practicePage}`}
+            inert={hasFinalDiagnosisResult}
+        >
             <div className={styles.Panel} id={styles.leftPanel}>
                 <div className={`${styles.panelElem} ${styles.panelHeader}`}>
                     <h2>Diseases</h2>
@@ -280,17 +300,6 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                 </button>
                 {!selectedDiagnosis && (
                     <p className="text-muted mt-2 mb-0">Select a disease before submitting.</p>
-                )}
-                {diagnosisResult?.correctness === true && (
-                    <p className="fw-semibold mt-2 mb-0" role="status">
-                        Correct diagnosis!
-                    </p>
-                )}
-                {diagnosisResult?.correctness === false && (
-                    <p className="fw-semibold mt-2 mb-0" role="status">
-                        Incorrect Diagnosis. The patient has{' '}
-                        {diagnosisResult.correctDiagnosis || 'an unknown diagnosis'}.
-                    </p>
                 )}
                 {diagnosisResult?.error && (
                     <p className="text-danger mt-2 mb-0" role="alert">
@@ -395,7 +404,7 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                                           placeholder="Possible diagnosis..."
                                         />
                                       </div>
-                                      <Link to="/menu" className={`btn ${styles.mainButtonPrimary}`} id={styles.backtoMenu}>
+                                      <Link to="/menu" className={`btn ${styles.mainButtonPrimary} ${styles.backtoMenu}`}>
                                         Back to Menu
                                     </Link>
                                     </div>
@@ -523,5 +532,48 @@ const filteredDiagnoses = diagnoses.filter(disease =>
                 </div>
             </div>
         </div>
+        {hasFinalDiagnosisResult && (
+            <div
+                className={styles.modalOverlay}
+                onKeyDown={event => {
+                    if (event.key === 'Escape' || event.key === 'Tab') {
+                        event.preventDefault();
+                        if (event.key === 'Escape') event.stopPropagation();
+                        resultMenuButtonRef.current?.focus();
+                    }
+                }}
+            >
+                <div
+                    className={styles.resultBox}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="diagnosis-result-title"
+                    aria-describedby="diagnosis-result-time"
+                >
+                    <h2
+                        id="diagnosis-result-title"
+                        /* className={diagnosisResult.correctness ? 'text-success' : 'text-danger'} */ 
+                    >
+                        {diagnosisResult.correctness ? 'Correct Diagnosis!' : 'Incorrect Diagnosis'}
+                    </h2>
+                    {!diagnosisResult.correctness && (
+                        <p className="mb-3">
+                            The patient has {diagnosisResult.correctDiagnosis || 'an unknown diagnosis'}.
+                        </p>
+                    )}
+                    <p id="diagnosis-result-time" className="text-muted mb-4">
+                        Timer ended at: {formatTime(diagnosisResult.endingSeconds)}
+                    </p>
+                    <Link
+                        ref={resultMenuButtonRef}
+                        to="/menu"
+                        className={`btn ${styles.mainButtonPrimary} ${styles.backtoMenu}`}
+                    >
+                        Back to Menu
+                    </Link>
+                </div>
+            </div>
+        )}
+        </>
     );
 }
